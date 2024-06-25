@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Kontakt - DigitalFusion">
+    <h1>Kontaktujte nás</h1>
+    
+    <section id="contact-form">
+        <h2>Kontaktní formulář</h2>
+        <form action="/odeslat" method="post">
+            <label for="name">Jméno:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Zpráva:</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit">Odeslat</button>
+        </form>
+    </section>
+
+    <section id="contact-info">
+        <h2>Kontaktní údaje</h2>
+        <p>Telefon: +420 123 456 789</p>
+        <p>Email: info@digitalfusion.cz</p>
+        <p>Adresa: Ulice 123, Město, PSČ</p>
+    </section>
+
+    <section id="map">
+        <h2>Kde nás najdete</h2>
+        <!-- Zde přidejte interaktivní mapu -->
+    </section>
+</Layout>

@@ -1,51 +1,90 @@
 ---
 interface Props {
-	title: string;
+    title: string;
 }
 
 const { title } = Astro.props;
+
+import '../styles/global.css';
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="cs">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="DigitalFusion - Vaše digitální řešení" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="logo">DigitalFusion</div>
+                <button class="mobile-menu-toggle">Menu</button>
+                <ul class="nav-links">
+                    <li><a href="/">Domů</a></li>
+                    <li><a href="/o-nas">O nás</a></li>
+                    <li><a href="/sluzby">Služby</a></li>
+                    <li><a href="/portfolio">Portfolio</a></li>
+                    <li><a href="/reference">Reference</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <slot />
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Rychlé odkazy</h3>
+                    <ul>
+                        <li><a href="/">Domů</a></li>
+                        <li><a href="/o-nas">O nás</a></li>
+                        <li><a href="/sluzby">Služby</a></li>
+                        <li><a href="/kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Sledujte nás</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">FB</a>
+                        <a href="#" class="social-icon">IN</a>
+                        <a href="#" class="social-icon">TW</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Váš e-mail" required>
+                        <button type="submit">Odebírat</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 DigitalFusion. Všechna práva vyhrazena.</p>
+            </div>
+        </footer>
+    </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>
+
+
+
+<script>
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (mobileMenuToggle && navLinks) {
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    } else {
+        console.error('Nelze najít prvky mobilního menu nebo navigačních odkazů');
+    }
+</script>
