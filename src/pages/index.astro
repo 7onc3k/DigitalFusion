@@ -15,77 +15,93 @@ const latestArticles = articles.slice(0, 3); // Výběr nejnovějších článk�
         <a href="/kontakt" class="cta-button mt-6 px-6 py-3 bg-orange-500 text-white rounded font-bold">Kontaktujte nás</a>
     </section>
 
-    <section id="about-preview" class="section py-16">
-        <h2 class="text-3xl font-bold text-center">O nás</h2>
-        <div class="about-content flex flex-col md:flex-row justify-between items-center mt-8">
-            <div class="about-text flex-1 pr-8">
+    <section id="about-preview" class="section py-16 container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-8">O nás</h2>
+        <div class="about-content flex flex-col md:flex-row justify-between items-center">
+            <div class="about-text flex-1 md:pr-8 mb-4 md:mb-0 text-center md:text-left">
                 <p>Jsme tým expertů na digitální technologie, připraveni posunout vaše podnikání do budoucnosti.</p>
-                <a href="/o-nas" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded">Zjistěte více</a>
+                <a href="/o-nas" class="btn inline-block mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300">Zjistěte více</a>
+            </div>
+            <div class="about-image flex-1">
+                <!-- Zde můžete přidat obrázek, pokud ho máte -->
+                <img src="/cesta/k/obrazku.jpg" alt="O nás" class="w-full rounded-lg shadow-lg" />
             </div>
         </div>
     </section>
 
     <section id="services-preview" class="section py-16 bg-gray-100">
-        <h2 class="text-3xl font-bold text-center">Naše služby</h2>
-        <ul class="services-list flex flex-col md:flex-row justify-between mt-8 space-x-4">
-            <li class="flex-1 text-center p-4">
-                <i class="fas fa-laptop-code text-4xl"></i>
-                <h3 class="text-xl font-bold mt-4">Webový design</h3>
-                <p class="mt-2">Moderní a responzivní webové stránky</p>
-            </li>
-            <li class="flex-1 text-center p-4">
-                <i class="fas fa-mobile-alt text-4xl"></i>
-                <h3 class="text-xl font-bold mt-4">Vývoj aplikací</h3>
-                <p class="mt-2">Mobilní a webové aplikace na míru</p>
-            </li>
-            <li class="flex-1 text-center p-4">
-                <i class="fas fa-chart-line text-4xl"></i>
-                <h3 class="text-xl font-bold mt-4">Digitální marketing</h3>
-                <p class="mt-2">Efektivní online marketingové strategie</p>
-            </li>
-        </ul>
-        <a href="/sluzby" class="btn mt-8 px-4 py-2 bg-blue-500 text-white rounded">Všechny služby</a>
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Naše služby</h2>
+            <ul class="services-list flex flex-col md:flex-row justify-between mt-8 space-y-4 md:space-y-0 md:space-x-4">
+                <li class="flex-1 text-center p-4">
+                    <i class="fas fa-laptop-code text-4xl"></i>
+                    <h3 class="text-xl font-bold mt-4">Webový design</h3>
+                    <p class="mt-2">Moderní a responzivní webové stránky</p>
+                </li>
+                <li class="flex-1 text-center p-4">
+                    <i class="fas fa-mobile-alt text-4xl"></i>
+                    <h3 class="text-xl font-bold mt-4">Vývoj aplikací</h3>
+                    <p class="mt-2">Mobilní a webové aplikace na míru</p>
+                </li>
+                <li class="flex-1 text-center p-4">
+                    <i class="fas fa-chart-line text-4xl"></i>
+                    <h3 class="text-xl font-bold mt-4">Digitální marketing</h3>
+                    <p class="mt-2">Efektivní online marketingové strategie</p>
+                </li>
+            </ul>
+            <div class="text-center mt-8">
+                <a href="/sluzby" class="btn inline-block px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300">Všechny služby</a>
+            </div>
+        </div>
     </section>
 
     <section id="latest-projects" class="section py-16">
-        <h2 class="text-3xl font-bold text-center">Nejnovější projekty</h2>
-        <div class="project-grid grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-            {latestProjects.map(project => (
-                <div class="project-card bg-white rounded shadow overflow-hidden" data-category={project.category}>
-                    <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
-                    <h2 class="text-xl font-bold p-4">{project.title}</h2>
-                    <p class="px-4">{project.description}</p>
-                    <div class="technologies flex flex-wrap p-4">
-                        {project.technologies.map(tech => (
-                            <span class="tech-tag bg-blue-500 text-white px-2 py-1 rounded mr-2 mb-2 text-sm">{tech}</span>
-                        ))}
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Nejnovější projekty</h2>
+            <div class="project-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+                {latestProjects.map(project => (
+                    <div class="project-card bg-white rounded shadow overflow-hidden" data-category={project.category}>
+                        <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
+                        <h2 class="text-xl font-bold p-4">{project.title}</h2>
+                        <p class="px-4">{project.description}</p>
+                        <div class="technologies flex flex-wrap p-4">
+                            {project.technologies.map(tech => (
+                                <span class="tech-tag bg-blue-500 text-white px-2 py-1 rounded mr-2 mb-2 text-sm">{tech}</span>
+                            ))}
+                        </div>
+                        <a href={`/portfolio#${project.id}`} class="view-details block px-4 py-2 bg-blue-500 text-white text-center rounded">Zobrazit detaily</a>
                     </div>
-                    <a href={`/portfolio#${project.id}`} class="view-details block px-4 py-2 bg-blue-500 text-white text-center rounded">Zobrazit detaily</a>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     </section>
 
     <ClientLogos />
 
     <section id="blog-preview" class="section py-16 bg-gray-100">
-        <h2 class="text-3xl font-bold text-center">Nejnovější články</h2>
-        <div class="article-grid grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-            {latestArticles.map(article => (
-                <div class="article-card bg-white rounded shadow overflow-hidden">
-                    <img src={article.image} alt={article.title} class="w-full h-48 object-cover" />
-                    <h2 class="text-xl font-bold p-4">{article.title}</h2>
-                    <p class="px-4">{article.excerpt}</p>
-                    <a href={`/blog#${article.slug}`} class="view-details block px-4 py-2 bg-blue-500 text-white text-center rounded">Číst více</a>
-                </div>
-            ))}
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Nejnovější články</h2>
+            <div class="article-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+                {latestArticles.map(article => (
+                    <div class="article-card bg-white rounded shadow overflow-hidden">
+                        <img src={article.image} alt={article.title} class="w-full h-48 object-cover" />
+                        <h2 class="text-xl font-bold p-4">{article.title}</h2>
+                        <p class="px-4">{article.excerpt}</p>
+                        <a href={`/blog#${article.slug}`} class="view-details block px-4 py-2 bg-blue-500 text-white text-center rounded">Číst více</a>
+                    </div>
+                ))}
+            </div>
+            <div class="text-center mt-8">
+                <a href="/blog" class="btn inline-block px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300">Číst více</a>
+            </div>
         </div>
-        <a href="/blog" class="btn mt-8 px-4 py-2 bg-blue-500 text-white rounded">Číst více</a>
     </section>
 
-    <section id="contact-cta" class="section py-16 text-center">
-        <h2 class="text-3xl font-bold">Připraveni začít?</h2>
-        <p class="mt-4">Kontaktujte nás a společně vytvoříme vaše digitální řešení.</p>
-        <a href="/kontakt" class="cta-button mt-6 px-6 py-3 bg-orange-500 text-white rounded font-bold">Začněte projekt</a>
+    <section id="contact-cta" class="section py-16 text-center bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-4">Připraveni začít?</h2>
+            <p class="mt-4 mb-6">Kontaktujte nás a společně vytvoříme vaše digitální řešení.</p>
+            <a href="/kontakt" class="cta-button inline-block px-6 py-3 bg-orange-500 text-white rounded font-bold hover:bg-orange-600 transition duration-300">Začněte projekt</a>
+        </div>
     </section>
 </Layout>

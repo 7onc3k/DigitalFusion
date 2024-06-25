@@ -1,3 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { projects } from '../data/projects.js';
+
+const categories = ["Všechny", ...new Set(projects.map(project => project.category))];
+---
+
+<Layout title="Portfolio - DigitalFusion">
+    <h1 class="text-4xl font-bold text-center my-8">Naše práce</h1>
+    
+    <div class="category-filter flex justify-center mb-8">
+        {categories.map(category => (
+            <button class="category-btn mr-2 px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded" data-category={category}>{category}</button>
+        ))}
+    </div>
+
+    <div class="project-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+        {projects.map(project => (
+            <div class="project-card bg-white rounded shadow overflow-hidden" data-category={project.category}>
+                <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
+                <h2 class="text-xl font-bold p-4">{project.title}</h2>
+                <p class="px-4">{project.description}</p>
+                <div class="technologies flex flex-wrap p-4">
+                    {project.technologies.map(tech => (
+                        <span class="tech-tag bg-blue-500 text-white px-2 py-1 rounded mr-2 mb-2 text-sm">{tech}</span>
+                    ))}
+                </div>
+                <a href={`#${project.id}`} class="view-details block px-4 py-2 bg-blue-500 text-white text-center rounded">Zobrazit detaily</a>
+            </div>
+        ))}
+    </div>
+
+    <!-- Detaily projektů -->
+    {projects.map(project => (
+        <div id={project.id} class="project-details hidden">
+            <h2>{project.title}</h2>
+            <p>{project.description}</p>
+            <!-- Zde můžete přidat další detaily projektu -->
+        </div>
+    ))}
+</Layout>
+
 <script>
     // Skript pro filtrování projektů a zobrazení detailů
     const categoryButtons = document.querySelectorAll('.category-btn') as NodeListOf<HTMLButtonElement>;
