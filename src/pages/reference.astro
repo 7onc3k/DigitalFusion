@@ -1,22 +1,119 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const testimonials = [
+    {
+        name: "Jan Novotný",
+        company: "ABC s.r.o.",
+        text: "Spolupráce s DigitalFusion byla skvělá zkušenost. Jejich tým profesionálů nám pomohl výrazně zlepšit naši online přítomnost a zvýšit prodeje.",
+        image: "/images/testimonials/jan-novotny.jpg",
+        rating: 5
+    },
+    {
+        name: "Marie Svobodová",
+        company: "XYZ a.s.",
+        text: "Díky DigitalFusion jsme získali moderní a uživatelsky přívětivý e-shop, který předčil naše očekávání. Jejich přístup k projektu byl velmi profesionální.",
+        image: "/images/testimonials/marie-svobodova.jpg",
+        rating: 4
+    },
+    {
+        name: "Petr Černý",
+        company: "123 s.r.o.",
+        text: "DigitalFusion nám pomohla s kompletní digitální transformací našeho podnikání. Jejich expertíza a inovativní přístup nám umožnily získat konkurenční výhodu na trhu.",
+        image: "/images/testimonials/petr-cerny.jpg",
+        rating: 5
+    }
+];
 ---
 
 <Layout title="Reference - DigitalFusion">
     <h1>Co o nás říkají klienti</h1>
     
-    <section id="testimonial-1">
-        <h2>Klient 1</h2>
-        <p>"Skvělá spolupráce a vynikající výsledky!"</p>
-    </section>
+    <div class="testimonial-grid">
+        {testimonials.map(testimonial => (
+            <div class="testimonial-card">
+                <img src={testimonial.image} alt={testimonial.name} class="testimonial-image" />
+                <div class="testimonial-content">
+                    <p class="testimonial-text">"{testimonial.text}"</p>
+                    <div class="testimonial-author">
+                        <strong>{testimonial.name}</strong>
+                        <span>{testimonial.company}</span>
+                    </div>
+                    <div class="testimonial-rating">
+                        {Array(5).fill().map((_, i) => (
+                            <span class={i < testimonial.rating ? "star filled" : "star"}>★</span>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
 
-    <section id="testimonial-2">
-        <h2>Klient 2</h2>
-        <p>"Profesionální přístup a kvalitní práce."</p>
-    </section>
-
-    <section id="testimonial-3">
-        <h2>Klient 3</h2>
-        <p>"Doporučuji všem, kdo hledají spolehlivého partnera."</p>
+    <section id="clients">
+        <h2>Naši klienti</h2>
+        <div class="client-logos">
+            <!-- Zde přidejte loga klientů -->
+            <img src="/images/clients/client1.png" alt="Klient 1" />
+            <img src="/images/clients/client2.png" alt="Klient 2" />
+            <img src="/images/clients/client3.png" alt="Klient 3" />
+            <!-- Přidejte další loga podle potřeby -->
+        </div>
     </section>
 </Layout>
+
+<style>
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    .testimonial-card {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .testimonial-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 1rem;
+    }
+    .testimonial-text {
+        font-style: italic;
+        margin-bottom: 1rem;
+    }
+    .testimonial-author {
+        margin-bottom: 0.5rem;
+    }
+    .testimonial-author span {
+        color: #666;
+    }
+    .testimonial-rating {
+        color: #ffc107;
+    }
+    .star {
+        font-size: 1.2rem;
+    }
+    .star.filled {
+        color: #ffc107;
+    }
+    .client-logos {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+    }
+    .client-logos img {
+        max-width: 150px;
+        max-height: 80px;
+        margin: 1rem;
+        filter: grayscale(100%);
+        transition: filter 0.3s ease;
+    }
+    .client-logos img:hover {
+        filter: grayscale(0%);
+    }
+</style>

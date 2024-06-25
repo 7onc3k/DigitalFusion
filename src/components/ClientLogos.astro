@@ -1,0 +1,37 @@
+---
+const clients = [
+	{ name: "Klient 1", logo: "/images/clients/client1.png" },
+	{ name: "Klient 2", logo: "/images/clients/client2.png" },
+	{ name: "Klient 3", logo: "/images/clients/client3.png" },
+	{ name: "Klient 4", logo: "/images/clients/client4.png" },
+	{ name: "Klient 5", logo: "/images/clients/client5.png" }
+];
+---
+
+<section id="client-logos" class="section">
+	<h2>Naši klienti</h2>
+	<div class="logo-grid">
+		{clients.map(client => (
+			<img src={client.logo} alt={client.name} class="client-logo" />
+		))}
+	</div>
+</section>
+
+<style>
+	.logo-grid {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	.client-logo {
+		max-width: 150px;
+		max-height: 80px;
+		margin: 20px;
+		filter: grayscale(100%);
+		transition: filter 0.3s ease;
+	}
+	.client-logo:hover {
+		filter: grayscale(0%);
+	}
+</style>

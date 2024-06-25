@@ -1,50 +1,118 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import LatestProjects from '../components/LatestProjects.astro';
+import ClientLogos from '../components/ClientLogos.astro';
 ---
 
 <Layout title="DigitalFusion - Vaše digitální řešení">
-	<section id="hero">
+	<section id="hero" class="hero">
 		<h1>DigitalFusion: Vaše digitální transformace začíná zde</h1>
 		<p>Inovativní řešení pro moderní podniky</p>
 		<a href="/kontakt" class="cta-button">Kontaktujte nás</a>
 	</section>
 
-	<section id="about-preview">
+	<section id="about-preview" class="section">
 		<h2>O nás</h2>
-		<p>Jsme tým expertů na digitální technologie, připraveni posunout vaše podnikání do budoucnosti.</p>
-		<a href="/o-nas">Zjistěte více</a>
+		<div class="about-content">
+			<div class="about-text">
+				<p>Jsme tým expertů na digitální technologie, připraveni posunout vaše podnikání do budoucnosti.</p>
+				<a href="/o-nas" class="btn">Zjistěte více</a>
+			</div>
+			<div class="about-video">
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+			</div>
+		</div>
 	</section>
 
-	<section id="services-preview">
+	<section id="services-preview" class="section">
 		<h2>Naše služby</h2>
-		<ul>
-			<li>Webový design</li>
-			<li>Vývoj aplikací</li>
-			<li>Digitální marketing</li>
+		<ul class="services-list">
+			<li>
+				<i class="fas fa-laptop-code"></i>
+				<h3>Webový design</h3>
+				<p>Moderní a responzivní webové stránky</p>
+			</li>
+			<li>
+				<i class="fas fa-mobile-alt"></i>
+				<h3>Vývoj aplikací</h3>
+				<p>Mobilní a webové aplikace na míru</p>
+			</li>
+			<li>
+				<i class="fas fa-chart-line"></i>
+				<h3>Digitální marketing</h3>
+				<p>Efektivní online marketingové strategie</p>
+			</li>
 		</ul>
-		<a href="/sluzby">Všechny služby</a>
+		<a href="/sluzby" class="btn">Všechny služby</a>
 	</section>
 
-	<section id="portfolio-preview">
-		<h2>Naše práce</h2>
-		<!-- Zde přidejte náhledy projektů -->
-		<a href="/portfolio">Prohlédnout portfolio</a>
-	</section>
+	<LatestProjects />
 
-	<section id="testimonials">
-		<h2>Co o nás říkají klienti</h2>
-		<!-- Zde přidejte citace klientů -->
-	</section>
+	<ClientLogos />
 
-	<section id="blog-preview">
+	<section id="blog-preview" class="section">
 		<h2>Nejnovější články</h2>
 		<!-- Zde přidejte náhledy nejnovějších článků -->
-		<a href="/blog">Číst více</a>
+		<a href="/blog" class="btn">Číst více</a>
 	</section>
 
-	<section id="contact-cta">
+	<section id="contact-cta" class="section">
 		<h2>Připraveni začít?</h2>
 		<p>Kontaktujte nás a společně vytvoříme vaše digitální řešení.</p>
 		<a href="/kontakt" class="cta-button">Začněte projekt</a>
 	</section>
 </Layout>
+
+<style>
+	.hero {
+		background-image: url('/images/hero-bg.jpg');
+		background-size: cover;
+		background-position: center;
+		color: #fff;
+		text-align: center;
+		padding: 100px 0;
+	}
+	.section {
+		padding: 60px 0;
+	}
+	.about-content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.about-text {
+		flex: 1;
+		padding-right: 30px;
+	}
+	.about-video {
+		flex: 1;
+	}
+	.services-list {
+		display: flex;
+		justify-content: space-between;
+		list-style-type: none;
+		padding: 0;
+	}
+	.services-list li {
+		flex: 1;
+		text-align: center;
+		padding: 20px;
+	}
+	.btn {
+		display: inline-block;
+		padding: 10px 20px;
+		background-color: #007bff;
+		color: #fff;
+		text-decoration: none;
+		border-radius: 5px;
+	}
+	.cta-button {
+		display: inline-block;
+		padding: 15px 30px;
+		background-color: #ff6b00;
+		color: #fff;
+		text-decoration: none;
+		border-radius: 5px;
+		font-weight: bold;
+	}
+</style>

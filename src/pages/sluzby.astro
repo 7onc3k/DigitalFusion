@@ -1,22 +1,161 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const services = [
+    {
+        title: "Webový design",
+        description: "Vytváříme moderní, responzivní a uživatelsky přívětivé webové stránky, které zaujmou vaše návštěvníky a pomohou vám dosáhnout vašich cílů.",
+        icon: "fas fa-laptop-code",
+        features: [
+            "Responzivní design",
+            "Optimalizace pro vyhledávače (SEO)",
+            "Uživatelsky přívětivé rozhraní",
+            "Integrace s CMS"
+        ]
+    },
+    {
+        title: "Vývoj aplikací",
+        description: "Vyvíjíme mobilní a webové aplikace na míru, které řeší specifické potřeby vašeho podnikání a zlepšují efektivitu vašich procesů.",
+        icon: "fas fa-mobile-alt",
+        features: [
+            "Nativní mobilní aplikace (iOS, Android)",
+            "Progresivní webové aplikace (PWA)",
+            "Cloudová řešení",
+            "Integrace API a třetích stran"
+        ]
+    },
+    {
+        title: "Digitální marketing",
+        description: "Pomáháme vám oslovit vaše cílové publikum prostřednictvím efektivních online marketingových strategií a kampaní.",
+        icon: "fas fa-chart-line",
+        features: [
+            "SEO a SEM",
+            "Správa sociálních médií",
+            "E-mail marketing",
+            "Obsahový marketing a copywriting"
+        ]
+    }
+];
 ---
 
 <Layout title="Služby - DigitalFusion">
     <h1>Naše služby</h1>
     
-    <section id="web-design">
-        <h2>Webový design</h2>
-        <p>Profesionální a moderní webové stránky, které zaujmou vaše návštěvníky.</p>
+    <div class="services-grid">
+        {services.map(service => (
+            <div class="service-card">
+                <i class={service.icon}></i>
+                <h2>{service.title}</h2>
+                <p>{service.description}</p>
+                <ul class="features-list">
+                    {service.features.map(feature => (
+                        <li>{feature}</li>
+                    ))}
+                </ul>
+                <a href="#" class="btn">Zjistit více</a>
+            </div>
+        ))}
+    </div>
+
+    <section id="process">
+        <h2>Náš proces</h2>
+        <div class="process-steps">
+            <div class="step">
+                <i class="fas fa-lightbulb"></i>
+                <h3>1. Konzultace</h3>
+                <p>Porozumíme vašim potřebám a cílům</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-pencil-alt"></i>
+                <h3>2. Návrh</h3>
+                <p>Vytvoříme koncept a strategii</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-code"></i>
+                <h3>3. Vývoj</h3>
+                <p>Implementujeme řešení</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-check-circle"></i>
+                <h3>4. Testování</h3>
+                <p>Zajistíme kvalitu a funkčnost</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-rocket"></i>
+                <h3>5. Spuštění</h3>
+                <p>Uvedeme projekt do provozu</p>
+            </div>
+        </div>
     </section>
 
-    <section id="app-development">
-        <h2>Vývoj aplikací</h2>
-        <p>Vývoj mobilních a webových aplikací na míru vašim potřebám.</p>
-    </section>
-
-    <section id="digital-marketing">
-        <h2>Digitální marketing</h2>
-        <p>Efektivní marketingové strategie pro zvýšení vaší online viditelnosti.</p>
+    <section id="cta">
+        <h2>Připraveni začít?</h2>
+        <p>Kontaktujte nás pro nezávaznou konzultaci a zjistěte, jak vám můžeme pomoci s vaším digitálním projektem.</p>
+        <a href="/kontakt" class="btn btn-large">Kontaktujte nás</a>
     </section>
 </Layout>
+
+<style>
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+    .service-card {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .service-card i {
+        font-size: 3rem;
+        color: #007bff;
+        margin-bottom: 1rem;
+    }
+    .features-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 1rem 0;
+    }
+    .features-list li {
+        margin-bottom: 0.5rem;
+    }
+    .btn {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+    .process-steps {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+    }
+    .step {
+        flex: 1;
+        min-width: 200px;
+        text-align: center;
+        padding: 1rem;
+    }
+    .step i {
+        font-size: 2rem;
+        color: #007bff;
+        margin-bottom: 1rem;
+    }
+    #cta {
+        background-color: #f8f9fa;
+        text-align: center;
+        padding: 3rem;
+        border-radius: 8px;
+        margin-top: 3rem;
+    }
+    .btn-large {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+    }
+</style>

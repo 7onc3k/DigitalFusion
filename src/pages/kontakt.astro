@@ -5,31 +5,126 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Kontakt - DigitalFusion">
     <h1>Kontaktujte nás</h1>
     
-    <section id="contact-form">
-        <h2>Kontaktní formulář</h2>
-        <form action="/odeslat" method="post">
-            <label for="name">Jméno:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Zpráva:</label>
-            <textarea id="message" name="message" required></textarea>
-            
-            <button type="submit">Odeslat</button>
-        </form>
-    </section>
+    <div class="contact-container">
+        <section id="contact-form">
+            <h2>Kontaktní formulář</h2>
+            <form action="/odeslat" method="post" id="contact-form">
+                <div class="form-group">
+                    <label for="name">Jméno:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Předmět:</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Vyberte předmět</option>
+                        <option value="general">Obecný dotaz</option>
+                        <option value="support">Technická podpora</option>
+                        <option value="sales">Obchodní oddělení</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Zpráva:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit">Odeslat</button>
+            </form>
+        </section>
 
-    <section id="contact-info">
-        <h2>Kontaktní údaje</h2>
-        <p>Telefon: +420 123 456 789</p>
-        <p>Email: info@digitalfusion.cz</p>
-        <p>Adresa: Ulice 123, Město, PSČ</p>
-    </section>
+        <section id="contact-info">
+            <h2>Kontaktní údaje</h2>
+            <p><i class="fas fa-phone"></i> Telefon: +420 123 456 789</p>
+            <p><i class="fas fa-envelope"></i> Email: info@digitalfusion.cz</p>
+            <p><i class="fas fa-map-marker-alt"></i> Adresa: Ulice 123, Město, PSČ</p>
+            
+            <h3>Sledujte nás</h3>
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </section>
+    </div>
 
     <section id="map">
         <h2>Kde nás najdete</h2>
-        <!-- Zde přidejte interaktivní mapu -->
+        <div id="google-map"></div>
     </section>
 </Layout>
+
+<style>
+    .contact-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+    #contact-form, #contact-info {
+        flex: 1;
+        padding: 1rem;
+    }
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    input, select, textarea {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    textarea {
+        height: 150px;
+    }
+    button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .social-links a {
+        font-size: 1.5rem;
+        margin-right: 1rem;
+        color: #007bff;
+    }
+    #google-map {
+        height: 400px;
+        width: 100%;
+    }
+</style>
+
+<script>
+    // Skript pro validaci formuláře
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Zde přidejte logiku pro validaci a odeslání formuláře
+        alert('Formulář byl odeslán!');
+    });
+
+    // Skript pro načtení Google Maps
+    function initMap() {
+        const map = new google.maps.Map(document.getElementById('google-map'), {
+            center: {lat: 50.0755, lng: 14.4378}, // Praha
+            zoom: 15
+        });
+        const marker = new google.maps.Marker({
+            position: {lat: 50.0755, lng: 14.4378},
+            map: map,
+            title: 'DigitalFusion'
+        });
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>

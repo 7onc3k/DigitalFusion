@@ -1,28 +1,167 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const teamMembers = [
+    {
+        name: "Jan Novák",
+        position: "CEO & Zakladatel",
+        image: "/images/team/jan-novak.jpg",
+        bio: "Jan má více než 15 let zkušeností v oblasti digitálních technologií..."
+    },
+    {
+        name: "Marie Svobodová",
+        position: "CTO",
+        image: "/images/team/marie-svobodova.jpg",
+        bio: "Marie je expertka na vývoj softwaru s rozsáhlými znalostmi v oblasti..."
+    },
+    {
+        name: "Petr Černý",
+        position: "Vedoucí designér",
+        image: "/images/team/petr-cerny.jpg",
+        bio: "Petr je kreativní génius s okem pro detail a vášní pro uživatelskou zkušenost..."
+    }
+];
+
+const milestones = [
+    { year: 2010, event: "Založení DigitalFusion" },
+    { year: 2015, event: "Otevření pobočky v Brně" },
+    { year: 2018, event: "Získání ocenění 'Nejlepší digitální agentura roku'" },
+    { year: 2020, event: "Expanze na mezinárodní trh" },
+    { year: 2023, event: "Oslavy 13 let na trhu a 100+ spokojených klientů" }
+];
 ---
 
 <Layout title="O nás - DigitalFusion">
     <h1>O nás</h1>
     
-    <section id="history">
-        <h2>Naše historie</h2>
-        <p>Krátký příběh o vzniku a vývoji DigitalFusion...</p>
+    <section id="mission-vision">
+        <h2>Naše mise a vize</h2>
+        <p>Naší misí je pomáhat firmám uspět v digitálním světě prostřednictvím inovativních řešení a strategií. Naše vize je stát se lídrem v oblasti digitální transformace a přinášet hodnotu našim klientům, zaměstnancům a společnosti.</p>
     </section>
 
-    <section id="mission-vision">
-        <h2>Mise a vize</h2>
-        <p>Naše hodnoty a cíle...</p>
+    <section id="history">
+        <h2>Naše historie</h2>
+        <div class="timeline">
+            {milestones.map(milestone => (
+                <div class="timeline-item">
+                    <div class="timeline-year">{milestone.year}</div>
+                    <div class="timeline-content">{milestone.event}</div>
+                </div>
+            ))}
+        </div>
     </section>
 
     <section id="team">
         <h2>Náš tým</h2>
-        <!-- Zde přidejte informace o klíčových členech týmu -->
+        <div class="team-grid">
+            {teamMembers.map(member => (
+                <div class="team-member">
+                    <img src={member.image} alt={member.name} />
+                    <h3>{member.name}</h3>
+                    <p class="position">{member.position}</p>
+                    <p class="bio">{member.bio}</p>
+                </div>
+            ))}
+        </div>
+    </section>
+
+    <section id="values">
+        <h2>Naše hodnoty</h2>
+        <ul>
+            <li>Inovace: Neustále hledáme nové způsoby, jak zlepšit naše služby a produkty.</li>
+            <li>Kvalita: Klademe důraz na vysokou kvalitu ve všem, co děláme.</li>
+            <li>Spolupráce: Věříme v sílu týmové práce a partnerství s našimi klienty.</li>
+            <li>Integrita: Jednáme vždy čestně a transparentně.</li>
+        </ul>
     </section>
 
     <section id="careers">
-        <h2>Kariéra</h2>
-        <p>Informace o možnostech práce v DigitalFusion...</p>
-        <a href="/kariera">Volné pozice</a>
+        <h2>Kariéra u nás</h2>
+        <p>Hledáme talentované a motivované jedince, kteří chtějí být součástí našeho týmu. Nabízíme dynamické pracovní prostředí, možnosti profesního růstu a práci na zajímavých projektech.</p>
+        <a href="/kariera" class="btn">Prohlédnout volné pozice</a>
     </section>
 </Layout>
+
+<style>
+    .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px 0;
+    }
+    .timeline::after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        background-color: #007bff;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -1px;
+    }
+    .timeline-item {
+        padding: 10px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+    }
+    .timeline-item::after {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        right: -17px;
+        background-color: white;
+        border: 4px solid #007bff;
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+    }
+    .timeline-item:nth-child(odd) {
+        left: 0;
+    }
+    .timeline-item:nth-child(even) {
+        left: 50%;
+    }
+    .timeline-item:nth-child(even)::after {
+        left: -16px;
+    }
+    .timeline-content {
+        padding: 20px 30px;
+        background-color: white;
+        position: relative;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .timeline-year {
+        font-weight: bold;
+        color: #007bff;
+    }
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+    .team-member {
+        text-align: center;
+    }
+    .team-member img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .position {
+        font-style: italic;
+        color: #666;
+    }
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 1rem;
+    }
+</style>

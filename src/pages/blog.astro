@@ -1,25 +1,109 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import BlogPost from '../components/BlogPost.astro';
+
+const posts = [
+  {
+    title: "Článek 1",
+    slug: "clanek-1",
+    excerpt: "Úvod do článku 1...",
+    date: "2023-05-01",
+    author: "Jan Novák",
+    category: "Webdesign",
+    image: "/images/blog/clanek-1.jpg"
+  },
+  {
+    title: "Článek 2",
+    slug: "clanek-2",
+    excerpt: "Úvod do článku 2...",
+    date: "2023-05-15",
+    author: "Jana Nováková",
+    category: "Vývoj aplikací",
+    image: "/images/blog/clanek-2.jpg"
+  },
+  {
+    title: "Článek 3",
+    slug: "clanek-3",
+    excerpt: "Úvod do článku 3...",
+    date: "2023-06-01",
+    author: "Petr Nový",
+    category: "Digitální marketing",
+    image: "/images/blog/clanek-3.jpg"
+  }
+];
+
+const categories = ["Všechny", "Webdesign", "Vývoj aplikací", "Digitální marketing"];
 ---
 
 <Layout title="Blog - DigitalFusion">
     <h1>Nejnovější články</h1>
     
-    <section id="article-1">
-        <h2>Článek 1</h2>
-        <p>Úvod do článku 1...</p>
-        <a href="/blog/clanek-1">Číst více</a>
-    </section>
+    <div class="category-filter">
+        {categories.map(category => (
+            <button class="category-btn" data-category={category}>{category}</button>
+        ))}
+    </div>
 
-    <section id="article-2">
-        <h2>Článek 2</h2>
-        <p>Úvod do článku 2...</p>
-        <a href="/blog/clanek-2">Číst více</a>
-    </section>
+    <div class="blog-grid">
+        {posts.map(post => (
+            <BlogPost 
+                title={post.title}
+                slug={post.slug}
+                excerpt={post.excerpt}
+                date={post.date}
+                author={post.author}
+                category={post.category}
+                image={post.image}
+            />
+        ))}
+    </div>
 
-    <section id="article-3">
-        <h2>Článek 3</h2>
-        <p>Úvod do článku 3...</p>
-        <a href="/blog/clanek-3">Číst více</a>
-    </section>
+    <nav class="pagination">
+        <a href="#" class="prev">Předchozí</a>
+        <span>Strana 1 z 3</span>
+        <a href="#" class="next">Další</a>
+    </nav>
 </Layout>
+
+<style>
+    .category-filter {
+        margin-bottom: 2rem;
+    }
+    .category-btn {
+        margin-right: 0.5rem;
+        padding: 0.5rem 1rem;
+        border: none;
+        background-color: #f0f0f0;
+        cursor: pointer;
+    }
+    .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    .pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 2rem;
+    }
+</style>
+
+<script>
+    // Jednoduchý skript pro filtrování článků podle kategorie
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const blogPosts = document.querySelectorAll('.blog-post');
+
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.dataset.category;
+            blogPosts.forEach(post => {
+                if (category === 'Všechny' || post.dataset.category === category) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
