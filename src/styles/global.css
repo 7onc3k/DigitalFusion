@@ -11,6 +11,28 @@
     box-sizing: border-box;
 }
 
+/* Přidání specifických stylů pro hero sekci */
+body #hero.hero {
+    padding: 0 !important; /* Přidáno */
+    margin: 0 !important; /* Přidáno */
+}
+
+body #hero.hero::before {
+    margin: 0 !important; /* Přidáno */
+    padding: 0 !important; /* Přidáno */
+    border: none !important; /* Přidáno */
+}
+
+/* Přidání specifických stylů pro hero sekci */
+.hero img {
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
@@ -72,7 +94,7 @@ nav {
 /* Main content */
 main {
     max-width: 1200px;
-    margin: 2rem auto;
+    margin: 2r;
     padding: 0 1rem;
 }
 
@@ -192,4 +214,16 @@ footer {
         margin-right: 0;
         margin-bottom: 2rem;
     }
+}
+
+/* Přidání specifických stylů pro hero sekci na konec global.css */
+#hero.hero {
+    padding: 0 !important; /* Přidáno */
+    margin: 0 !important; /* Přidáno */
+}
+
+#hero.hero::before {
+    margin: 0 !important; /* Přidáno */
+    padding: 0 !important; /* Přidáno */
+    border: none !important; /* Přidáno */
 }

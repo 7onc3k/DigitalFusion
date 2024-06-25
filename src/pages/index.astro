@@ -20,9 +20,6 @@ const latestProjects = projects.slice(0, 3);
                 <p>Jsme tým expertů na digitální technologie, připraveni posunout vaše podnikání do budoucnosti.</p>
                 <a href="/o-nas" class="btn">Zjistěte více</a>
             </div>
-            <div class="about-video">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            </div>
         </div>
     </section>
 
@@ -84,15 +81,24 @@ const latestProjects = projects.slice(0, 3);
 
 <style>
     .hero {
-        background-image: url('/images/hero-bg.jpg');
+        background-image: url('../../public/hero-bg.jpg');
         background-size: cover;
         background-position: center;
         color: #fff;
         text-align: center;
-        padding: 100px 0;
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
     }
     .section {
         padding: 60px 0;
+        width: 100%;
     }
     .about-content {
         display: flex;
@@ -102,9 +108,6 @@ const latestProjects = projects.slice(0, 3);
     .about-text {
         flex: 1;
         padding-right: 30px;
-    }
-    .about-video {
-        flex: 1;
     }
     .services-list {
         display: flex;
