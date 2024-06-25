@@ -39,123 +39,55 @@ const services = [
 ---
 
 <Layout title="Služby - DigitalFusion">
-    <h1>Naše služby</h1>
-    
-    <div class="services-grid">
+    <h1 class="text-4xl font-bold text-center my-8">Naše služby</h1>
+    <div class="services-grid grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         {services.map(service => (
-            <div class="service-card">
-                <i class={service.icon}></i>
-                <h2>{service.title}</h2>
-                <p>{service.description}</p>
-                <ul class="features-list">
+            <div class="service-card bg-gray-100 rounded p-8 text-center shadow">
+                <i class={`${service.icon} text-4xl text-blue-500 mb-4`}></i>
+                <h2 class="text-2xl font-bold mb-4">{service.title}</h2>
+                <p class="mb-4">{service.description}</p>
+                <ul class="features-list list-disc list-inside mb-4">
                     {service.features.map(feature => (
                         <li>{feature}</li>
                     ))}
                 </ul>
-                <a href="#" class="btn">Zjistit více</a>
+                <a href="#" class="btn px-4 py-2 bg-blue-500 text-white rounded">Zjistit více</a>
             </div>
         ))}
     </div>
-
-    <section id="process">
-        <h2>Náš proces</h2>
-        <div class="process-steps">
-            <div class="step">
-                <i class="fas fa-lightbulb"></i>
-                <h3>1. Konzultace</h3>
+    <section id="process" class="py-16">
+        <h2 class="text-3xl font-bold text-center">Náš proces</h2>
+        <div class="process-steps flex flex-col md:flex-row justify-between flex-wrap mt-8">
+            <div class="step flex-1 min-w-[200px] text-center p-4">
+                <i class="fas fa-lightbulb text-4xl text-blue-500 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">1. Konzultace</h3>
                 <p>Porozumíme vašim potřebám a cílům</p>
             </div>
-            <div class="step">
-                <i class="fas fa-pencil-alt"></i>
-                <h3>2. Návrh</h3>
+            <div class="step flex-1 min-w-[200px] text-center p-4">
+                <i class="fas fa-pencil-alt text-4xl text-blue-500 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">2. Návrh</h3>
                 <p>Vytvoříme koncept a strategii</p>
             </div>
-            <div class="step">
-                <i class="fas fa-code"></i>
-                <h3>3. Vývoj</h3>
+            <div class="step flex-1 min-w-[200px] text-center p-4">
+                <i class="fas fa-code text-4xl text-blue-500 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">3. Vývoj</h3>
                 <p>Implementujeme řešení</p>
             </div>
-            <div class="step">
-                <i class="fas fa-check-circle"></i>
-                <h3>4. Testování</h3>
+            <div class="step flex-1 min-w-[200px] text-center p-4">
+                <i class="fas fa-check-circle text-4xl text-blue-500 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">4. Testování</h3>
                 <p>Zajistíme kvalitu a funkčnost</p>
             </div>
-            <div class="step">
-                <i class="fas fa-rocket"></i>
-                <h3>5. Spuštění</h3>
+            <div class="step flex-1 min-w-[200px] text-center p-4">
+                <i class="fas fa-rocket text-4xl text-blue-500 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">5. Spuštění</h3>
                 <p>Uvedeme projekt do provozu</p>
             </div>
         </div>
     </section>
-
-    <section id="cta">
-        <h2>Připraveni začít?</h2>
-        <p>Kontaktujte nás pro nezávaznou konzultaci a zjistěte, jak vám můžeme pomoci s vaším digitálním projektem.</p>
-        <a href="/kontakt" class="btn btn-large">Kontaktujte nás</a>
+    <section id="cta" class="py-16 bg-gray-100 text-center">
+        <h2 class="text-3xl font-bold">Připraveni začít?</h2>
+        <p class="mt-4">Kontaktujte nás pro nezávaznou konzultaci a zjistěte, jak vám můžeme pomoci s vaším digitálním projektem.</p>
+        <a href="/kontakt" class="btn btn-large mt-8 px-6 py-3 bg-blue-500 text-white rounded">Kontaktujte nás</a>
     </section>
 </Layout>
-
-<style>
-    .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-bottom: 3rem;
-    }
-    .service-card {
-        background-color: #f8f9fa;
-        border-radius: 8px;
-        padding: 2rem;
-        text-align: center;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .service-card i {
-        font-size: 3rem;
-        color: #007bff;
-        margin-bottom: 1rem;
-    }
-    .features-list {
-        list-style-type: none;
-        padding: 0;
-        margin: 1rem 0;
-    }
-    .features-list li {
-        margin-bottom: 0.5rem;
-    }
-    .btn {
-        display: inline-block;
-        padding: 0.5rem 1rem;
-        background-color: #007bff;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 4px;
-    }
-    .process-steps {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        margin-top: 2rem;
-    }
-    .step {
-        flex: 1;
-        min-width: 200px;
-        text-align: center;
-        padding: 1rem;
-    }
-    .step i {
-        font-size: 2rem;
-        color: #007bff;
-        margin-bottom: 1rem;
-    }
-    #cta {
-        background-color: #f8f9fa;
-        text-align: center;
-        padding: 3rem;
-        border-radius: 8px;
-        margin-top: 3rem;
-    }
-    .btn-large {
-        padding: 1rem 2rem;
-        font-size: 1.2rem;
-    }
-</style>

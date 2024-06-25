@@ -3,25 +3,25 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Kontakt - DigitalFusion">
-    <h1>Kontaktujte nás</h1>
+    <h1 class="text-4xl font-bold text-center my-8">Kontaktujte nás</h1>
     
-    <div class="contact-container">
-        <section id="contact-form">
-            <h2>Kontaktní formulář</h2>
-            <form action="/odeslat" method="post" id="contact-form">
+    <div class="contact-container flex justify-between mb-8">
+        <section id="contact-form" class="flex-1 p-4">
+            <h2 class="text-2xl font-bold mb-4">Kontaktní formulář</h2>
+            <form action="/odeslat" method="post" id="contact-form" class="space-y-4">
                 <div class="form-group">
-                    <label for="name">Jméno:</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="name" class="block mb-2">Jméno:</label>
+                    <input type="text" id="name" name="name" required class="w-full p-2 border border-gray-300 rounded">
                 </div>
                 
                 <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="email" class="block mb-2">Email:</label>
+                    <input type="email" id="email" name="email" required class="w-full p-2 border border-gray-300 rounded">
                 </div>
                 
                 <div class="form-group">
-                    <label for="subject">Předmět:</label>
-                    <select id="subject" name="subject" required>
+                    <label for="subject" class="block mb-2">Předmět:</label>
+                    <select id="subject" name="subject" required class="w-full p-2 border border-gray-300 rounded">
                         <option value="">Vyberte předmět</option>
                         <option value="general">Obecný dotaz</option>
                         <option value="support">Technická podpora</option>
@@ -30,80 +30,35 @@ import Layout from '../layouts/Layout.astro';
                 </div>
                 
                 <div class="form-group">
-                    <label for="message">Zpráva:</label>
-                    <textarea id="message" name="message" required></textarea>
+                    <label for="message" class="block mb-2">Zpráva:</label>
+                    <textarea id="message" name="message" required class="w-full p-2 border border-gray-300 rounded h-40"></textarea>
                 </div>
                 
-                <button type="submit">Odeslat</button>
+                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Odeslat</button>
             </form>
         </section>
 
-        <section id="contact-info">
-            <h2>Kontaktní údaje</h2>
+        <section id="contact-info" class="flex-1 p-4">
+            <h2 class="text-2xl font-bold mb-4">Kontaktní údaje</h2>
             <p><i class="fas fa-phone"></i> Telefon: +420 123 456 789</p>
             <p><i class="fas fa-envelope"></i> Email: info@digitalfusion.cz</p>
             <p><i class="fas fa-map-marker-alt"></i> Adresa: Ulice 123, Město, PSČ</p>
             
-            <h3>Sledujte nás</h3>
-            <div class="social-links">
-                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <h3 class="text-xl font-bold mt-4">Sledujte nás</h3>
+            <div class="social-links flex space-x-4 mt-2">
+                <a href="#" target="_blank"><i class="fab fa-facebook text-2xl text-blue-600"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter text-2xl text-blue-400"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin text-2xl text-blue-700"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram text-2xl text-pink-500"></i></a>
             </div>
         </section>
     </div>
 
-    <section id="map">
-        <h2>Kde nás najdete</h2>
-        <div id="google-map"></div>
+    <section id="map" class="py-16">
+        <h2 class="text-3xl font-bold text-center mb-8">Kde nás najdete</h2>
+        <div id="google-map" class="h-96 w-full"></div>
     </section>
 </Layout>
-
-<style>
-    .contact-container {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 2rem;
-    }
-    #contact-form, #contact-info {
-        flex: 1;
-        padding: 1rem;
-    }
-    .form-group {
-        margin-bottom: 1rem;
-    }
-    label {
-        display: block;
-        margin-bottom: 0.5rem;
-    }
-    input, select, textarea {
-        width: 100%;
-        padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-    textarea {
-        height: 150px;
-    }
-    button {
-        background-color: #007bff;
-        color: #fff;
-        padding: 0.5rem 1rem;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-    .social-links a {
-        font-size: 1.5rem;
-        margin-right: 1rem;
-        color: #007bff;
-    }
-    #google-map {
-        height: 400px;
-        width: 100%;
-    }
-</style>
 
 <script>
     declare var google: any;
@@ -134,4 +89,4 @@ import Layout from '../layouts/Layout.astro';
         }
     }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9JkxICwJH-6Aej7SZ7ws25pE5qqkEwJ4&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9JkxICwJ-6Aej7SZ7ws25pE5qqkEwJ4&callback=initMap"></script>

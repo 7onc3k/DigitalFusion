@@ -1,50 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import BlogPost from '../components/BlogPost.astro';
-
-const posts = [
-  {
-    title: "Článek 1",
-    slug: "clanek-1",
-    excerpt: "Úvod do článku 1...",
-    date: "2023-05-01",
-    author: "Jan Novák",
-    category: "Webdesign",
-    image: "/images/blog/clanek-1.jpg"
-  },
-  {
-    title: "Článek 2",
-    slug: "clanek-2",
-    excerpt: "Úvod do článku 2...",
-    date: "2023-05-15",
-    author: "Jana Nováková",
-    category: "Vývoj aplikací",
-    image: "/images/blog/clanek-2.jpg"
-  },
-  {
-    title: "Článek 3",
-    slug: "clanek-3",
-    excerpt: "Úvod do článku 3...",
-    date: "2023-06-01",
-    author: "Petr Nový",
-    category: "Digitální marketing",
-    image: "/images/blog/clanek-3.jpg"
-  }
-];
+import { articles as posts } from '../data/articles.js'; // Import článků
 
 const categories = ["Všechny", "Webdesign", "Vývoj aplikací", "Digitální marketing"];
 ---
 
 <Layout title="Blog - DigitalFusion">
-    <h1>Nejnovější články</h1>
+    <h1 class="text-4xl font-bold text-center my-8">Nejnovější články</h1>
     
-    <div class="category-filter">
+    <div class="category-filter flex justify-center mb-8">
         {categories.map(category => (
-            <button class="category-btn" data-category={category}>{category}</button>
+            <button class="category-btn mr-2 px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded" data-category={category}>{category}</button>
         ))}
     </div>
 
-    <div class="blog-grid">
+    <div class="blog-grid grid grid-cols-1 md:grid-cols-3 gap-8">
         {posts.map(post => (
             <BlogPost 
                 title={post.title}
@@ -58,36 +29,12 @@ const categories = ["Všechny", "Webdesign", "Vývoj aplikací", "Digitální ma
         ))}
     </div>
 
-    <nav class="pagination">
-        <a href="#" class="prev">Předchozí</a>
+    <nav class="pagination flex justify-between items-center mt-8">
+        <a href="#" class="prev px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">Předchozí</a>
         <span>Strana 1 z 3</span>
-        <a href="#" class="next">Další</a>
+        <a href="#" class="next px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">Další</a>
     </nav>
 </Layout>
-
-<style>
-    .category-filter {
-        margin-bottom: 2rem;
-    }
-    .category-btn {
-        margin-right: 0.5rem;
-        padding: 0.5rem 1rem;
-        border: none;
-        background-color: #f0f0f0;
-        cursor: pointer;
-    }
-    .blog-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 2rem;
-    }
-    .pagination {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 2rem;
-    }
-</style>
 
 <script>
     // Jednoduchý skript pro filtrování článků podle kategorie

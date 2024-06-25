@@ -5,7 +5,7 @@ interface Props {
 
 const { title } = Astro.props;
 
-import '../styles/global.css';
+
 ---
 
 <!doctype html>
@@ -13,7 +13,7 @@ import '../styles/global.css';
     <head>
         <meta charset="UTF-8" />
         <meta name="description" content="DigitalFusion - Vaše digitální řešení" />
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
         <meta name="generator" content={Astro.generator} />
@@ -21,17 +21,17 @@ import '../styles/global.css';
     </head>
     <body>
         <header>
-            <nav>
+            <nav class="flex justify-between items-center p-4 bg-gray-800 text-white">
                 <div class="logo">DigitalFusion</div>
-                <button class="mobile-menu-toggle">Menu</button>
-                <ul class="nav-links">
-                    <li><a href="/">Domů</a></li>
-                    <li><a href="/o-nas">O nás</a></li>
-                    <li><a href="/sluzby">Služby</a></li>
-                    <li><a href="/portfolio">Portfolio</a></li>
-                    <li><a href="/reference">Reference</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                    <li><a href="/kontakt">Kontakt</a></li>
+                <button class="mobile-menu-toggle md:hidden">Menu</button>
+                <ul class="nav-links hidden md:flex space-x-4">
+                    <li><a href="/" class="hover:underline">Domů</a></li>
+                    <li><a href="/o-nas" class="hover:underline">O nás</a></li>
+                    <li><a href="/sluzby" class="hover:underline">Služby</a></li>
+                    <li><a href="/portfolio" class="hover:underline">Portfolio</a></li>
+                    <li><a href="/reference" class="hover:underline">Reference</a></li>
+                    <li><a href="/blog" class="hover:underline">Blog</a></li>
+                    <li><a href="/kontakt" class="hover:underline">Kontakt</a></li>
                 </ul>
             </nav>
         </header>
@@ -40,41 +40,39 @@ import '../styles/global.css';
             <slot />
         </main>
 
-        <footer>
-            <div class="footer-content">
+        <footer class="bg-gray-800 text-white p-4">
+            <div class="footer-content grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="footer-section">
-                    <h3>Rychlé odkazy</h3>
+                    <h3 class="text-lg font-bold">Rychlé odkazy</h3>
                     <ul>
-                        <li><a href="/">Domů</a></li>
-                        <li><a href="/o-nas">O nás</a></li>
-                        <li><a href="/sluzby">Služby</a></li>
-                        <li><a href="/kontakt">Kontakt</a></li>
+                        <li><a href="/" class="hover:underline">Domů</a></li>
+                        <li><a href="/o-nas" class="hover:underline">O nás</a></li>
+                        <li><a href="/sluzby" class="hover:underline">Služby</a></li>
+                        <li><a href="/kontakt" class="hover:underline">Kontakt</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Sledujte nás</h3>
-                    <div class="social-icons">
+                    <h3 class="text-lg font-bold">Sledujte nás</h3>
+                    <div class="social-icons flex space-x-4">
                         <a href="#" class="social-icon">FB</a>
                         <a href="#" class="social-icon">IN</a>
                         <a href="#" class="social-icon">TW</a>
                     </div>
                 </div>
                 <div class="footer-section">
-                    <h3>Newsletter</h3>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Váš e-mail" required>
-                        <button type="submit">Odebírat</button>
+                    <h3 class="text-lg font-bold">Newsletter</h3>
+                    <form class="newsletter-form flex flex-col space-y-2">
+                        <input type="email" placeholder="Váš e-mail" required class="p-2 rounded border border-gray-300">
+                        <button type="submit" class="p-2 bg-blue-500 text-white rounded">Odebírat</button>
                     </form>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footer-bottom text-center mt-4">
                 <p>&copy; 2023 DigitalFusion. Všechna práva vyhrazena.</p>
             </div>
         </footer>
     </body>
 </html>
-
-
 
 <script>
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
@@ -82,7 +80,7 @@ import '../styles/global.css';
 
     if (mobileMenuToggle && navLinks) {
         mobileMenuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            navLinks.classList.toggle('hidden');
         });
     } else {
         console.error('Nelze najít prvky mobilního menu nebo navigačních odkazů');
