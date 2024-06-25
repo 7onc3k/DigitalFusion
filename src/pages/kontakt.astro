@@ -106,25 +106,32 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <script>
+    declare var google: any;
     // Skript pro validaci formuláře
     const form = document.getElementById('contact-form');
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Zde přidejte logiku pro validaci a odeslání formuláře
-        alert('Formulář byl odeslán!');
-    });
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Zde přidejte logiku pro validaci a odeslání formuláře
+            alert('Formulář byl odeslán!');
+        });
+    }
 
     // Skript pro načtení Google Maps
     function initMap() {
-        const map = new google.maps.Map(document.getElementById('google-map'), {
-            center: {lat: 50.0755, lng: 14.4378}, // Praha
-            zoom: 15
-        });
-        const marker = new google.maps.Marker({
-            position: {lat: 50.0755, lng: 14.4378},
-            map: map,
-            title: 'DigitalFusion'
-        });
+        if (typeof google !== 'undefined') {
+            const map = new google.maps.Map(document.getElementById('google-map'), {
+                center: {lat: 50.0755, lng: 14.4378}, // Praha
+                zoom: 15
+            });
+            const marker = new google.maps.Marker({
+                position: {lat: 50.0755, lng: 14.4378},
+                map: map,
+                title: 'DigitalFusion'
+            });
+        } else {
+            console.error('Google Maps API není dostupné.');
+        }
     }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9JkxICwJH-6Aej7SZ7ws25pE5qqkEwJ4&callback=initMap"></script>

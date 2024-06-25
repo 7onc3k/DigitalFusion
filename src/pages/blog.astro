@@ -96,12 +96,13 @@ const categories = ["Všechny", "Webdesign", "Vývoj aplikací", "Digitální ma
 
     categoryButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const category = button.dataset.category;
+            const category = (button as HTMLElement).dataset.category;
             blogPosts.forEach(post => {
-                if (category === 'Všechny' || post.dataset.category === category) {
-                    post.style.display = 'block';
+                const postElement = post as HTMLElement;
+                if (category === 'Všechny' || postElement.dataset.category === category) {
+                    postElement.style.display = 'block';
                 } else {
-                    post.style.display = 'none';
+                    postElement.style.display = 'none';
                 }
             });
         });

@@ -40,7 +40,7 @@ const testimonials = [
                         <span>{testimonial.company}</span>
                     </div>
                     <div class="testimonial-rating">
-                        {Array(5).fill().map((_, i) => (
+                        {Array(5).fill(null).map((_, i) => (
                             <span class={i < testimonial.rating ? "star filled" : "star"}>★</span>
                         ))}
                     </div>

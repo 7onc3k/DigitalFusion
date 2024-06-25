@@ -1,32 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { projects } from '../data/projects.js';
 
-const projects = [
-    {
-        id: "project-1",
-        title: "E-shop pro XYZ",
-        description: "Moderní e-shop s pokročilými funkcemi pro společnost XYZ.",
-        image: "/images/portfolio/project1.jpg",
-        category: "E-commerce",
-        technologies: ["React", "Node.js", "MongoDB"]
-    },
-    {
-        id: "project-2",
-        title: "Mobilní aplikace ABC",
-        description: "Inovativní mobilní aplikace pro správu času a produktivity.",
-        image: "/images/portfolio/project2.jpg",
-        category: "Mobilní aplikace",
-        technologies: ["React Native", "Firebase"]
-    },
-    {
-        id: "project-3",
-        title: "Redesign webu DEF",
-        description: "Kompletní redesign firemního webu pro společnost DEF.",
-        image: "/images/portfolio/project3.jpg",
-        category: "Webdesign",
-        technologies: ["HTML5", "CSS3", "JavaScript"]
-    }
-];
 
 const categories = ["Všechny", "E-commerce", "Mobilní aplikace", "Webdesign"];
 ---
@@ -130,9 +105,9 @@ const categories = ["Všechny", "E-commerce", "Mobilní aplikace", "Webdesign"];
 
 <script>
     // Skript pro filtrování projektů a zobrazení detailů
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-    const projectDetails = document.querySelectorAll('.project-details');
+    const categoryButtons = document.querySelectorAll('.category-btn') as NodeListOf<HTMLButtonElement>;
+    const projectCards = document.querySelectorAll('.project-card') as NodeListOf<HTMLElement>;
+    const projectDetails = document.querySelectorAll('.project-details') as NodeListOf<HTMLElement>;
 
     categoryButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -147,11 +122,11 @@ const categories = ["Všechny", "E-commerce", "Mobilní aplikace", "Webdesign"];
         });
     });
 
-    const viewDetailsLinks = document.querySelectorAll('.view-details');
+    const viewDetailsLinks = document.querySelectorAll('.view-details') as NodeListOf<HTMLAnchorElement>;
     viewDetailsLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
+            const targetId = link.getAttribute('href')!.substring(1);
             projectDetails.forEach(detail => {
                 if (detail.id === targetId) {
                     detail.style.display = 'block';
