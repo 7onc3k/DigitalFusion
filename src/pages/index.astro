@@ -60,16 +60,18 @@ const latestArticles = articles.slice(0, 3); // Výběr nejnovějších článk�
             <h2 class="text-3xl font-bold text-center mb-8">Nejnovější projekty</h2>
             <div class="project-grid grid grid-cols-1 md:grid-cols-3 gap-8">
                 {latestProjects.map(project => (
-                    <div class="project-card bg-white rounded shadow overflow-hidden" data-category={project.category}>
-                        <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
-                        <h2 class="text-xl font-bold p-4">{project.title}</h2>
-                        <p class="px-4">{project.description}</p>
-                        <div class="technologies flex flex-wrap p-4">
-                            {project.technologies.map(tech => (
-                                <span class="tech-tag bg-blue-500 text-white px-2 py-1 rounded mr-2 mb-2 text-sm">{tech}</span>
-                            ))}
+                    <div class="project-card bg-white rounded shadow overflow-hidden flex flex-col justify-between" data-category={project.category}>
+                        <div>
+                            <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
+                            <h2 class="text-xl font-bold p-4">{project.title}</h2>
+                            <p class="px-4">{project.description}</p>
+                            <div class="technologies flex flex-wrap p-4">
+                                {project.technologies.map(tech => (
+                                    <span class="tech-tag bg-blue-500 text-white px-2 py-1 rounded mr-2 mb-2 text-sm">{tech}</span>
+                                ))}
+                            </div>
                         </div>
-                        <a href={`/portfolio#${project.id}`} class="view-details block px-4 py-2 bg-blue-500 text-white text-center rounded">Zobrazit detaily</a>
+                        <a href={`/portfolio#${project.id}`} class="view-details block px-4 py-2 bg-blue-500 text-white text-center rounded mt-auto">Zobrazit detaily</a>
                     </div>
                 ))}
             </div>

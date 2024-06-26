@@ -27,21 +27,23 @@ const testimonials = [
 ---
 
 <Layout title="Reference - DigitalFusion">
-    <h1 class="text-4xl font-bold text-center my-8">Co o nás říkají klienti</h1>
-    
-    <div class="testimonial-grid grid grid-cols-1 md:grid-cols-3 gap-8">
-        {testimonials.map(testimonial => (
-            <div class="testimonial-card bg-gray-100 rounded p-8 text-center shadow">
-                <img src={testimonial.image} alt={testimonial.name} class="testimonial-image w-24 h-24 rounded-full mx-auto object-cover mb-4" />
-                <p class="testimonial-text italic mb-4">"{testimonial.text}"</p>
-                <div class="testimonial-author font-bold">{testimonial.name}</div>
-                <div class="testimonial-company text-gray-600">{testimonial.company}</div>
-                <div class="testimonial-rating text-yellow-500 mt-2">
-                    {Array(5).fill(null).map((_, i) => (
-                        <span class={i < testimonial.rating ? "star filled" : "star"}>★</span>
-                    ))}
+    <section class="py-16 container mx-auto px-4">
+        <h1 class="text-4xl font-bold text-center my-8">Co o nás říkají klienti</h1>
+        
+        <div class="testimonial-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map(testimonial => (
+                <div class="testimonial-card bg-gray-100 rounded p-8 text-center shadow">
+                    <img src={testimonial.image} alt={testimonial.name} class="testimonial-image w-24 h-24 rounded-full mx-auto object-cover mb-4" />
+                    <p class="testimonial-text italic mb-4">"{testimonial.text}"</p>
+                    <div class="testimonial-author font-bold">{testimonial.name}</div>
+                    <div class="testimonial-company text-gray-600">{testimonial.company}</div>
+                    <div class="testimonial-rating text-yellow-500 mt-2">
+                        {Array(5).fill(null).map((_, i) => (
+                            <span class={i < testimonial.rating ? "star filled" : "star"}>★</span>
+                        ))}
+                    </div>
                 </div>
-            </div>
-        ))}
-    </div>
+            ))}
+        </div>
+    </section>
 </Layout>

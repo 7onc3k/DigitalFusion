@@ -42,16 +42,20 @@ const services = [
     <h1 class="text-4xl font-bold text-center my-8">Naše služby</h1>
     <div class="services-grid grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         {services.map(service => (
-            <div class="service-card bg-gray-100 rounded p-8 text-center shadow">
-                <i class={`${service.icon} text-4xl text-blue-500 mb-4`}></i>
-                <h2 class="text-2xl font-bold mb-4">{service.title}</h2>
-                <p class="mb-4">{service.description}</p>
-                <ul class="features-list list-disc list-inside mb-4">
-                    {service.features.map(feature => (
-                        <li>{feature}</li>
-                    ))}
-                </ul>
-                <a href="#" class="btn px-4 py-2 bg-blue-500 text-white rounded">Zjistit více</a>
+            <div class="service-card bg-gray-100 rounded p-8 text-center shadow flex flex-col h-full">
+                <div class="flex-grow">
+                    <i class={`${service.icon} text-4xl text-blue-500 mb-4`}></i>
+                    <h2 class="text-2xl font-bold mb-4">{service.title}</h2>
+                    <p class="mb-4">{service.description}</p>
+                    <ul class="features-list list-disc list-inside mb-4">
+                        {service.features.map(feature => (
+                            <li>{feature}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div class="mt-8 mb-4">
+                    <a href="#" class="btn inline-block px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">Zjistit více</a>
+                </div>
             </div>
         ))}
     </div>
@@ -85,9 +89,13 @@ const services = [
             </div>
         </div>
     </section>
-    <section id="cta" class="py-16 bg-gray-100 text-center">
-        <h2 class="text-3xl font-bold">Připraveni začít?</h2>
-        <p class="mt-4">Kontaktujte nás pro nezávaznou konzultaci a zjistěte, jak vám můžeme pomoci s vaším digitálním projektem.</p>
-        <a href="/kontakt" class="btn btn-large mt-8 px-6 py-3 bg-blue-500 text-white rounded">Kontaktujte nás</a>
+    <section id="cta" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6 text-center">Připraveni začít?</h2>
+            <p class="mt-4 mb-8 text-center max-w-2xl mx-auto">Kontaktujte nás pro nezávaznou konzultaci a zjistěte, jak vám můžeme pomoci s vaším digitálním projektem.</p>
+            <div class="text-center">
+                <a href="/kontakt" class="btn btn-large inline-block px-8 py-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors text-lg font-bold">Kontaktujte nás</a>
+            </div>
+        </div>
     </section>
 </Layout>

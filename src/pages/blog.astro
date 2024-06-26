@@ -3,53 +3,58 @@ import Layout from '../layouts/Layout.astro';
 import BlogPost from '../components/BlogPost.astro';
 import { articles as posts } from '../data/articles.js'; // Import článků
 
-const categories = ["Všechny", "Webdesign", "Vývoj aplikací", "Digitální marketing"];
+const categories = ["Všechny", ...new Set(posts.map(post => post.category))];
 ---
 
 <Layout title="Blog - DigitalFusion">
-    <h1 class="text-4xl font-bold text-center my-8">Nejnovější články</h1>
-    
-    <div class="category-filter flex justify-center mb-8">
-        {categories.map(category => (
-            <button class="category-btn mr-2 px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded" data-category={category}>{category}</button>
-        ))}
-    </div>
+    <section class="blog-section py-16">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold text-center mb-8">Nejnovější články</h1>
+            
+            <div class="category-filter flex flex-wrap justify-center mb-8">
+                {categories.map(category => (
+                    <button class="category-btn m-1 px-3 py-1 text-sm bg-gray-200 hover:bg-gray-300 rounded" data-category={category}>{category}</button>
+                ))}
+            </div>
 
-    <div class="blog-grid grid grid-cols-1 md:grid-cols-3 gap-8">
-        {posts.map(post => (
-            <BlogPost 
-                title={post.title}
-                slug={post.slug}
-                excerpt={post.excerpt}
-                date={post.date}
-                author={post.author}
-                category={post.category}
-                image={post.image}
-            />
-        ))}
-    </div>
+            <div class="blog-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+                {posts.map(post => (
+                    <div class="blog-post bg-white rounded shadow overflow-hidden flex flex-col justify-between" data-category={post.category}>
+                        <BlogPost 
+                            title={post.title}
+                            slug={post.slug}
+                            excerpt={post.excerpt}
+                            date={post.date}
+                            author={post.author}
+                            category={post.category}
+                            image={post.image}
+                        />
+                    </div>
+                ))}
+            </div>
 
-    <nav class="pagination flex justify-between items-center mt-8">
-        <a href="#" class="prev px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">Předchozí</a>
-        <span>Strana 1 z 3</span>
-        <a href="#" class="next px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">Další</a>
-    </nav>
+            <nav class="pagination flex justify-between items-center mt-8">
+                <a href="#" class="prev px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">Předchozí</a>
+                <span>Strana 1 z 3</span>
+                <a href="#" class="next px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">Další</a>
+            </nav>
+        </div>
+    </section>
 </Layout>
 
 <script>
-    // Jednoduchý skript pro filtrování článků podle kategorie
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    const blogPosts = document.querySelectorAll('.blog-post');
+    // Skript pro filtrování článků podle kategorie
+    const categoryButtons = document.querySelectorAll('.category-btn') as NodeListOf<HTMLButtonElement>;
+    const blogPosts = document.querySelectorAll('.blog-post') as NodeListOf<HTMLElement>;
 
     categoryButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const category = (button as HTMLElement).dataset.category;
+            const category = button.dataset.category;
             blogPosts.forEach(post => {
-                const postElement = post as HTMLElement;
-                if (category === 'Všechny' || postElement.dataset.category === category) {
-                    postElement.style.display = 'block';
+                if (category === 'Všechny' || post.dataset.category === category) {
+                    post.style.display = 'block';
                 } else {
-                    postElement.style.display = 'none';
+                    post.style.display = 'none';
                 }
             });
         });
