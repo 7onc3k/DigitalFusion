@@ -1,35 +1,43 @@
 ---
 ---
+<style>
+  @font-face {
+    font-family: 'Computer Says No';
+    src: url('/fonts/computer-says-no.otf') format('opentype');
+  }
 
-<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-    <!-- Logo 1: Minimalistické s písmeny D a F -->
-    <g id="logo1">
-      <rect x="50" y="50" width="200" height="200" fill="#3498db" />
-      <text x="150" y="180" font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill="white" text-anchor="middle">
-        DF
-      </text>
-    </g>
-  
-    <!-- Logo 2: Abstraktní s kruhy -->
-    <g id="logo2" transform="translate(0, 300)">
-      <circle cx="150" cy="150" r="100" fill="#2ecc71" />
-      <circle cx="120" cy="120" r="60" fill="#27ae60" />
-      <circle cx="180" cy="180" r="60" fill="#27ae60" />
-      <text x="150" y="165" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">
-        Digital Fusion
-      </text>
-    </g>
-  
-    <!-- Logo 3: Technologický vzhled s čarami -->
-    <g id="logo3" transform="translate(0, 600)">
-      <rect x="50" y="50" width="200" height="200" fill="#9b59b6" />
-      <line x1="50" y1="50" x2="250" y2="250" stroke="white" stroke-width="4" />
-      <line x1="50" y1="250" x2="250" y2="50" stroke="white" stroke-width="4" />
-      <text x="150" y="140" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">
-        Digital
-      </text>
-      <text x="150" y="180" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">
-        Fusion
-      </text>
-    </g>
-  </svg>
+  .glitch-logo {
+    font-family: 'Computer Says No', monospace;
+    font-size: 3rem;
+    color: white;
+    text-align: center;
+    background-color: black;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .glitch-logo span {
+    display: inline-block;
+    margin: 0 0.2rem;
+  }
+
+  .fusion {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .space {
+    width: 1rem; /* Přidání mezery mezi slovy */
+  }
+</style>
+
+<div class="glitch-logo">
+  <span>D</span><span>i</span><span>g</span><span>i</span><span>t</span><span>a</span><span>l</span>
+  <div class="space"></div> <!-- Přidání mezery -->
+  <div class="fusion">
+    <span>F</span><span>u</span><span>s</span><span>i</span><span>o</span><span>n</span>
+  </div>
+</div>
