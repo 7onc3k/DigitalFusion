@@ -2,42 +2,85 @@
 ---
 <style>
   @font-face {
-    font-family: 'Computer Says No';
-    src: url('/fonts/computer-says-no.otf') format('opentype');
+    font-family: 'ComputerSaysNo';
+    src: url('/path/to/fonts/ComputerSaysNo.ttf') format('truetype');
   }
 
-  .glitch-logo {
-    font-family: 'Computer Says No', monospace;
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'ComputerSaysNo', sans-serif;
     font-size: 3rem;
-    color: white;
-    text-align: center;
-    background-color: black;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    letter-spacing: 0.5rem;
   }
 
-  .glitch-logo span {
-    display: inline-block;
-    margin: 0 0.2rem;
+  .hidden {
+    visibility: hidden;
   }
 
-  .fusion {
-    display: flex;
-    width: 100%;
-    justify-content: center;
+  .visible {
+    visibility: visible;
   }
 
-  .space {
-    width: 1rem; /* Přidání mezery mezi slovy */
+  .animate {
+    animation: moveF 2s linear forwards, typeDigital 2s 2s steps(7) forwards, typeFusion 2s 4s steps(6) forwards;
+  }
+
+  @keyframes moveF {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(8rem); }
+  }
+
+  @keyframes typeDigital {
+    0% { content: 'D'; }
+    100% { content: 'Digital'; }
+  }
+
+  @keyframes typeFusion {
+    0% { content: 'Digital'; }
+    100% { content: 'Digital Fusion'; }
   }
 </style>
 
-<div class="glitch-logo">
-  <span>D</span><span>i</span><span>g</span><span>i</span><span>t</span><span>a</span><span>l</span>
-  <div class="space"></div> <!-- Přidání mezery -->
-  <div class="fusion">
-    <span>F</span><span>u</span><span>s</span><span>i</span><span>o</span><span>n</span>
-  </div>
+<div class="logo-container">
+  <span id="D">D</span>
+  <span id="F" class="hidden">F</span>
+  <span id="i" class="hidden">i</span>
+  <span id="g" class="hidden">g</span>
+  <span id="i2" class="hidden">i</span>
+  <span id="t" class="hidden">t</span>
+  <span id="a" class="hidden">a</span>
+  <span id="l" class="hidden">l</span>
+  <span id="u" class="hidden">u</span>
+  <span id="s" class="hidden">s</span>
+  <span id="i3" class="hidden">i</span>
+  <span id="o" class="hidden">o</span>
+  <span id="n" class="hidden">n</span>
 </div>
+
+<script type="module">
+  import { onMount } from './node_modules/solid-js/dist/solid.js';
+
+  onMount(() => {
+    const F = document.getElementById('F');
+    const letters = ['i', 'g', 'i2', 't', 'a', 'l', 'u', 's', 'i3', 'o', 'n'].map(id => document.getElementById(id));
+
+    if (F) {
+      setTimeout(() => {
+        F.classList.remove('hidden');
+        F.classList.add('visible', 'animate');
+      }, 1000);
+    }
+
+    letters.forEach((letter, index) => {
+      setTimeout(() => {
+        if (letter) {
+          letter.classList.remove('hidden');
+          letter.classList.add('visible');
+        }
+      }, 2000 + index * 500);
+    });
+  });
+</script>
