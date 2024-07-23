@@ -1,86 +1,128 @@
 ---
+// Astro komponent pro animaci textu
 ---
-<style>
-  @font-face {
-    font-family: 'ComputerSaysNo';
-    src: url('/path/to/fonts/ComputerSaysNo.ttf') format('truetype');
-  }
 
-  .logo-container {
+<div class="component-container">
+  <div class="animation-container">
+    <div class="letter" id="D">D</div>
+    <div class="letter" id="F">F</div>
+    <div class="letter" id="I">I</div>
+    <div class="letter" id="G">G</div>
+    <div class="letter" id="I2">I</div>
+    <div class="letter" id="T">T</div>
+    <div class="letter" id="A">A</div>
+    <div class="letter" id="L">L</div>
+    <div class="letter" id="U">U</div>
+    <div class="letter" id="S">S</div>
+    <div class="letter" id="I3">I</div>
+    <div class="letter" id="O">O</div>
+    <div class="letter" id="N">N</div>
+  </div>
+</div>
+
+<style>
+  .component-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: 'ComputerSaysNo', sans-serif;
-    font-size: 3rem;
-    letter-spacing: 0.5rem;
+    width: 100%;
   }
 
-  .hidden {
-    visibility: hidden;
+  .animation-container {
+    width: 700px;
+    height: 200px;
+    position: relative;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
   }
 
-  .visible {
-    visibility: visible;
+  .letter {
+    position: absolute;
+    opacity: 0;
+    transition: all 1s ease;
   }
 
-  .animate {
-    animation: moveF 2s linear forwards, typeDigital 2s 2s steps(7) forwards, typeFusion 2s 4s steps(6) forwards;
+  #D, #F {
+    opacity: 1;
+    top: 50%;
+    left: 50%;
   }
 
-  @keyframes moveF {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(8rem); }
+  #D {
+    transform: translate(-30px, -50%);
   }
 
-  @keyframes typeDigital {
-    0% { content: 'D'; }
-    100% { content: 'Digital'; }
-  }
-
-  @keyframes typeFusion {
-    0% { content: 'Digital'; }
-    100% { content: 'Digital Fusion'; }
+  #F {
+    transform: translate(30px, -50%);
   }
 </style>
 
-<div class="logo-container">
-  <span id="D">D</span>
-  <span id="F" class="hidden">F</span>
-  <span id="i" class="hidden">i</span>
-  <span id="g" class="hidden">g</span>
-  <span id="i2" class="hidden">i</span>
-  <span id="t" class="hidden">t</span>
-  <span id="a" class="hidden">a</span>
-  <span id="l" class="hidden">l</span>
-  <span id="u" class="hidden">u</span>
-  <span id="s" class="hidden">s</span>
-  <span id="i3" class="hidden">i</span>
-  <span id="o" class="hidden">o</span>
-  <span id="n" class="hidden">n</span>
-</div>
+<script>
+  function startAnimation() {
+    const container = document.querySelector('.animation-container');
+    if (!container) return;
 
-<script type="module">
-  import { onMount } from './node_modules/solid-js/dist/solid.js';
+    const letters = container.querySelectorAll('.letter');
+    if (!letters.length) return;
 
-  onMount(() => {
-    const F = document.getElementById('F');
-    const letters = ['i', 'g', 'i2', 't', 'a', 'l', 'u', 's', 'i3', 'o', 'n'].map(id => document.getElementById(id));
+    // Fáze 1: D a F jsou již zobrazeny (v CSS)
 
-    if (F) {
+    // Fáze 2: Posun D nahoru a F dolů
+    setTimeout(() => {
+      const letterD = document.getElementById('D');
+      const letterF = document.getElementById('F');
+      if (letterD) letterD.style.transform = 'translate(-30px, -75%)';
+      if (letterF) letterF.style.transform = 'translate(30px, -25%)';
+    }, 1000);
+
+    // Fáze 3: Posun D na 1,1 a F na 2,2
+    setTimeout(() => {
+      const letterD = document.getElementById('D');
+      const letterF = document.getElementById('F');
+      if (letterD) {
+        letterD.style.left = '0';
+        letterD.style.top = '0';
+        letterD.style.transform = 'none';
+      }
+      if (letterF) {
+        letterF.style.left = '100px';
+        letterF.style.top = '100px';
+        letterF.style.transform = 'none';
+      }
+    }, 2000);
+
+    // Fáze 4: Zobrazení ostatních písmen
+    const topRowLetters = ['I', 'G', 'I2', 'T', 'A', 'L'];
+    const bottomRowLetters = ['U', 'S', 'I3', 'O', 'N'];
+
+    setTimeout(() => {
+      topRowLetters.forEach((id, index) => {
+        setTimeout(() => {
+          const letter = document.getElementById(id);
+          if (letter) {
+            letter.style.opacity = '1';
+            letter.style.left = `${(index + 1) * 100}px`;
+            letter.style.top = '0';
+          }
+        }, index * 300);
+      });
+
       setTimeout(() => {
-        F.classList.remove('hidden');
-        F.classList.add('visible', 'animate');
-      }, 1000);
-    }
+        bottomRowLetters.forEach((id, index) => {
+          setTimeout(() => {
+            const letter = document.getElementById(id);
+            if (letter) {
+              letter.style.opacity = '1';
+              letter.style.left = `${(index + 2) * 100}px`;
+              letter.style.top = '100px';
+            }
+          }, index * 300);
+        });
+      }, topRowLetters.length * 300);
+    }, 3000);
+  }
 
-    letters.forEach((letter, index) => {
-      setTimeout(() => {
-        if (letter) {
-          letter.classList.remove('hidden');
-          letter.classList.add('visible');
-        }
-      }, 2000 + index * 500);
-    });
-  });
+  // Spustit animaci po načtení stránky
+  document.addEventListener('DOMContentLoaded', startAnimation);
 </script>
