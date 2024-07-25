@@ -84,15 +84,28 @@
     const container = document.querySelector('.animation-container') as HTMLElement | null;
     const d = document.querySelector('.d') as HTMLElement | null;
     const f = document.querySelector('.f') as HTMLElement | null;
+    const table = document.querySelector('.reference-table') as HTMLTableElement | null;
     
-    if (container && d && f) {
+    if (container && d && f && table) {
       const containerHeight = container.offsetHeight;
+      const containerWidth = container.offsetWidth;
       const rowHeight = containerHeight / 2;
+      const cellWidth = table.rows[0].cells[0].offsetWidth;
       
       setTimeout(() => {
         if (d && f) {
+          // Vertikální animace
           d.style.transform = `translateY(-${rowHeight / 2}px)`;
           f.style.transform = `translateY(${rowHeight / 2}px)`;
+          
+          // Horizontální animace po 1 sekundě
+          setTimeout(() => {
+            const dLeftOffset = table.rows[0].cells[0].offsetLeft - container.offsetLeft;
+            const fLeftOffset = table.rows[1].cells[1].offsetLeft - container.offsetLeft;
+            
+            d.style.transform += ` translateX(-${(containerWidth / 2) - dLeftOffset - (cellWidth / 2)}px)`;
+            f.style.transform += ` translateX(-${(containerWidth / 2) - fLeftOffset - (cellWidth / 2)}px)`;
+          }, 1000);
         }
       }, 100);
     }
