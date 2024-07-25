@@ -1,0 +1,5 @@
+
+Potřebuji udělat tuto animaci s textem v Astru:1. Máme tabulku 2x7 kde bude probíhat aniamce2. Zobrazí se písmena D a F uprostřed tabulky, zarovnané horizontálně i vertikálně, ale vedle sebe, ne přes sebe.3. D se posune nahoru na 1. řádek a F se posune dolů na 2. řádek., všechno cestuje v rovné ose4. D se posune na pozici 1,1 a F na pozici 2,2.5. V ostatních buňkách budou připravena ostatní písmena: * i, g, i, t, a, l v prvním řádku, * u, s, i, o, n na druhém řádku (začínáme od 2,3).Zbylá písmena na prvním řádku se "napíší" postupně po sobě až bude D na pozici 1,1 a zbylá písmena na druhém řádku se napíší až budou dopsána písmena na prvním řádku. Všechny posuny jsou plynulé, tabulka se nezobrazuje, je pouze orientační.Máš nějaké nejasnosti? Pokud ne, pusť se do generování kódu v Astro.
+
+
+musí to udělat iterativně krok po kroku

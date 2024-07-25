@@ -1,128 +1,100 @@
 ---
-// Astro komponent pro animaci textu
+// GlitchLogo.astro
 ---
 
-<div class="component-container">
-  <div class="animation-container">
-    <div class="letter" id="D">D</div>
-    <div class="letter" id="F">F</div>
-    <div class="letter" id="I">I</div>
-    <div class="letter" id="G">G</div>
-    <div class="letter" id="I2">I</div>
-    <div class="letter" id="T">T</div>
-    <div class="letter" id="A">A</div>
-    <div class="letter" id="L">L</div>
-    <div class="letter" id="U">U</div>
-    <div class="letter" id="S">S</div>
-    <div class="letter" id="I3">I</div>
-    <div class="letter" id="O">O</div>
-    <div class="letter" id="N">N</div>
+<div class="animation-container">
+  <div class="letters-container">
+    <span class="letter d">D</span>
+    <span class="letter f">F</span>
   </div>
+  <table class="reference-table">
+    <tr>
+      <td></td>
+      <td>i</td>
+      <td>g</td>
+      <td>i</td>
+      <td>t</td>
+      <td>a</td>
+      <td>l</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>u</td>
+      <td>s</td>
+      <td>i</td>
+      <td>o</td>
+      <td>n</td>
+    </tr>
+  </table>
 </div>
 
 <style>
-  .component-container {
+  .animation-container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     width: 100%;
+    font-size: 16px; /* Základní velikost písma pro škálování */
   }
 
-  .animation-container {
-    width: 700px;
-    height: 200px;
-    position: relative;
-    font-family: Arial, sans-serif;
-    font-size: 24px;
+  .reference-table {
+    border-collapse: collapse;
+    font-size: 1.5em;
+  }
+
+  .reference-table td {
+    width: 2.5em;
+    height: 2.5em;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    font-weight: bold;
+  }
+
+  .letters-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
   }
 
   .letter {
-    position: absolute;
-    opacity: 0;
-    transition: all 1s ease;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0 0.3em;
+    transition: transform 1s ease;
   }
 
-  #D, #F {
-    opacity: 1;
-    top: 50%;
-    left: 50%;
+  .d {
+    color: #ff0000;
   }
 
-  #D {
-    transform: translate(-30px, -50%);
-  }
-
-  #F {
-    transform: translate(30px, -50%);
+  .f {
+    color: #0000ff;
   }
 </style>
 
 <script>
-  function startAnimation() {
-    const container = document.querySelector('.animation-container');
-    if (!container) return;
-
-    const letters = container.querySelectorAll('.letter');
-    if (!letters.length) return;
-
-    // Fáze 1: D a F jsou již zobrazeny (v CSS)
-
-    // Fáze 2: Posun D nahoru a F dolů
-    setTimeout(() => {
-      const letterD = document.getElementById('D');
-      const letterF = document.getElementById('F');
-      if (letterD) letterD.style.transform = 'translate(-30px, -75%)';
-      if (letterF) letterF.style.transform = 'translate(30px, -25%)';
-    }, 1000);
-
-    // Fáze 3: Posun D na 1,1 a F na 2,2
-    setTimeout(() => {
-      const letterD = document.getElementById('D');
-      const letterF = document.getElementById('F');
-      if (letterD) {
-        letterD.style.left = '0';
-        letterD.style.top = '0';
-        letterD.style.transform = 'none';
-      }
-      if (letterF) {
-        letterF.style.left = '100px';
-        letterF.style.top = '100px';
-        letterF.style.transform = 'none';
-      }
-    }, 2000);
-
-    // Fáze 4: Zobrazení ostatních písmen
-    const topRowLetters = ['I', 'G', 'I2', 'T', 'A', 'L'];
-    const bottomRowLetters = ['U', 'S', 'I3', 'O', 'N'];
-
-    setTimeout(() => {
-      topRowLetters.forEach((id, index) => {
-        setTimeout(() => {
-          const letter = document.getElementById(id);
-          if (letter) {
-            letter.style.opacity = '1';
-            letter.style.left = `${(index + 1) * 100}px`;
-            letter.style.top = '0';
-          }
-        }, index * 300);
-      });
-
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const container = document.querySelector('.animation-container') as HTMLElement | null;
+    const d = document.querySelector('.d') as HTMLElement | null;
+    const f = document.querySelector('.f') as HTMLElement | null;
+    
+    if (container && d && f) {
+      const containerHeight = container.offsetHeight;
+      const rowHeight = containerHeight / 2;
+      
       setTimeout(() => {
-        bottomRowLetters.forEach((id, index) => {
-          setTimeout(() => {
-            const letter = document.getElementById(id);
-            if (letter) {
-              letter.style.opacity = '1';
-              letter.style.left = `${(index + 2) * 100}px`;
-              letter.style.top = '100px';
-            }
-          }, index * 300);
-        });
-      }, topRowLetters.length * 300);
-    }, 3000);
-  }
-
-  // Spustit animaci po načtení stránky
-  document.addEventListener('DOMContentLoaded', startAnimation);
+        if (d && f) {
+          d.style.transform = `translateY(-${rowHeight / 2}px)`;
+          f.style.transform = `translateY(${rowHeight / 2}px)`;
+        }
+      }, 100);
+    }
+  });
 </script>
