@@ -88,9 +88,9 @@
     
     if (container && d && f && table) {
       const containerHeight = container.offsetHeight;
-      const containerWidth = container.offsetWidth;
       const rowHeight = containerHeight / 2;
       const cellWidth = table.rows[0].cells[0].offsetWidth;
+      const tableWidth = table.offsetWidth;
       
       setTimeout(() => {
         if (d && f) {
@@ -103,8 +103,8 @@
             const dLeftOffset = table.rows[0].cells[0].offsetLeft - container.offsetLeft;
             const fLeftOffset = table.rows[1].cells[1].offsetLeft - container.offsetLeft;
             
-            d.style.transform += ` translateX(-${(containerWidth / 2) - dLeftOffset - (cellWidth / 2)}px)`;
-            f.style.transform += ` translateX(-${(containerWidth / 2) - fLeftOffset - (cellWidth / 2)}px)`;
+            d.style.transform += ` translateX(-${(tableWidth / 2) - dLeftOffset - (cellWidth / 2)}px)`;
+            f.style.transform += ` translateX(-${(tableWidth / 2) - fLeftOffset - (cellWidth / 2)}px)`;
           }, 1000);
         }
       }, 100);
