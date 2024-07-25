@@ -1,32 +1,30 @@
----
-// GlitchLogo.astro
----
-
 <div class="animation-container">
   <div class="letters-container">
     <span class="letter d">D</span>
     <span class="letter f">F</span>
   </div>
-  <table class="reference-table">
-    <tr>
-      <td></td>
-      <td>i</td>
-      <td>g</td>
-      <td>i</td>
-      <td>t</td>
-      <td>a</td>
-      <td>l</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td>u</td>
-      <td>s</td>
-      <td>i</td>
-      <td>o</td>
-      <td>n</td>
-    </tr>
-  </table>
+  <div class="table-container">
+    <table class="reference-table">
+      <tr>
+        <td></td>
+        <td>i</td>
+        <td>g</td>
+        <td>i</td>
+        <td>t</td>
+        <td>a</td>
+        <td>l</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>u</td>
+        <td>s</td>
+        <td>i</td>
+        <td>o</td>
+        <td>n</td>
+      </tr>
+    </table>
+  </div>
 </div>
 
 <style>
@@ -40,18 +38,28 @@
     font-size: 16px; /* Základní velikost písma pro škálování */
   }
 
+  .table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%; /* Nastavte požadovanou šířku */
+    height: auto; /* Automatická výška podle obsahu */
+  }
+
   .reference-table {
     border-collapse: collapse;
     font-size: 1.5em;
+    width: auto; /* Změna na auto, aby se přizpůsobila obsahu */
   }
 
   .reference-table td {
-    width: 2.5em;
-    height: 2.5em;
+    width: 50px; /* Pevná šířka buňky */
+    height: 50px; /* Pevná výška buňky */
     text-align: center;
     vertical-align: middle;
     border: 1px solid #ccc;
     font-weight: bold;
+    box-sizing: border-box; /* Zajistí, že padding a border budou zahrnuty do šířky a výšky */
   }
 
   .letters-container {
@@ -66,7 +74,8 @@
   .letter {
     font-size: 1.5em;
     font-weight: bold;
-    margin: 0 0.3em;
+    margin: 0; /* Ujistěte se, že není žádný margin */
+    padding: 0; /* Ujistěte se, že není žádný padding */
     transition: transform 1s ease;
   }
 
@@ -84,13 +93,25 @@
     const container = document.querySelector('.animation-container') as HTMLElement | null;
     const d = document.querySelector('.d') as HTMLElement | null;
     const f = document.querySelector('.f') as HTMLElement | null;
+    const tableContainer = document.querySelector('.table-container') as HTMLElement | null;
     const table = document.querySelector('.reference-table') as HTMLTableElement | null;
     
-    if (container && d && f && table) {
-      const containerHeight = container.offsetHeight;
-      const rowHeight = containerHeight / 2;
-      const cellWidth = table.rows[0].cells[0].offsetWidth;
-      const tableWidth = table.offsetWidth;
+    if (container && d && f && tableContainer && table) {
+      const rowHeight = 50; // Pevná výška buňky
+      const cellWidth = 50; // Pevná šířka buňky
+
+      // Logy pro kontrolu výšky a šířky tabulky
+      console.log('Row Height:', rowHeight);
+      console.log('Cell Width:', cellWidth);
+
+      // Kontrola skutečné šířky a výšky buněk po vykreslení
+      const firstCell = table.querySelector('td');
+      if (firstCell) {
+        const actualWidth = firstCell.offsetWidth;
+        const actualHeight = firstCell.offsetHeight;
+        console.log('Actual Cell Width:', actualWidth);
+        console.log('Actual Cell Height:', actualHeight);
+      }
       
       setTimeout(() => {
         if (d && f) {
@@ -98,16 +119,40 @@
           d.style.transform = `translateY(-${rowHeight / 2}px)`;
           f.style.transform = `translateY(${rowHeight / 2}px)`;
           
+          // Logy pro kontrolu pozic po vertikální animaci
+          console.log('D Position after vertical animation:', d.style.transform);
+          console.log('F Position after vertical animation:', f.style.transform);
+          
           // Horizontální animace po 1 sekundě
           setTimeout(() => {
-            const dLeftOffset = table.rows[0].cells[0].offsetLeft - container.offsetLeft;
-            const fLeftOffset = table.rows[1].cells[1].offsetLeft - container.offsetLeft;
+            const dWidth = d.offsetWidth;
+            const fWidth = f.offsetWidth;
+            const dLeftOffset = -(cellWidth * 3 - dWidth/2); // Odečtení poloviny šířky D
+            const fLeftOffset = -(cellWidth * 2 + fWidth/2); // Přičtení poloviny šířky F
             
-            d.style.transform += ` translateX(-${(tableWidth / 2) - dLeftOffset - (cellWidth / 2)}px)`;
-            f.style.transform += ` translateX(-${(tableWidth / 2) - fLeftOffset - (cellWidth / 2)}px)`;
+            // Přidání dalšího posunu
+            const additionalOffset = -2; // Další posun o 10px
+
+            // Aplikace dalšího posunu
+            d.style.transform += ` translateX(${additionalOffset}px)`;
+            f.style.transform += ` translateX(${additionalOffset}px)`;
+
+
+            // Logy pro kontrolu posunu
+            console.log('D Width:', dWidth);
+            console.log('F Width:', fWidth);
+            console.log('D Left Offset:', dLeftOffset);
+            console.log('F Left Offset:', fLeftOffset);
+            
+            d.style.transform += ` translateX(${dLeftOffset}px)`;
+            f.style.transform += ` translateX(${fLeftOffset}px)`;
+            
+            // Logy pro kontrolu pozic po horizontální animaci
+            console.log('D Position after horizontal animation:', d.style.transform);
+            console.log('F Position after horizontal animation:', f.style.transform);
           }, 1000);
         }
-      }, 100);
+      }, );
     }
   });
 </script>
