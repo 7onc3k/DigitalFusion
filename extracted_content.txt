@@ -1,0 +1,119 @@
+Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\package.json
+==================================================
+{
+  "name": "",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/solid-js": "^4.4.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.11.0",
+    "astro-icon": "^1.1.0",
+    "gsap": "^3.12.5",
+    "puppeteer": "^22.13.1",
+    "solid-js": "^1.8.18",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.2"
+  }
+}
+
+
+==================================================
+
+Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\tsconfig.json
+==================================================
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "types": ["solid-js"]
+  }
+}
+
+==================================================
+
+Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\env.d.ts
+==================================================
+/// <reference types="astro/client" />
+
+
+==================================================
+
+Prázdná složka: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\components
+Prázdná složka: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\data
+Prázdná složka: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\layouts
+Prázdná složka: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\pages
+Prázdná složka: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\styles
+Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\data\articles.js
+==================================================
+export const articles = [
+    {
+      title: "Článek 1",
+      slug: "clanek-1",
+      excerpt: "Úvod do článku 1...",
+      date: "2023-05-01",
+      author: "Jan Novák",
+      category: "Webdesign",
+      image: "/images/blog/clanek-1.jpg"
+    },
+    {
+      title: "Článek 2",
+      slug: "clanek-2",
+      excerpt: "Úvod do článku 2...",
+      date: "2023-05-15",
+      author: "Jana Nováková",
+      category: "Vývoj aplikací",
+      image: "/images/blog/clanek-2.jpg"
+    },
+    {
+      title: "Článek 3",
+      slug: "clanek-3",
+      excerpt: "Úvod do článku 3...",
+      date: "2023-06-01",
+      author: "Petr Nový",
+      category: "Digitální marketing",
+      image: "/images/blog/clanek-3.jpg"
+    }
+  ];
+
+==================================================
+
+Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\data\projects.js
+==================================================
+export const projects = [
+    {
+        id: "project-1",
+        title: "E-shop pro XYZ",
+        description: "Moderní e-shop s pokročilými funkcemi pro společnost XYZ.",
+        image: "/images/portfolio/project1.jpg",
+        category: "E-commerce",
+        technologies: ["React", "Node.js", "MongoDB"]
+    },
+    {
+        id: "project-2",
+        title: "Mobilní aplikace ABC",
+        description: "Inovativní mobilní aplikace pro správu času a produktivity.",
+        image: "/images/portfolio/project2.jpg",
+        category: "Mobilní aplikace",
+        technologies: ["React Native", "Firebase"]
+    },
+    {
+        id: "project-3",
+        title: "Redesign webu DEF",
+        description: "Kompletní redesign firemního webu pro společnost DEF.",
+        image: "/images/portfolio/project3.jpg",
+        category: "Webdesign",
+        technologies: ["HTML5", "CSS3", "JavaScript"]
+    }
+];
+
+==================================================

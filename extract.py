@@ -44,7 +44,7 @@ def process_file(file_path):
 
 if __name__ == "__main__":
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    extensions = ['.tsx', '.js', '.ts', '.css']
+    extensions = ['.tsx', '.js', '.ts', '.css', '.astro']
     output_file = "extracted_content.txt"
     
     extracted_content = extract_content(current_dir, extensions)
