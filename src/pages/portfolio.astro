@@ -1,10 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { projects } from '../data/projects.js';
-import { Icon } from 'astro-icon/components';
-
 const categories = ["Všechny", ...new Set(projects.map(project => project.category))];
-
 // Mapování technologií na Font Awesome ikony
 const techIcons: { [key: string]: string } = {
     "HTML": "fab fa-html5",
@@ -16,42 +13,38 @@ const techIcons: { [key: string]: string } = {
     // Přidejte další technologie a jejich ikony podle potřeby
 };
 ---
-
 <Layout title="Portfolio - DigitalFusion">
     <section class="portfolio-section py-16">
         <div class="container mx-auto px-4">
             <h1 class="text-4xl font-bold text-center mb-8">Naše práce</h1>
-            
             <div class="category-filter flex flex-wrap justify-center mb-8">
                 {categories.map(category => (
-                    <button class="category-btn m-1 px-3 py-1 text-sm bg-gray-200 hover:bg-gray-300 rounded" data-category={category}>{category}</button>
+                    <button class="category-btn m-1 px-3 py-1 text-sm bg-white text-black hover:bg-gray-200 rounded" data-category={category}>{category}</button>
                 ))}
             </div>
-
             <div class="project-grid grid grid-cols-1 md:grid-cols-3 gap-8">
                 {projects.map(project => (
-                    <div class="project-card bg-white rounded shadow overflow-hidden flex flex-col justify-between" data-category={project.category}>
+                    <div class="project-card bg-black border border-white rounded shadow overflow-hidden flex flex-col justify-between" data-category={project.category}>
                         <div>
                             <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
                             <h2 class="text-xl font-bold p-4">{project.title}</h2>
                             <p class="px-4">{project.description}</p>
                             <div class="technologies flex flex-wrap p-4">
                                 {project.technologies.map(tech => (
-                                    <span class="tech-icon mr-2 mb-2 text-xl" title={tech}>
+                                    <span class="tech-icon mr-2 mb-2 text-xl text-white" title={tech}>
                                         <i class={techIcons[tech] || "fas fa-code"}></i>
                                     </span>
                                 ))}
                             </div>
                         </div>
-                        <a href={`#${project.id}`} class="view-details block px-4 py-2 bg-blue-500 text-white text-center rounded mt-auto">Zobrazit detaily</a>
+                        <a href={`#${project.id}`} class="view-details block px-4 py-2 bg-white text-black text-center rounded mt-auto hover:bg-gray-200">Zobrazit detaily</a>
                     </div>
                 ))}
             </div>
-
             <!-- Detaily projektů -->
             <div class="project-details-container mt-8">
                 {projects.map(project => (
-                    <div id={project.id} class="project-details hidden bg-white rounded shadow p-6 mt-4">
+                    <div id={project.id} class="project-details hidden bg-black border border-white rounded shadow p-6 mt-4">
                         <h2 class="text-2xl font-bold mb-4">{project.title}</h2>
                         <p class="mb-4">{project.description}</p>
                         <!-- Zde můžete přidat další detaily projektu -->
@@ -61,13 +54,11 @@ const techIcons: { [key: string]: string } = {
         </div>
     </section>
 </Layout>
-
 <script>
     // Skript pro filtrování projektů a zobrazení detailů
     const categoryButtons = document.querySelectorAll('.category-btn') as NodeListOf<HTMLButtonElement>;
     const projectCards = document.querySelectorAll('.project-card') as NodeListOf<HTMLElement>;
     const projectDetails = document.querySelectorAll('.project-details') as NodeListOf<HTMLElement>;
-
     categoryButtons.forEach(button => {
         button.addEventListener('click', () => {
             const category = button.dataset.category;
@@ -80,7 +71,6 @@ const techIcons: { [key: string]: string } = {
             });
         });
     });
-
     const viewDetailsLinks = document.querySelectorAll('.view-details') as NodeListOf<HTMLAnchorElement>;
     viewDetailsLinks.forEach(link => {
         link.addEventListener('click', (e) => {

@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
 const teamMembers = [
     {
         name: "Jan Novák",
@@ -21,7 +20,6 @@ const teamMembers = [
         bio: "Petr je kreativní génius s okem pro detail a vášní pro uživatelskou zkušenost..."
     }
 ];
-
 const milestones = [
     { year: 2010, event: "Založení DigitalFusion" },
     { year: 2015, event: "Otevření pobočky v Brně" },
@@ -29,7 +27,6 @@ const milestones = [
     { year: 2020, event: "Expanze na mezinárodní trh" },
     { year: 2023, event: "Oslavy 13 let na trhu a 100+ spokojených klientů" }
 ];
-
 const values = [
     { icon: 'fas fa-lightbulb', title: 'Inovace', description: 'Neustále hledáme nové způsoby, jak zlepšit naše služby a produkty.' },
     { icon: 'fas fa-check-circle', title: 'Kvalita', description: 'Klademe důraz na vysokou kvalitu ve všem, co děláme.' },
@@ -37,7 +34,6 @@ const values = [
     { icon: 'fas fa-shield-alt', title: 'Integrita', description: 'Jednáme vždy čestně a transparentně.' }
 ];
 ---
-
 <Layout title="O nás - DigitalFusion">
     <section id="mission-vision" class="section py-16">
         <div class="container mx-auto px-4">
@@ -45,27 +41,26 @@ const values = [
             <p class="mt-4 text-center max-w-3xl mx-auto">Naší misí je pomáhat firmám uspět v digitálním světě prostřednictvím inovativních řešení a strategií. Naše vize je stát se lídrem v oblasti digitální transformace a přinášet hodnotu našim klientům, zaměstnancům a společnosti.</p>
         </div>
     </section>
-
-    <section id="history" class="section py-16 bg-gray-100">
+    <section id="history" class="section py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Naše historie</h2>
             <div class="timeline relative max-w-2xl mx-auto">
-                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-300"></div>
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-white"></div>
                 {milestones.map((milestone, index) => (
                     <div class="timeline-item relative mb-8 flex">
                         <div class="w-1/2 pr-8 text-right">
                             {index % 2 === 0 && (
                                 <>
-                                    <h3 class="font-bold text-blue-500">{milestone.year}</h3>
+                                    <h3 class="font-bold text-white">{milestone.year}</h3>
                                     <p>{milestone.event}</p>
                                 </>
                             )}
                         </div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full border-4 border-white z-10"></div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white rounded-full border-4 border-black z-10"></div>
                         <div class="w-1/2 pl-8">
                             {index % 2 !== 0 && (
                                 <>
-                                    <h3 class="font-bold text-blue-500">{milestone.year}</h3>
+                                    <h3 class="font-bold text-white">{milestone.year}</h3>
                                     <p>{milestone.event}</p>
                                 </>
                             )}
@@ -75,16 +70,13 @@ const values = [
             </div>
         </div>
     </section>
-
-    
-
-    <section id="values" class="section py-16 bg-gray-100">
+    <section id="values" class="section py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-8">Naše hodnoty</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {values.map(value => (
                     <div class="value-item text-center">
-                        <i class={`${value.icon} text-4xl text-blue-500`}></i>
+                        <i class={`${value.icon} text-4xl text-white`}></i>
                         <h3 class="text-xl font-bold mt-4">{value.title}</h3>
                         <p class="mt-2">{value.description}</p>
                     </div>
@@ -92,13 +84,12 @@ const values = [
             </div>
         </div>
     </section>
-
     <section id="careers" class="section py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-8">Kariéra u nás</h2>
             <p class="mt-4 text-center max-w-3xl mx-auto">Hledáme talentované a motivované jedince, kteří chtějí být součástí našeho týmu. Nabízíme dynamické pracovní prostředí, možnosti profesního růstu a práci na zajímavých projektech.</p>
             <div class="text-center mt-8">
-                <a href="/kariera" class="btn inline-block px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300">Prohlédnout volné pozice</a>
+                <a href="/kariera" class="btn inline-block px-6 py-2 bg-white text-black rounded hover:bg-gray-200 transition duration-300">Prohlédnout volné pozice</a>
             </div>
         </div>
     </section>

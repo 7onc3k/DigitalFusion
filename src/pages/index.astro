@@ -12,17 +12,19 @@ const aboutFeatures = [
 ];
 ---
 <Layout title="DigitalFusion - Vaše webové řešení">
-    <Hero 
-        title="DigitalFusion: Vaše webová transformace začíná zde"
-        subtitle="Inovativní webová řešení pro moderní podniky"
-        ctaText="Kontaktujte nás"
-    />
+    <div class="flex items-center justify-center min-h-screen">
+        <Hero 
+            title="DigitalFusion: Vaše webová transformace začíná zde"
+            subtitle="Inovativní webová řešení pro moderní podniky"
+            ctaText="Kontaktujte nás"
+        />
+    </div>
     <section id="about-preview" class="py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 text-white">O DigitalFusion</h2>
             <div class="about-features grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 {aboutFeatures.map(feature => (
-                    <div class="feature-card flex flex-col items-center p-6 border border-white rounded-lg">
+                    <div class="feature-card flex flex-col items-center p-6 rounded-lg">
                         <div class="feature-icon mb-4">
                             <Icon name={feature.icon} class="text-5xl text-white" />
                         </div>
@@ -42,17 +44,17 @@ const aboutFeatures = [
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-8 text-white">Naše služby</h2>
             <ul class="services-list grid grid-cols-1 md:grid-cols-3 gap-8">
-                <li class="text-center p-6 border border-white rounded-lg">
+                <li class="text-center p-6 rounded-lg">
                     <Icon name="mdi:laptop" class="text-5xl text-white mb-4" />
                     <h3 class="text-xl font-bold text-white">Webový design</h3>
                     <p class="mt-2 text-white">Moderní a responzivní webové stránky</p>
                 </li>
-                <li class="text-center p-6 border border-white rounded-lg">
+                <li class="text-center p-6 rounded-lg">
                     <Icon name="mdi:cart" class="text-5xl text-white mb-4" />
                     <h3 class="text-xl font-bold text-white">E-commerce řešení</h3>
                     <p class="mt-2 text-white">Výkonné a bezpečné e-shopy</p>
                 </li>
-                <li class="text-center p-6 border border-white rounded-lg">
+                <li class="text-center p-6 rounded-lg">
                     <Icon name="mdi:code-tags" class="text-5xl text-white mb-4" />
                     <h3 class="text-xl font-bold text-white">Webové aplikace</h3>
                     <p class="mt-2 text-white">Zakázkové webové aplikace na míru</p>
@@ -68,7 +70,7 @@ const aboutFeatures = [
             <h2 class="text-3xl font-bold text-center mb-8 text-white">Nejnovější projekty</h2>
             <div class="project-grid grid grid-cols-1 md:grid-cols-3 gap-8">
                 {latestProjects.map(project => (
-                    <div class="project-card border border-white rounded-lg overflow-hidden flex flex-col justify-between" data-category={project.category}>
+                    <div class="project-card rounded-lg overflow-hidden flex flex-col justify-between" data-category={project.category}>
                         <div class="p-6">
                             <h2 class="text-xl font-bold mb-2 text-white">{project.title}</h2>
                             <p class="text-white mb-4">{project.description}</p>
