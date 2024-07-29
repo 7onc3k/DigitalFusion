@@ -76,21 +76,7 @@ const values = [
         </div>
     </section>
 
-    <section id="team" class="section py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Náš tým</h2>
-            <div class="team-grid grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-                {teamMembers.map(member => (
-                    <div class="team-member text-center">
-                        <img src={member.image} alt={member.name} class="w-48 h-48 rounded-full mx-auto object-cover" />
-                        <h3 class="text-xl font-bold mt-4">{member.name}</h3>
-                        <p class="position italic text-gray-600">{member.position}</p>
-                        <p class="bio mt-2">{member.bio}</p>
-                    </div>
-                ))}
-            </div>
-        </div>
-    </section>
+    
 
     <section id="values" class="section py-16 bg-gray-100">
         <div class="container mx-auto px-4">

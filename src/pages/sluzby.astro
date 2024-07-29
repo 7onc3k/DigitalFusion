@@ -1,100 +1,93 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
 const services = [
     {
-        title: "Webový design",
-        description: "Vytváříme moderní, responzivní a uživatelsky přívětivé webové stránky, které zaujmou vaše návštěvníky a pomohou vám dosáhnout vašich cílů.",
-        icon: "fas fa-laptop-code",
+        title: "Responzivní webové stránky",
+        description: "Vytváříme moderní, plně responzivní webové stránky, které skvěle vypadají na všech zařízeních.",
+        icon: "fas fa-laptop",
         features: [
-            "Responzivní design",
-            "Optimalizace pro vyhledávače (SEO)",
-            "Uživatelsky přívětivé rozhraní",
-            "Integrace s CMS"
+            "Optimalizace pro mobily a tablety",
+            "Rychlé načítání",
+            "Moderní design",
+            "Uživatelsky přívětivé rozhraní"
         ]
     },
     {
-        title: "Vývoj aplikací",
-        description: "Vyvíjíme mobilní a webové aplikace na míru, které řeší specifické potřeby vašeho podnikání a zlepšují efektivitu vašich procesů.",
-        icon: "fas fa-mobile-alt",
+        title: "E-commerce řešení",
+        description: "Vyvíjíme výkonné a bezpečné e-shopy, které pomohou vašemu podnikání růst online.",
+        icon: "fas fa-shopping-cart",
         features: [
-            "Nativní mobilní aplikace (iOS, Android)",
+            "Intuitivní správa produktů",
+            "Bezpečné platební brány",
+            "Optimalizace pro konverze",
+            "Integrace s ERP systémy"
+        ]
+    },
+    {
+        title: "Webové aplikace",
+        description: "Tvoříme na míru vyvinuté webové aplikace, které zefektivní vaše podnikové procesy.",
+        icon: "fas fa-code",
+        features: [
+            "Single-page aplikace (SPA)",
             "Progresivní webové aplikace (PWA)",
-            "Cloudová řešení",
-            "Integrace API a třetích stran"
-        ]
-    },
-    {
-        title: "Digitální marketing",
-        description: "Pomáháme vám oslovit vaše cílové publikum prostřednictvím efektivních online marketingových strategií a kampaní.",
-        icon: "fas fa-chart-line",
-        features: [
-            "SEO a SEM",
-            "Správa sociálních médií",
-            "E-mail marketing",
-            "Obsahový marketing a copywriting"
+            "Integrace API",
+            "Škálovatelná architektura"
         ]
     }
 ];
 ---
-
 <Layout title="Služby - DigitalFusion">
-    <h1 class="text-4xl font-bold text-center my-8">Naše služby</h1>
+    <h1 class="text-4xl font-bold text-center my-8 text-white">Naše služby</h1>
     <div class="services-grid grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         {services.map(service => (
-            <div class="service-card bg-gray-100 rounded p-8 text-center shadow flex flex-col h-full">
+            <div class="service-card border border-white rounded p-8 text-center flex flex-col h-full">
                 <div class="flex-grow">
-                    <i class={`${service.icon} text-4xl text-blue-500 mb-4`}></i>
-                    <h2 class="text-2xl font-bold mb-4">{service.title}</h2>
-                    <p class="mb-4">{service.description}</p>
-                    <ul class="features-list list-disc list-inside mb-4">
+                    <i class={`${service.icon} text-4xl text-white mb-4`}></i>
+                    <h2 class="text-2xl font-bold mb-4 text-white">{service.title}</h2>
+                    <p class="mb-4 text-white">{service.description}</p>
+                    <ul class="features-list list-disc list-inside mb-4 text-white">
                         {service.features.map(feature => (
                             <li>{feature}</li>
                         ))}
                     </ul>
                 </div>
                 <div class="mt-8 mb-4">
-                    <a href="#" class="btn inline-block px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">Zjistit více</a>
+                    <a href="#" class="btn inline-block px-6 py-3 bg-white text-black rounded hover:bg-gray-200 transition-colors">Zjistit více</a>
                 </div>
             </div>
         ))}
     </div>
     <section id="process" class="py-16">
-        <h2 class="text-3xl font-bold text-center">Náš proces</h2>
+        <h2 class="text-3xl font-bold text-center text-white">Náš proces vývoje</h2>
         <div class="process-steps flex flex-col md:flex-row justify-between flex-wrap mt-8">
-            <div class="step flex-1 min-w-[200px] text-center p-4">
-                <i class="fas fa-lightbulb text-4xl text-blue-500 mb-4"></i>
-                <h3 class="text-xl font-bold mb-2">1. Konzultace</h3>
-                <p>Porozumíme vašim potřebám a cílům</p>
-            </div>
-            <div class="step flex-1 min-w-[200px] text-center p-4">
-                <i class="fas fa-pencil-alt text-4xl text-blue-500 mb-4"></i>
-                <h3 class="text-xl font-bold mb-2">2. Návrh</h3>
-                <p>Vytvoříme koncept a strategii</p>
-            </div>
-            <div class="step flex-1 min-w-[200px] text-center p-4">
-                <i class="fas fa-code text-4xl text-blue-500 mb-4"></i>
-                <h3 class="text-xl font-bold mb-2">3. Vývoj</h3>
-                <p>Implementujeme řešení</p>
-            </div>
-            <div class="step flex-1 min-w-[200px] text-center p-4">
-                <i class="fas fa-check-circle text-4xl text-blue-500 mb-4"></i>
-                <h3 class="text-xl font-bold mb-2">4. Testování</h3>
-                <p>Zajistíme kvalitu a funkčnost</p>
-            </div>
-            <div class="step flex-1 min-w-[200px] text-center p-4">
-                <i class="fas fa-rocket text-4xl text-blue-500 mb-4"></i>
-                <h3 class="text-xl font-bold mb-2">5. Spuštění</h3>
-                <p>Uvedeme projekt do provozu</p>
+            {['Analýza požadavků', 'Návrh a prototyp', 'Vývoj', 'Testování', 'Nasazení'].map((step, index) => (
+                <div class="step flex-1 min-w-[200px] text-center p-4">
+                    <div class="text-4xl text-white mb-4">{index + 1}</div>
+                    <h3 class="text-xl font-bold mb-2 text-white">{step}</h3>
+                </div>
+            ))}
+        </div>
+    </section>
+    <section id="technologies" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center text-white">Technologie, které používáme</h2>
+            <div class="tech-icons flex flex-wrap justify-center gap-8 text-white">
+                <i class="fab fa-html5 text-5xl"></i>
+                <i class="fab fa-css3-alt text-5xl"></i>
+                <i class="fab fa-js-square text-5xl"></i>
+                <i class="fab fa-react text-5xl"></i>
+                <i class="fab fa-node-js text-5xl"></i>
+                <i class="fab fa-php text-5xl"></i>
+                <i class="fab fa-wordpress text-5xl"></i>
             </div>
         </div>
     </section>
-    <section id="cta" class="py-16 bg-gray-100">
+    <section id="cta" class="py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-6 text-center">Připraveni začít?</h2>
-            <p class="mt-4 mb-8 text-center max-w-2xl mx-auto">Kontaktujte nás pro nezávaznou konzultaci a zjistěte, jak vám můžeme pomoci s vaším digitálním projektem.</p>
+            <h2 class="text-3xl font-bold mb-6 text-center text-white">Připraveni na nový web?</h2>
+            <p class="mt-4 mb-8 text-center max-w-2xl mx-auto text-white">Kontaktujte nás pro nezávaznou konzultaci a zjistěte, jak vám můžeme pomoci s vaším webovým projektem.</p>
             <div class="text-center">
-                <a href="/kontakt" class="btn btn-large inline-block px-8 py-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors text-lg font-bold">Kontaktujte nás</a>
+                <a href="/kontakt" class="btn btn-large inline-block px-8 py-4 bg-white text-black rounded hover:bg-gray-200 transition-colors text-lg font-bold">Kontaktujte nás</a>
             </div>
         </div>
     </section>

@@ -45,18 +45,11 @@ Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\tsconfig.json
 
 ==================================================
 
-Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\env.d.ts
-==================================================
-
-
-==================================================
-
 Prázdná složka: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\components
 Prázdná složka: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\config
 Prázdná složka: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\data
 Prázdná složka: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\layouts
 Prázdná složka: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\pages
-Prázdná složka: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\styles
 Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\components\Card.astro
 ==================================================
 ---
@@ -80,28 +73,6 @@ const { href, title, body } = Astro.props;
 		</p>
 	</a>
 </li>
-
-==================================================
-
-Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\components\ClientLogos.astro
-==================================================
----
-const clients = [
-    { name: "Klient 1", logo: "/images/clients/client1.png" },
-    { name: "Klient 2", logo: "/images/clients/client2.png" },
-    { name: "Klient 3", logo: "/images/clients/client3.png" },
-    { name: "Klient 4", logo: "/images/clients/client4.png" },
-    { name: "Klient 5", logo: "/images/clients/client5.png" }
-];
----
-<section id="client-logos" class="py-16">
-    <h2 class="text-3xl font-bold text-center mb-8">Naši klienti</h2>
-    <div class="logo-grid flex justify-around items-center flex-wrap mt-8">
-        {clients.map(client => (
-            <img src={client.logo} alt={client.name} class="client-logo max-w-[150px] max-h-[80px] m-5 filter invert transition-filter duration-300 ease-in-out hover:filter-none" />
-        ))}
-    </div>
-</section>
 
 ==================================================
 
@@ -268,36 +239,40 @@ export const projects = [
 
 Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\layouts\Footer.astro
 ==================================================
-<footer class="bg-transparent text-white p-4 border-t border-white">
-    <div class="footer-content grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="footer-section">
-            <h3 class="text-lg font-bold">Rychlé odkazy</h3>
-            <ul>
-                <li><a href="/" class="hover:text-gray-300">Domů</a></li>
-                <li><a href="/o-nas" class="hover:text-gray-300">O nás</a></li>
-                <li><a href="/sluzby" class="hover:text-gray-300">Služby</a></li>
-                <li><a href="/kontakt" class="hover:text-gray-300">Kontakt</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h3 class="text-lg font-bold">Sledujte nás</h3>
-            <div class="social-icons flex space-x-4 mt-2">
-                <a href="#" class="hover:text-gray-300"><i class="fab fa-facebook text-2xl"></i></a>
-                <a href="#" class="hover:text-gray-300"><i class="fab fa-twitter text-2xl"></i></a>
-                <a href="#" class="hover:text-gray-300"><i class="fab fa-linkedin text-2xl"></i></a>
-                <a href="#" class="hover:text-gray-300"><i class="fab fa-instagram text-2xl"></i></a>
+---
+---
+<footer class="bg-transparent text-white py-8 md:py-12">
+    <div class="container mx-auto px-6">
+        <div class="footer-content grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="footer-section">
+                <h3 class="text-lg font-bold mb-4">Rychlé odkazy</h3>
+                <ul class="space-y-2">
+                    <li><a href="/" class="hover:text-gray-300 transition-colors duration-300">Domů</a></li>
+                    <li><a href="/o-nas" class="hover:text-gray-300 transition-colors duration-300">O nás</a></li>
+                    <li><a href="/sluzby" class="hover:text-gray-300 transition-colors duration-300">Služby</a></li>
+                    <li><a href="/kontakt" class="hover:text-gray-300 transition-colors duration-300">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="text-lg font-bold mb-4">Sledujte nás</h3>
+                <div class="social-icons flex space-x-4">
+                    <a href="#" class="hover:text-gray-300 transition-colors duration-300"><i class="fab fa-facebook text-2xl"></i></a>
+                    <a href="#" class="hover:text-gray-300 transition-colors duration-300"><i class="fab fa-twitter text-2xl"></i></a>
+                    <a href="#" class="hover:text-gray-300 transition-colors duration-300"><i class="fab fa-linkedin text-2xl"></i></a>
+                    <a href="#" class="hover:text-gray-300 transition-colors duration-300"><i class="fab fa-instagram text-2xl"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                <form class="newsletter-form space-y-2">
+                    <input type="email" placeholder="Váš e-mail" required class="w-full p-2 bg-transparent border border-white rounded text-white placeholder-gray-300">
+                    <button type="submit" class="w-full p-2 bg-white text-black rounded hover:bg-gray-200 transition-colors duration-300">Odebírat</button>
+                </form>
             </div>
         </div>
-        <div class="footer-section">
-            <h3 class="text-lg font-bold">Newsletter</h3>
-            <form class="newsletter-form flex flex-col space-y-2">
-                <input type="email" placeholder="Váš e-mail" required class="p-2 rounded bg-transparent border border-white text-white">
-                <button type="submit" class="p-2 bg-white text-black rounded hover:bg-gray-200 transition-colors">Odebírat</button>
-            </form>
+        <div class="footer-bottom text-center mt-8">
+            <p>&copy; 2023 DigitalFusion. Všechna práva vyhrazena.</p>
         </div>
-    </div>
-    <div class="footer-bottom text-center mt-4">
-        <p>&copy; 2023 DigitalFusion. Všechna práva vyhrazena.</p>
     </div>
 </footer>
 
@@ -318,7 +293,6 @@ import MobileMenu from "./MobileMenu.astro";
                     <li class="mx-3"><a href="/o-nas" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">O nás</a></li>
                     <li class="mx-3"><a href="/sluzby" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Služby</a></li>
                     <li class="mx-3"><a href="/portfolio" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Portfolio</a></li>
-                    <li class="mx-3"><a href="/reference" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Reference</a></li>
                     <li class="mx-3"><a href="/kontakt" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Kontakt</a></li>
                 </ul>
             </div>
@@ -389,7 +363,6 @@ Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\layouts\Mobil
                     <li class="my-6"><a href="/o-nas" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">O nás</a></li>
                     <li class="my-6"><a href="/sluzby" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Služby</a></li>
                     <li class="my-6"><a href="/portfolio" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Portfolio</a></li>
-                    <li class="my-6"><a href="/reference" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Reference</a></li>
                     <li class="my-6"><a href="/kontakt" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Kontakt</a></li>
                 </ul>
             </nav>
@@ -492,12 +465,16 @@ Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\pages\index.a
 ==================================================
 ---
 import Layout from '../layouts/Layout.astro';
-import ClientLogos from '../components/ClientLogos.astro';
 import { projects } from '../data/projects.js';
-
+import { Icon } from 'astro-icon/components';
 import Hero from '../components/Hero.astro';
 const latestProjects = projects.slice(0, 3);
-
+const aboutFeatures = [
+    { icon: 'mdi:account-group', title: 'Kdo jsme', description: 'Jsme tým expertů na digitální technologie, připraveni posunout vaše podnikání do budoucnosti. S našimi inovativními řešeními a strategickým přístupem vám pomůžeme uspět v rychle se měnícím digitálním světě.' },
+    { icon: 'mdi:target', title: 'Naše mise', description: 'Naše mise je jednoduchá: Transformovat vaše vize do digitální reality a maximalizovat váš potenciál v online prostředí. S DigitalFusion získáte partnera, který rozumí vašim potřebám a pomůže vám dosáhnout vašich cílů.' },
+    { icon: 'mdi:lightbulb', title: 'Inovace', description: 'Přinášíme nejnovější technologie a trendy do vašeho podnikání. Naše inovativní přístupy vám pomohou získat konkurenční výhodu a být vždy o krok napřed.' },
+    { icon: 'mdi:handshake', title: 'Partnerství', description: 'Věříme v dlouhodobou spolupráci a budování silných vztahů s našimi klienty. Jsme více než jen dodavatel - jsme váš partner na cestě k digitálnímu úspěchu.' },
+];
 ---
 <Layout title="DigitalFusion - Vaše digitální řešení">
     <Hero 
@@ -505,66 +482,79 @@ const latestProjects = projects.slice(0, 3);
         subtitle="Inovativní řešení pro moderní podniky"
         ctaText="Kontaktujte nás"
     />
-    <section id="about-preview" class="py-16">
-        <h2 class="text-3xl font-bold text-center mb-8">O nás</h2>
-        <div class="about-content flex flex-col md:flex-row justify-between items-center">
-            <div class="about-text flex-1 md:pr-8 mb-4 md:mb-0 text-center md:text-left">
-                <p>Jsme tým expertů na digitální technologie, připraveni posunout vaše podnikání do budoucnosti.</p>
-                <a href="/o-nas" class="btn inline-block mt-4 px-6 py-2 bg-white text-black rounded hover:bg-gray-200 transition duration-300">Zjistěte více</a>
-            </div>
-            <div class="about-image flex-1">
-                <img src="/cesta/k/obrazku.jpg" alt="O nás" class="w-full rounded-lg shadow-lg" />
-            </div>
-        </div>
-    </section>
-    <section id="services-preview" class="py-16">
-        <h2 class="text-3xl font-bold text-center mb-8">Naše služby</h2>
-        <ul class="services-list flex flex-col md:flex-row justify-between mt-8 space-y-4 md:space-y-0 md:space-x-4">
-            <li class="flex-1 text-center p-4 border border-white rounded">
-                <i class="fas fa-laptop-code text-4xl mb-4"></i>
-                <h3 class="text-xl font-bold">Webový design</h3>
-                <p class="mt-2">Moderní a responzivní webové stránky</p>
-            </li>
-            <li class="flex-1 text-center p-4 border border-white rounded">
-                <i class="fas fa-mobile-alt text-4xl mb-4"></i>
-                <h3 class="text-xl font-bold">Vývoj aplikací</h3>
-                <p class="mt-2">Mobilní a webové aplikace na míru</p>
-            </li>
-            <li class="flex-1 text-center p-4 border border-white rounded">
-                <i class="fas fa-chart-line text-4xl mb-4"></i>
-                <h3 class="text-xl font-bold">Digitální marketing</h3>
-                <p class="mt-2">Efektivní online marketingové strategie</p>
-            </li>
-        </ul>
-        <div class="text-center mt-8">
-            <a href="/sluzby" class="btn inline-block px-6 py-2 bg-white text-black rounded hover:bg-gray-200 transition duration-300">Všechny služby</a>
-        </div>
-    </section>
-    <section id="latest-projects" class="py-16">
-        <h2 class="text-3xl font-bold text-center mb-8">Nejnovější projekty</h2>
-        <div class="project-grid grid grid-cols-1 md:grid-cols-3 gap-8">
-            {latestProjects.map(project => (
-                <div class="project-card border border-white rounded overflow-hidden flex flex-col justify-between" data-category={project.category}>
-                    <div>
-                        <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
-                        <h2 class="text-xl font-bold p-4">{project.title}</h2>
-                        <p class="px-4">{project.description}</p>
-                        <div class="technologies flex flex-wrap p-4">
-                            {project.technologies.map(tech => (
-                                <span class="tech-tag bg-white text-black px-2 py-1 rounded mr-2 mb-2 text-sm">{tech}</span>
-                            ))}
+    <section id="about-preview" class="py-16 bg-transparent">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-white">O DigitalFusion</h2>
+            <div class="about-features grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                {aboutFeatures.map(feature => (
+                    <div class="feature-card flex flex-col items-center p-6 bg-black bg-opacity-50 rounded-lg backdrop-blur-sm">
+                        <div class="feature-icon mb-4">
+                            <Icon name={feature.icon} class="text-5xl text-white" />
+                        </div>
+                        <div class="feature-content text-center">
+                            <h3 class="text-xl font-bold mb-2 text-white">{feature.title}</h3>
+                            <p class="text-white">{feature.description}</p>
                         </div>
                     </div>
-                    <a href={`/portfolio/${project.id}`} class="view-details block px-4 py-2 bg-white text-black text-center rounded mt-auto hover:bg-gray-200 transition-colors">Zobrazit detaily</a>
-                </div>
-            ))}
+                ))}
+            </div>
+            <div class="text-center">
+                <a href="/o-nas" class="btn inline-block px-8 py-3 bg-white text-black rounded-full hover:bg-opacity-80 transition duration-300">Poznejte nás blíže</a>
+            </div>
         </div>
     </section>
-    <ClientLogos />
-    <section id="contact-cta" class="py-16 text-center">
-        <h2 class="text-3xl font-bold mb-4">Připraveni začít?</h2>
-        <p class="mt-4 mb-6">Kontaktujte nás a společně vytvoříme vaše digitální řešení.</p>
-        <a href="/kontakt" class="cta-button inline-block px-6 py-3 bg-white text-black rounded font-bold hover:bg-gray-200 transition duration-300">Začněte projekt</a>
+    <section id="services-preview" class="py-16 bg-transparent">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8 text-white">Naše služby</h2>
+            <ul class="services-list grid grid-cols-1 md:grid-cols-3 gap-8">
+                <li class="text-center p-6 bg-black bg-opacity-50 rounded-lg backdrop-blur-sm">
+                    <Icon name="mdi:laptop" class="text-5xl text-white mb-4" />
+                    <h3 class="text-xl font-bold text-white">Webový design</h3>
+                    <p class="mt-2 text-white">Moderní a responzivní webové stránky</p>
+                </li>
+                <li class="text-center p-6 bg-black bg-opacity-50 rounded-lg backdrop-blur-sm">
+                    <Icon name="mdi:cellphone" class="text-5xl text-white mb-4" />
+                    <h3 class="text-xl font-bold text-white">Vývoj aplikací</h3>
+                    <p class="mt-2 text-white">Mobilní a webové aplikace na míru</p>
+                </li>
+                <li class="text-center p-6 bg-black bg-opacity-50 rounded-lg backdrop-blur-sm">
+                    <Icon name="mdi:chart-line" class="text-5xl text-white mb-4" />
+                    <h3 class="text-xl font-bold text-white">Digitální marketing</h3>
+                    <p class="mt-2 text-white">Efektivní online marketingové strategie</p>
+                </li>
+            </ul>
+            <div class="text-center mt-8">
+                <a href="/sluzby" class="btn inline-block px-6 py-3 bg-white text-black rounded-full hover:bg-opacity-80 transition duration-300">Všechny služby</a>
+            </div>
+        </div>
+    </section>
+    <section id="latest-projects" class="py-16 bg-transparent">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8 text-white">Nejnovější projekty</h2>
+            <div class="project-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+                {latestProjects.map(project => (
+                    <div class="project-card bg-black bg-opacity-50 rounded-lg overflow-hidden flex flex-col justify-between backdrop-blur-sm" data-category={project.category}>
+                        <div class="p-6">
+                            <h2 class="text-xl font-bold mb-2 text-white">{project.title}</h2>
+                            <p class="text-white mb-4">{project.description}</p>
+                            <div class="technologies flex flex-wrap">
+                                {project.technologies.map(tech => (
+                                    <span class="tech-tag bg-white text-black px-2 py-1 rounded mr-2 mb-2 text-sm">{tech}</span>
+                                ))}
+                            </div>
+                        </div>
+                        <a href={`/portfolio/${project.id}`} class="view-details block px-4 py-2 bg-white text-black text-center hover:bg-opacity-80 transition-colors">Zobrazit detaily</a>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+    <section id="contact-cta" class="py-16 bg-transparent text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-4 text-white">Připraveni začít?</h2>
+            <p class="mt-4 mb-6 text-white">Kontaktujte nás a společně vytvoříme vaše digitální řešení.</p>
+            <a href="/kontakt" class="cta-button inline-block px-8 py-3 bg-white text-black rounded-full font-bold hover:bg-opacity-80 transition duration-300">Začněte projekt</a>
+        </div>
     </section>
 </Layout>
 
@@ -892,61 +882,6 @@ const techIcons: { [key: string]: string } = {
         });
     });
 </script>
-
-
-==================================================
-
-Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\pages\reference.astro
-==================================================
----
-import Layout from '../layouts/Layout.astro';
-
-const testimonials = [
-    {
-        name: "Jan Novotný",
-        company: "ABC s.r.o.",
-        text: "Spolupráce s DigitalFusion byla skvělá zkušenost. Jejich tým profesionálů nám pomohl výrazně zlepšit naši online přítomnost a zvýšit prodeje.",
-        image: "/images/testimonials/jan-novotny.jpg",
-        rating: 5
-    },
-    {
-        name: "Marie Svobodová",
-        company: "XYZ a.s.",
-        text: "Díky DigitalFusion jsme získali moderní a uživatelsky přívětivý e-shop, který předčil naše očekávání. Jejich přístup k projektu byl velmi profesionální.",
-        image: "/images/testimonials/marie-svobodova.jpg",
-        rating: 4
-    },
-    {
-        name: "Petr Černý",
-        company: "123 s.r.o.",
-        text: "DigitalFusion nám pomohla s kompletní digitální transformací našeho podnikání. Jejich expertíza a inovativní přístup nám umožnily získat konkurenční výhodu na trhu.",
-        image: "/images/testimonials/petr-cerny.jpg",
-        rating: 5
-    }
-];
----
-
-<Layout title="Reference - DigitalFusion">
-    <section class="py-16 container mx-auto px-4">
-        <h1 class="text-4xl font-bold text-center my-8">Co o nás říkají klienti</h1>
-        
-        <div class="testimonial-grid grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map(testimonial => (
-                <div class="testimonial-card bg-gray-100 rounded p-8 text-center shadow">
-                    <img src={testimonial.image} alt={testimonial.name} class="testimonial-image w-24 h-24 rounded-full mx-auto object-cover mb-4" />
-                    <p class="testimonial-text italic mb-4">"{testimonial.text}"</p>
-                    <div class="testimonial-author font-bold">{testimonial.name}</div>
-                    <div class="testimonial-company text-gray-600">{testimonial.company}</div>
-                    <div class="testimonial-rating text-yellow-500 mt-2">
-                        {Array(5).fill(null).map((_, i) => (
-                            <span class={i < testimonial.rating ? "star filled" : "star"}>★</span>
-                        ))}
-                    </div>
-                </div>
-            ))}
-        </div>
-    </section>
-</Layout>
 
 
 ==================================================

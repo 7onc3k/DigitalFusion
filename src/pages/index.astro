@@ -1,77 +1,94 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ClientLogos from '../components/ClientLogos.astro';
 import { projects } from '../data/projects.js';
-
+import { Icon } from 'astro-icon/components';
 import Hero from '../components/Hero.astro';
 const latestProjects = projects.slice(0, 3);
-
+const aboutFeatures = [
+    { icon: 'mdi:account-group', title: 'Kdo jsme', description: 'Jsme tým expertů na webový vývoj, připraveni posunout vaše podnikání do budoucnosti. S našimi inovativními řešeními a strategickým přístupem vám pomůžeme uspět v rychle se měnícím digitálním světě.' },
+    { icon: 'mdi:target', title: 'Naše mise', description: 'Naše mise je jednoduchá: Transformovat vaše vize do digitální reality a maximalizovat váš potenciál v online prostředí. S DigitalFusion získáte partnera, který rozumí vašim potřebám a pomůže vám dosáhnout vašich cílů.' },
+    { icon: 'mdi:lightbulb', title: 'Inovace', description: 'Přinášíme nejnovější technologie a trendy do vašeho webového projektu. Naše inovativní přístupy vám pomohou získat konkurenční výhodu a být vždy o krok napřed.' },
+    { icon: 'mdi:handshake', title: 'Partnerství', description: 'Věříme v dlouhodobou spolupráci a budování silných vztahů s našimi klienty. Jsme více než jen dodavatel - jsme váš partner na cestě k digitálnímu úspěchu.' },
+];
 ---
-<Layout title="DigitalFusion - Vaše digitální řešení">
+<Layout title="DigitalFusion - Vaše webové řešení">
     <Hero 
-        title="DigitalFusion: Vaše digitální transformace začíná zde"
-        subtitle="Inovativní řešení pro moderní podniky"
+        title="DigitalFusion: Vaše webová transformace začíná zde"
+        subtitle="Inovativní webová řešení pro moderní podniky"
         ctaText="Kontaktujte nás"
     />
     <section id="about-preview" class="py-16">
-        <h2 class="text-3xl font-bold text-center mb-8">O nás</h2>
-        <div class="about-content flex flex-col md:flex-row justify-between items-center">
-            <div class="about-text flex-1 md:pr-8 mb-4 md:mb-0 text-center md:text-left">
-                <p>Jsme tým expertů na digitální technologie, připraveni posunout vaše podnikání do budoucnosti.</p>
-                <a href="/o-nas" class="btn inline-block mt-4 px-6 py-2 bg-white text-black rounded hover:bg-gray-200 transition duration-300">Zjistěte více</a>
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-white">O DigitalFusion</h2>
+            <div class="about-features grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                {aboutFeatures.map(feature => (
+                    <div class="feature-card flex flex-col items-center p-6 border border-white rounded-lg">
+                        <div class="feature-icon mb-4">
+                            <Icon name={feature.icon} class="text-5xl text-white" />
+                        </div>
+                        <div class="feature-content text-center">
+                            <h3 class="text-xl font-bold mb-2 text-white">{feature.title}</h3>
+                            <p class="text-white">{feature.description}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
-            <div class="about-image flex-1">
-                <img src="/cesta/k/obrazku.jpg" alt="O nás" class="w-full rounded-lg shadow-lg" />
+            <div class="text-center">
+                <a href="/o-nas" class="btn inline-block px-8 py-3 bg-white text-black rounded-full hover:bg-gray-200 transition duration-300">Poznejte nás blíže</a>
             </div>
         </div>
     </section>
     <section id="services-preview" class="py-16">
-        <h2 class="text-3xl font-bold text-center mb-8">Naše služby</h2>
-        <ul class="services-list flex flex-col md:flex-row justify-between mt-8 space-y-4 md:space-y-0 md:space-x-4">
-            <li class="flex-1 text-center p-4 border border-white rounded">
-                <i class="fas fa-laptop-code text-4xl mb-4"></i>
-                <h3 class="text-xl font-bold">Webový design</h3>
-                <p class="mt-2">Moderní a responzivní webové stránky</p>
-            </li>
-            <li class="flex-1 text-center p-4 border border-white rounded">
-                <i class="fas fa-mobile-alt text-4xl mb-4"></i>
-                <h3 class="text-xl font-bold">Vývoj aplikací</h3>
-                <p class="mt-2">Mobilní a webové aplikace na míru</p>
-            </li>
-            <li class="flex-1 text-center p-4 border border-white rounded">
-                <i class="fas fa-chart-line text-4xl mb-4"></i>
-                <h3 class="text-xl font-bold">Digitální marketing</h3>
-                <p class="mt-2">Efektivní online marketingové strategie</p>
-            </li>
-        </ul>
-        <div class="text-center mt-8">
-            <a href="/sluzby" class="btn inline-block px-6 py-2 bg-white text-black rounded hover:bg-gray-200 transition duration-300">Všechny služby</a>
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8 text-white">Naše služby</h2>
+            <ul class="services-list grid grid-cols-1 md:grid-cols-3 gap-8">
+                <li class="text-center p-6 border border-white rounded-lg">
+                    <Icon name="mdi:laptop" class="text-5xl text-white mb-4" />
+                    <h3 class="text-xl font-bold text-white">Webový design</h3>
+                    <p class="mt-2 text-white">Moderní a responzivní webové stránky</p>
+                </li>
+                <li class="text-center p-6 border border-white rounded-lg">
+                    <Icon name="mdi:cart" class="text-5xl text-white mb-4" />
+                    <h3 class="text-xl font-bold text-white">E-commerce řešení</h3>
+                    <p class="mt-2 text-white">Výkonné a bezpečné e-shopy</p>
+                </li>
+                <li class="text-center p-6 border border-white rounded-lg">
+                    <Icon name="mdi:code-tags" class="text-5xl text-white mb-4" />
+                    <h3 class="text-xl font-bold text-white">Webové aplikace</h3>
+                    <p class="mt-2 text-white">Zakázkové webové aplikace na míru</p>
+                </li>
+            </ul>
+            <div class="text-center mt-8">
+                <a href="/sluzby" class="btn inline-block px-6 py-3 bg-white text-black rounded-full hover:bg-gray-200 transition duration-300">Všechny služby</a>
+            </div>
         </div>
     </section>
     <section id="latest-projects" class="py-16">
-        <h2 class="text-3xl font-bold text-center mb-8">Nejnovější projekty</h2>
-        <div class="project-grid grid grid-cols-1 md:grid-cols-3 gap-8">
-            {latestProjects.map(project => (
-                <div class="project-card border border-white rounded overflow-hidden flex flex-col justify-between" data-category={project.category}>
-                    <div>
-                        <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
-                        <h2 class="text-xl font-bold p-4">{project.title}</h2>
-                        <p class="px-4">{project.description}</p>
-                        <div class="technologies flex flex-wrap p-4">
-                            {project.technologies.map(tech => (
-                                <span class="tech-tag bg-white text-black px-2 py-1 rounded mr-2 mb-2 text-sm">{tech}</span>
-                            ))}
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8 text-white">Nejnovější projekty</h2>
+            <div class="project-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+                {latestProjects.map(project => (
+                    <div class="project-card border border-white rounded-lg overflow-hidden flex flex-col justify-between" data-category={project.category}>
+                        <div class="p-6">
+                            <h2 class="text-xl font-bold mb-2 text-white">{project.title}</h2>
+                            <p class="text-white mb-4">{project.description}</p>
+                            <div class="technologies flex flex-wrap">
+                                {project.technologies.map(tech => (
+                                    <span class="tech-tag bg-white text-black px-2 py-1 rounded mr-2 mb-2 text-sm">{tech}</span>
+                                ))}
+                            </div>
                         </div>
+                        <a href={`/portfolio/${project.id}`} class="view-details block px-4 py-2 bg-white text-black text-center hover:bg-gray-200 transition-colors">Zobrazit detaily</a>
                     </div>
-                    <a href={`/portfolio/${project.id}`} class="view-details block px-4 py-2 bg-white text-black text-center rounded mt-auto hover:bg-gray-200 transition-colors">Zobrazit detaily</a>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     </section>
-    <ClientLogos />
     <section id="contact-cta" class="py-16 text-center">
-        <h2 class="text-3xl font-bold mb-4">Připraveni začít?</h2>
-        <p class="mt-4 mb-6">Kontaktujte nás a společně vytvoříme vaše digitální řešení.</p>
-        <a href="/kontakt" class="cta-button inline-block px-6 py-3 bg-white text-black rounded font-bold hover:bg-gray-200 transition duration-300">Začněte projekt</a>
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-4 text-white">Připraveni začít?</h2>
+            <p class="mt-4 mb-6 text-white">Kontaktujte nás a společně vytvoříme vaše webové řešení.</p>
+            <a href="/kontakt" class="cta-button inline-block px-8 py-3 bg-white text-black rounded-full font-bold hover:bg-gray-200 transition duration-300">Začněte projekt</a>
+        </div>
     </section>
 </Layout>
