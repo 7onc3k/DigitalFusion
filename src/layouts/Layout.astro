@@ -1,11 +1,117 @@
 ---
+import Particles from "./Particles.astro";
+import type { ISourceOptions } from "@tsparticles/engine";
+
 interface Props {
     title: string;
 }
 
 const { title } = Astro.props;
 
-
+const particlesOptions: ISourceOptions = {
+    background: {
+        color: "#000000"
+    },
+    fullScreen: {
+        enable: true,
+        zIndex: -1
+    },
+    particles: {
+        number: {
+            value: 80,
+            density: {
+                enable: true,
+                  // Changed to valueArea
+            }
+        },
+        color: {
+            value: "#ffffff"
+        },
+        shape: {
+            type: "circle"
+        },
+        opacity: {
+            value: 0.5,
+            animation: {  // Changed to animation
+                enable: false,
+                speed: 1,
+                  // Changed to minimumValue
+                sync: false
+            }
+        },
+        size: {
+            value: 3,
+            animation: {  // Changed to animation
+                enable: false,
+                speed: 40,
+                  // Changed to minimumValue
+                sync: false
+            }
+        },
+        links: {  // Changed from line_linked to links
+            enable: true,
+            distance: 150,
+            color: "#ffffff",
+            opacity: 0.4,
+            width: 1
+        },
+        move: {
+            enable: true,
+            speed: 6,
+            direction: "none",
+            outModes: "out",  // Changed from out_mode to outModes
+            attract: {
+                enable: false,
+                rotate: {  // Changed from rotateX and rotateY to rotate object
+                    x: 600,
+                    y: 1200
+                }
+            }
+        }
+    },
+    interactivity: {
+        detectsOn: "canvas",  // Changed from detect_on to detectsOn
+        events: {
+            onHover: {  // Changed from onhover to onHover
+                enable: true,
+                mode: "repulse"
+            },
+            onClick: {  // Changed from onclick to onClick
+                enable: true,
+                mode: "push"
+            },
+            resize: {  // Changed from boolean to object
+                enable: true,
+                delay: 0.5
+            }
+        },
+        modes: {
+            grab: {
+                distance: 400,
+                links: {  // Changed from line_linked to links
+                    opacity: 1
+                }
+            },
+            bubble: {
+                distance: 400,
+                size: 40,
+                duration: 2,
+                opacity: 8,
+            },
+            repulse: {
+                distance: 200,
+                duration: 0.4
+            },
+            push: {
+                quantity: 4  // Changed from particles_nb to quantity
+            },
+            remove: {
+                quantity: 2  // Changed from particles_nb to quantity
+            }
+        }
+    },
+    detectRetina: true  // Changed from retina_detect to detectRetina
+};
 ---
 
 <!doctype html>
@@ -21,6 +127,7 @@ const { title } = Astro.props;
         <title>{title}</title>
     </head>
     <body class="flex flex-col min-h-screen">
+        <Particles id="tsparticles" options={particlesOptions} />
         <header class="sticky top-0 z-50 bg-gray-800 text-white">
             <nav class="container mx-auto flex justify-between items-center p-4">
                 <div class="logo">DigitalFusion</div>
@@ -38,11 +145,9 @@ const { title } = Astro.props;
                 </ul>
             </nav>
         </header>
-
         <main class="flex-grow">
             <slot />
         </main>
-
         <footer class="bg-gray-800 text-white p-4">
             <div class="footer-content grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="footer-section">
@@ -74,24 +179,22 @@ const { title } = Astro.props;
                 <p>&copy; 2023 DigitalFusion. Všechna práva vyhrazena.</p>
             </div>
         </footer>
+        <script>
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            const menuIcon = mobileMenuToggle ? mobileMenuToggle.querySelector('i') : null;
+            if (mobileMenuToggle && navLinks && menuIcon) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('hidden');
+                    navLinks.classList.toggle('flex');
+                    navLinks.classList.toggle('flex-col');
+                    navLinks.classList.toggle('items-center');
+                    menuIcon.classList.toggle('fa-bars');
+                    menuIcon.classList.toggle('fa-times');
+                });
+            } else {
+                console.error('Nelze najít prvky mobilního menu, navigačních odkazů nebo ikonu menu');
+            }
+        </script>
     </body>
 </html>
-
-<script>
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const menuIcon = mobileMenuToggle ? mobileMenuToggle.querySelector('i') : null;
-
-    if (mobileMenuToggle && navLinks && menuIcon) {
-        mobileMenuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('hidden');
-            navLinks.classList.toggle('flex');
-            navLinks.classList.toggle('flex-col');
-            navLinks.classList.toggle('items-center');
-            menuIcon.classList.toggle('fa-bars');
-            menuIcon.classList.toggle('fa-times');
-        });
-    } else {
-        console.error('Nelze najít prvky mobilního menu, navigačních odkazů nebo ikonu menu');
-    }
-</script>
