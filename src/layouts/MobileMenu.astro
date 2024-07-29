@@ -1,16 +1,16 @@
 ---
 ---
 <div class="md:hidden">
-    <button id="mobile-menu-toggle" class="text-white focus:outline-none">
+    <button id="mobile-menu-toggle" class="text-white focus:outline-none z-50">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
     </button>
-    <div id="mobile-menu-content" class="hidden fixed inset-0 w-full h-full bg-gray-800 bg-opacity-95 z-40">
-        <nav class="flex flex-col items-center justify-center h-full">
-            <ul class="text-center">
+    <div id="mobile-menu-content" class="fixed inset-0 w-full h-full bg-gray-800 bg-opacity-95 z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex items-center justify-center">
+        <nav class="text-center">
+            <ul>
                 <li class="my-6"><a href="/" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Domů</a></li>
                 <li class="my-6"><a href="/o-nas" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">O nás</a></li>
                 <li class="my-6"><a href="/sluzby" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Služby</a></li>
@@ -30,7 +30,7 @@
         mobileMenuToggle.addEventListener('click', () => {
             isOpen = !isOpen;
             if (isOpen) {
-                mobileMenuContent.classList.remove('hidden');
+                mobileMenuContent.classList.remove('translate-x-full');
                 document.body.style.overflow = 'hidden';
                 mobileMenuToggle.innerHTML = `
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -39,7 +39,7 @@
                     </svg>
                 `;
             } else {
-                mobileMenuContent.classList.add('hidden');
+                mobileMenuContent.classList.add('translate-x-full');
                 document.body.style.overflow = '';
                 mobileMenuToggle.innerHTML = `
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
