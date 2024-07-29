@@ -2,15 +2,12 @@
 import Particles from "./Particles.astro";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
-import particlesOptions from "../config/particlesOptions"; // Import konfigurace částic
-
+import particlesOptions from "../config/particlesOptions";
 interface Props {
     title: string;
 }
-
 const { title } = Astro.props;
 ---
-
 <!doctype html>
 <html lang="cs">
     <head>
