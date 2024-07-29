@@ -57,38 +57,6 @@ Prázdná složka: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\data
 Prázdná složka: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\layouts
 Prázdná složka: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\pages
 Prázdná složka: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\styles
-Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\components\BlogPost.astro
-==================================================
----
-export interface Props {
-    title: string;
-    slug: string;
-    excerpt: string;
-    date: string;
-    author: string;
-    category: string;
-    image: string;
-}
-
-const { title, slug, excerpt, date, author, category, image } = Astro.props;
----
-
-<article class="blog-post bg-white rounded shadow overflow-hidden transition-transform duration-300 ease-in-out hover:transform hover:-translate-y-1" data-category={category}>
-    <a href={`/blog/${slug}`}>
-        <img src={image} alt={title} class="blog-post-image w-full h-48 object-cover" />
-        <h2 class="text-xl font-bold p-4">{title}</h2>
-    </a>
-    <p class="blog-post-meta flex justify-between px-4 text-sm text-gray-600">
-        <span class="date">{new Date(date).toLocaleDateString('cs-CZ')}</span>
-        <span class="author">Autor: {author}</span>
-        <span class="category">{category}</span>
-    </p>
-    <p class="excerpt px-4 mb-4">{excerpt}</p>
-    <a href={`/blog/${slug}`} class="read-more block px-4 py-2 bg-blue-500 text-white text-center rounded">Číst více</a>
-</article>
-
-==================================================
-
 Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\components\Card.astro
 ==================================================
 ---
@@ -267,40 +235,6 @@ export default particlesOptions;
 
 ==================================================
 
-Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\data\articles.js
-==================================================
-export const articles = [
-    {
-      title: "Článek 1",
-      slug: "clanek-1",
-      excerpt: "Úvod do článku 1...",
-      date: "2023-05-01",
-      author: "Jan Novák",
-      category: "Webdesign",
-      image: "/images/blog/clanek-1.jpg"
-    },
-    {
-      title: "Článek 2",
-      slug: "clanek-2",
-      excerpt: "Úvod do článku 2...",
-      date: "2023-05-15",
-      author: "Jana Nováková",
-      category: "Vývoj aplikací",
-      image: "/images/blog/clanek-2.jpg"
-    },
-    {
-      title: "Článek 3",
-      slug: "clanek-3",
-      excerpt: "Úvod do článku 3...",
-      date: "2023-06-01",
-      author: "Petr Nový",
-      category: "Digitální marketing",
-      image: "/images/blog/clanek-3.jpg"
-    }
-  ];
-
-==================================================
-
 Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\data\projects.js
 ==================================================
 export const projects = [
@@ -385,7 +319,6 @@ import MobileMenu from "./MobileMenu.astro";
                     <li class="mx-3"><a href="/sluzby" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Služby</a></li>
                     <li class="mx-3"><a href="/portfolio" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Portfolio</a></li>
                     <li class="mx-3"><a href="/reference" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Reference</a></li>
-                    <li class="mx-3"><a href="/blog" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Blog</a></li>
                     <li class="mx-3"><a href="/kontakt" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Kontakt</a></li>
                 </ul>
             </div>
@@ -457,7 +390,6 @@ Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\layouts\Mobil
                     <li class="my-6"><a href="/sluzby" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Služby</a></li>
                     <li class="my-6"><a href="/portfolio" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Portfolio</a></li>
                     <li class="my-6"><a href="/reference" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Reference</a></li>
-                    <li class="my-6"><a href="/blog" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Blog</a></li>
                     <li class="my-6"><a href="/kontakt" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Kontakt</a></li>
                 </ul>
             </nav>
@@ -556,83 +488,16 @@ const { id, options, url } = Astro.props as ParticlesProps;
 
 ==================================================
 
-Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\pages\blog.astro
-==================================================
----
-import Layout from '../layouts/Layout.astro';
-import BlogPost from '../components/BlogPost.astro';
-import { articles as posts } from '../data/articles.js'; // Import článků
-
-const categories = ["Všechny", ...new Set(posts.map(post => post.category))];
----
-
-<Layout title="Blog - DigitalFusion">
-    <section class="blog-section py-16">
-        <div class="container mx-auto px-4">
-            <h1 class="text-4xl font-bold text-center mb-8">Nejnovější články</h1>
-            
-            <div class="category-filter flex flex-wrap justify-center mb-8">
-                {categories.map(category => (
-                    <button class="category-btn m-1 px-3 py-1 text-sm bg-gray-200 hover:bg-gray-300 rounded" data-category={category}>{category}</button>
-                ))}
-            </div>
-
-            <div class="blog-grid grid grid-cols-1 md:grid-cols-3 gap-8">
-                {posts.map(post => (
-                    <div class="blog-post bg-white rounded shadow overflow-hidden flex flex-col justify-between" data-category={post.category}>
-                        <BlogPost 
-                            title={post.title}
-                            slug={post.slug}
-                            excerpt={post.excerpt}
-                            date={post.date}
-                            author={post.author}
-                            category={post.category}
-                            image={post.image}
-                        />
-                    </div>
-                ))}
-            </div>
-
-            <nav class="pagination flex justify-between items-center mt-8">
-                <a href="#" class="prev px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">Předchozí</a>
-                <span>Strana 1 z 3</span>
-                <a href="#" class="next px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">Další</a>
-            </nav>
-        </div>
-    </section>
-</Layout>
-
-<script>
-    // Skript pro filtrování článků podle kategorie
-    const categoryButtons = document.querySelectorAll('.category-btn') as NodeListOf<HTMLButtonElement>;
-    const blogPosts = document.querySelectorAll('.blog-post') as NodeListOf<HTMLElement>;
-
-    categoryButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const category = button.dataset.category;
-            blogPosts.forEach(post => {
-                if (category === 'Všechny' || post.dataset.category === category) {
-                    post.style.display = 'block';
-                } else {
-                    post.style.display = 'none';
-                }
-            });
-        });
-    });
-</script>
-
-==================================================
-
 Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\pages\index.astro
 ==================================================
 ---
 import Layout from '../layouts/Layout.astro';
 import ClientLogos from '../components/ClientLogos.astro';
 import { projects } from '../data/projects.js';
-import { articles } from '../data/articles.js';
+
 import Hero from '../components/Hero.astro';
 const latestProjects = projects.slice(0, 3);
-const latestArticles = articles.slice(0, 3);
+
 ---
 <Layout title="DigitalFusion - Vaše digitální řešení">
     <Hero 
@@ -696,22 +561,6 @@ const latestArticles = articles.slice(0, 3);
         </div>
     </section>
     <ClientLogos />
-    <section id="blog-preview" class="py-16">
-        <h2 class="text-3xl font-bold text-center mb-8">Nejnovější články</h2>
-        <div class="article-grid grid grid-cols-1 md:grid-cols-3 gap-8">
-            {latestArticles.map(article => (
-                <div class="article-card border border-white rounded overflow-hidden">
-                    <img src={article.image} alt={article.title} class="w-full h-48 object-cover" />
-                    <h2 class="text-xl font-bold p-4">{article.title}</h2>
-                    <p class="px-4">{article.excerpt}</p>
-                    <a href={`/blog/${article.slug}`} class="view-details block px-4 py-2 bg-white text-black text-center rounded mt-4 hover:bg-gray-200 transition-colors">Číst více</a>
-                </div>
-            ))}
-        </div>
-        <div class="text-center mt-8">
-            <a href="/blog" class="btn inline-block px-6 py-2 bg-white text-black rounded hover:bg-gray-200 transition duration-300">Číst více</a>
-        </div>
-    </section>
     <section id="contact-cta" class="py-16 text-center">
         <h2 class="text-3xl font-bold mb-4">Připraveni začít?</h2>
         <p class="mt-4 mb-6">Kontaktujte nás a společně vytvoříme vaše digitální řešení.</p>
