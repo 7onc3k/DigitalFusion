@@ -1,9 +1,15 @@
 ---
-
+export interface Props {
+    title: string;
+    subtitle: string;
+    ctaText: string;
+}
+const { title, subtitle, ctaText } = Astro.props;
 ---
-
-<section>
-    <div class="hero-container">
-        <h1>Hero Section</h1>
+<section class="hero-section h-screen flex items-center justify-center text-center">
+    <div class="hero-content">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">{title}</h1>
+        <p class="text-xl md:text-2xl mb-8">{subtitle}</p>
+        <a href="/kontakt" class="cta-button inline-block px-8 py-3 bg-white text-black rounded-full font-bold text-lg hover:bg-gray-200 transition duration-300">{ctaText}</a>
     </div>
 </section>

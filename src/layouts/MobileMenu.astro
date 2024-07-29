@@ -1,54 +1,61 @@
 ---
 ---
-<div class="md:hidden">
-    <button id="mobile-menu-toggle" class="text-white focus:outline-none z-50">
+<div class="md:hidden z-50">
+    <button id="mobile-menu-toggle" class="text-white focus:outline-none relative z-50">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
     </button>
-    <div id="mobile-menu-content" class="fixed inset-0 w-full h-full bg-gray-800 bg-opacity-95 z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex items-center justify-center">
-        <nav class="text-center">
-            <ul>
-                <li class="my-6"><a href="/" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Domů</a></li>
-                <li class="my-6"><a href="/o-nas" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">O nás</a></li>
-                <li class="my-6"><a href="/sluzby" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Služby</a></li>
-                <li class="my-6"><a href="/portfolio" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Portfolio</a></li>
-                <li class="my-6"><a href="/reference" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Reference</a></li>
-                <li class="my-6"><a href="/blog" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Blog</a></li>
-                <li class="my-6"><a href="/kontakt" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Kontakt</a></li>
-            </ul>
-        </nav>
+    <div id="mobile-menu-content" class="fixed inset-0 w-full h-full bg-gray-800 bg-opacity-95 z-40 transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="relative w-full h-full flex items-center justify-center">
+            <nav class="text-center">
+                <ul>
+                    <li class="my-6"><a href="/" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Domů</a></li>
+                    <li class="my-6"><a href="/o-nas" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">O nás</a></li>
+                    <li class="my-6"><a href="/sluzby" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Služby</a></li>
+                    <li class="my-6"><a href="/portfolio" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Portfolio</a></li>
+                    <li class="my-6"><a href="/reference" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Reference</a></li>
+                    <li class="my-6"><a href="/blog" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Blog</a></li>
+                    <li class="my-6"><a href="/kontakt" class="text-white text-2xl hover:text-blue-300 transition-colors duration-300">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </div>
 <script>
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenuContent = document.getElementById('mobile-menu-content');
     let isOpen = false;
-    if (mobileMenuToggle && mobileMenuContent) {
-        mobileMenuToggle.addEventListener('click', () => {
-            isOpen = !isOpen;
+    function toggleMenu() {
+        isOpen = !isOpen;
+        if (mobileMenuContent) {
             if (isOpen) {
                 mobileMenuContent.classList.remove('translate-x-full');
                 document.body.style.overflow = 'hidden';
-                mobileMenuToggle.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                `;
             } else {
                 mobileMenuContent.classList.add('translate-x-full');
                 document.body.style.overflow = '';
-                mobileMenuToggle.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                `;
             }
-        });
+        }
+        updateMenuIcon();
+    }
+    function updateMenuIcon() {
+        if (mobileMenuToggle) {
+            mobileMenuToggle.innerHTML = isOpen
+                ? `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                   </svg>`
+                : `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                   </svg>`;
+        }
+    }
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', toggleMenu);
     }
 </script>

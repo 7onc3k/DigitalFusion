@@ -1,27 +1,28 @@
-<footer class="bg-gray-800 text-white p-4">
+<footer class="bg-transparent text-white p-4 border-t border-white">
     <div class="footer-content grid grid-cols-1 md:grid-cols-3 gap-4">
         <div class="footer-section">
             <h3 class="text-lg font-bold">Rychlé odkazy</h3>
             <ul>
-                <li><a href="/" class="hover:underline">Domů</a></li>
-                <li><a href="/o-nas" class="hover:underline">O nás</a></li>
-                <li><a href="/sluzby" class="hover:underline">Služby</a></li>
-                <li><a href="/kontakt" class="hover:underline">Kontakt</a></li>
+                <li><a href="/" class="hover:text-gray-300">Domů</a></li>
+                <li><a href="/o-nas" class="hover:text-gray-300">O nás</a></li>
+                <li><a href="/sluzby" class="hover:text-gray-300">Služby</a></li>
+                <li><a href="/kontakt" class="hover:text-gray-300">Kontakt</a></li>
             </ul>
         </div>
         <div class="footer-section">
             <h3 class="text-lg font-bold">Sledujte nás</h3>
-            <div class="social-icons flex space-x-4">
-                <a href="#" class="social-icon">FB</a>
-                <a href="#" class="social-icon">IN</a>
-                <a href="#" class="social-icon">TW</a>
+            <div class="social-icons flex space-x-4 mt-2">
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-facebook text-2xl"></i></a>
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-twitter text-2xl"></i></a>
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-linkedin text-2xl"></i></a>
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-instagram text-2xl"></i></a>
             </div>
         </div>
         <div class="footer-section">
             <h3 class="text-lg font-bold">Newsletter</h3>
             <form class="newsletter-form flex flex-col space-y-2">
-                <input type="email" placeholder="Váš e-mail" required class="p-2 rounded border border-gray-300">
-                <button type="submit" class="p-2 bg-blue-500 text-white rounded">Odebírat</button>
+                <input type="email" placeholder="Váš e-mail" required class="p-2 rounded bg-transparent border border-white text-white">
+                <button type="submit" class="p-2 bg-white text-black rounded hover:bg-gray-200 transition-colors">Odebírat</button>
             </form>
         </div>
     </div>
