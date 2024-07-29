@@ -1,0 +1,40 @@
+---
+---
+<div class="mobile-menu">
+    <button id="mobile-menu-toggle" class="text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+    </button>
+    <div id="mobile-menu-content" class="hidden fixed inset-0 bg-gray-800 bg-opacity-95 z-50">
+        <div class="flex justify-end p-4">
+            <button id="mobile-menu-close" class="text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <ul class="flex flex-col items-center justify-center h-full">
+            <li class="my-3"><a href="/" class="text-white text-xl hover:text-blue-300 transition-colors duration-300">Domů</a></li>
+            <li class="my-3"><a href="/o-nas" class="text-white text-xl hover:text-blue-300 transition-colors duration-300">O nás</a></li>
+            <li class="my-3"><a href="/sluzby" class="text-white text-xl hover:text-blue-300 transition-colors duration-300">Služby</a></li>
+            <li class="my-3"><a href="/portfolio" class="text-white text-xl hover:text-blue-300 transition-colors duration-300">Portfolio</a></li>
+            <li class="my-3"><a href="/reference" class="text-white text-xl hover:text-blue-300 transition-colors duration-300">Reference</a></li>
+            <li class="my-3"><a href="/blog" class="text-white text-xl hover:text-blue-300 transition-colors duration-300">Blog</a></li>
+            <li class="my-3"><a href="/kontakt" class="text-white text-xl hover:text-blue-300 transition-colors duration-300">Kontakt</a></li>
+        </ul>
+    </div>
+</div>
+<script>
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenuContent = document.getElementById('mobile-menu-content');
+    if (mobileMenuToggle && mobileMenuClose && mobileMenuContent) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuContent.classList.remove('hidden');
+        });
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenuContent.classList.add('hidden');
+        });
+    }
+</script>

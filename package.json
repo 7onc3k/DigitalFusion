@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.7.0",
     "@astrojs/solid-js": "^4.4.0",
     "@astrojs/tailwind": "^5.1.0",
+    "@iconify-json/mdi": "^1.1.67",
     "astro": "^4.11.0",
     "astro-icon": "^1.1.0",
     "astro-particles": "^2.10.0",
