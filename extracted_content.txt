@@ -119,21 +119,20 @@ Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\components\Cl
 ==================================================
 ---
 const clients = [
-	{ name: "Klient 1", logo: "/images/clients/client1.png" },
-	{ name: "Klient 2", logo: "/images/clients/client2.png" },
-	{ name: "Klient 3", logo: "/images/clients/client3.png" },
-	{ name: "Klient 4", logo: "/images/clients/client4.png" },
-	{ name: "Klient 5", logo: "/images/clients/client5.png" }
+    { name: "Klient 1", logo: "/images/clients/client1.png" },
+    { name: "Klient 2", logo: "/images/clients/client2.png" },
+    { name: "Klient 3", logo: "/images/clients/client3.png" },
+    { name: "Klient 4", logo: "/images/clients/client4.png" },
+    { name: "Klient 5", logo: "/images/clients/client5.png" }
 ];
 ---
-
-<section id="client-logos" class="section py-16">
-	<h2 class="text-3xl font-bold text-center">Naši klienti</h2>
-	<div class="logo-grid flex justify-around items-center flex-wrap mt-8">
-		{clients.map(client => (
-			<img src={client.logo} alt={client.name} class="client-logo max-w-[150px] max-h-[80px] m-5 filter grayscale transition-filter duration-300 ease-in-out hover:filter-none" />
-		))}
-	</div>
+<section id="client-logos" class="py-16">
+    <h2 class="text-3xl font-bold text-center mb-8">Naši klienti</h2>
+    <div class="logo-grid flex justify-around items-center flex-wrap mt-8">
+        {clients.map(client => (
+            <img src={client.logo} alt={client.name} class="client-logo max-w-[150px] max-h-[80px] m-5 filter invert transition-filter duration-300 ease-in-out hover:filter-none" />
+        ))}
+    </div>
 </section>
 
 ==================================================
@@ -141,15 +140,20 @@ const clients = [
 Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\components\Hero.astro
 ==================================================
 ---
-
+export interface Props {
+    title: string;
+    subtitle: string;
+    ctaText: string;
+}
+const { title, subtitle, ctaText } = Astro.props;
 ---
-
-<section>
-    <div class="hero-container">
-        <h1>Hero Section</h1>
+<section class="hero-section h-screen flex items-center justify-center text-center">
+    <div class="hero-content">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">{title}</h1>
+        <p class="text-xl md:text-2xl mb-8">{subtitle}</p>
+        <a href="/kontakt" class="cta-button inline-block px-8 py-3 bg-white text-black rounded-full font-bold text-lg hover:bg-gray-200 transition duration-300">{ctaText}</a>
     </div>
 </section>
-
 
 ==================================================
 
@@ -330,30 +334,31 @@ export const projects = [
 
 Obsah souboru: C:\Users\thanh\Downloads\Programy\DigitalFusion\src\layouts\Footer.astro
 ==================================================
-<footer class="bg-gray-800 text-white p-4">
+<footer class="bg-transparent text-white p-4 border-t border-white">
     <div class="footer-content grid grid-cols-1 md:grid-cols-3 gap-4">
         <div class="footer-section">
             <h3 class="text-lg font-bold">Rychlé odkazy</h3>
             <ul>
-                <li><a href="/" class="hover:underline">Domů</a></li>
-                <li><a href="/o-nas" class="hover:underline">O nás</a></li>
-                <li><a href="/sluzby" class="hover:underline">Služby</a></li>
-                <li><a href="/kontakt" class="hover:underline">Kontakt</a></li>
+                <li><a href="/" class="hover:text-gray-300">Domů</a></li>
+                <li><a href="/o-nas" class="hover:text-gray-300">O nás</a></li>
+                <li><a href="/sluzby" class="hover:text-gray-300">Služby</a></li>
+                <li><a href="/kontakt" class="hover:text-gray-300">Kontakt</a></li>
             </ul>
         </div>
         <div class="footer-section">
             <h3 class="text-lg font-bold">Sledujte nás</h3>
-            <div class="social-icons flex space-x-4">
-                <a href="#" class="social-icon">FB</a>
-                <a href="#" class="social-icon">IN</a>
-                <a href="#" class="social-icon">TW</a>
+            <div class="social-icons flex space-x-4 mt-2">
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-facebook text-2xl"></i></a>
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-twitter text-2xl"></i></a>
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-linkedin text-2xl"></i></a>
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-instagram text-2xl"></i></a>
             </div>
         </div>
         <div class="footer-section">
             <h3 class="text-lg font-bold">Newsletter</h3>
             <form class="newsletter-form flex flex-col space-y-2">
-                <input type="email" placeholder="Váš e-mail" required class="p-2 rounded border border-gray-300">
-                <button type="submit" class="p-2 bg-blue-500 text-white rounded">Odebírat</button>
+                <input type="email" placeholder="Váš e-mail" required class="p-2 rounded bg-transparent border border-white text-white">
+                <button type="submit" class="p-2 bg-white text-black rounded hover:bg-gray-200 transition-colors">Odebírat</button>
             </form>
         </div>
     </div>
@@ -375,13 +380,13 @@ import MobileMenu from "./MobileMenu.astro";
             <div class="logo text-2xl md:text-3xl font-bold tracking-wider z-50">DigitalFusion</div>
             <div class="hidden md:block">
                 <ul class="flex items-center">
-                    <li class="mx-3"><a href="/" class="hover:text-blue-300 transition-colors duration-300 text-sm uppercase tracking-wider">Domů</a></li>
-                    <li class="mx-3"><a href="/o-nas" class="hover:text-blue-300 transition-colors duration-300 text-sm uppercase tracking-wider">O nás</a></li>
-                    <li class="mx-3"><a href="/sluzby" class="hover:text-blue-300 transition-colors duration-300 text-sm uppercase tracking-wider">Služby</a></li>
-                    <li class="mx-3"><a href="/portfolio" class="hover:text-blue-300 transition-colors duration-300 text-sm uppercase tracking-wider">Portfolio</a></li>
-                    <li class="mx-3"><a href="/reference" class="hover:text-blue-300 transition-colors duration-300 text-sm uppercase tracking-wider">Reference</a></li>
-                    <li class="mx-3"><a href="/blog" class="hover:text-blue-300 transition-colors duration-300 text-sm uppercase tracking-wider">Blog</a></li>
-                    <li class="mx-3"><a href="/kontakt" class="hover:text-blue-300 transition-colors duration-300 text-sm uppercase tracking-wider">Kontakt</a></li>
+                    <li class="mx-3"><a href="/" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Domů</a></li>
+                    <li class="mx-3"><a href="/o-nas" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">O nás</a></li>
+                    <li class="mx-3"><a href="/sluzby" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Služby</a></li>
+                    <li class="mx-3"><a href="/portfolio" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Portfolio</a></li>
+                    <li class="mx-3"><a href="/reference" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Reference</a></li>
+                    <li class="mx-3"><a href="/blog" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Blog</a></li>
+                    <li class="mx-3"><a href="/kontakt" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Kontakt</a></li>
                 </ul>
             </div>
             <MobileMenu />
@@ -415,13 +420,13 @@ const { title } = Astro.props;
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
     </head>
-    <body class="flex flex-col min-h-screen relative">
+    <body class="flex flex-col min-h-screen bg-black text-white">
         <div class="absolute inset-0 z-0">
             <Particles id="tsparticles" options={particlesOptions} />
         </div>
         <div class="relative z-10 flex flex-col min-h-screen">
             <Header />
-            <main class="flex-grow">
+            <main class="flex-grow container mx-auto px-4 py-8">
                 <slot />
             </main>
             <Footer />
@@ -626,108 +631,91 @@ import ClientLogos from '../components/ClientLogos.astro';
 import { projects } from '../data/projects.js';
 import { articles } from '../data/articles.js';
 import Hero from '../components/Hero.astro';
-
 const latestProjects = projects.slice(0, 3);
 const latestArticles = articles.slice(0, 3);
 ---
-
 <Layout title="DigitalFusion - Vaše digitální řešení">
     <Hero 
         title="DigitalFusion: Vaše digitální transformace začíná zde"
         subtitle="Inovativní řešení pro moderní podniky"
         ctaText="Kontaktujte nás"
     />
-
-    <section id="about-preview" class="section py-16 container mx-auto px-4">
+    <section id="about-preview" class="py-16">
         <h2 class="text-3xl font-bold text-center mb-8">O nás</h2>
         <div class="about-content flex flex-col md:flex-row justify-between items-center">
             <div class="about-text flex-1 md:pr-8 mb-4 md:mb-0 text-center md:text-left">
                 <p>Jsme tým expertů na digitální technologie, připraveni posunout vaše podnikání do budoucnosti.</p>
-                <a href="/o-nas" class="btn inline-block mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300">Zjistěte více</a>
+                <a href="/o-nas" class="btn inline-block mt-4 px-6 py-2 bg-white text-black rounded hover:bg-gray-200 transition duration-300">Zjistěte více</a>
             </div>
             <div class="about-image flex-1">
-                <!-- Zde můžete přidat obrázek, pokud ho máte -->
                 <img src="/cesta/k/obrazku.jpg" alt="O nás" class="w-full rounded-lg shadow-lg" />
             </div>
         </div>
     </section>
-
-    <section id="services-preview" class="section py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Naše služby</h2>
-            <ul class="services-list flex flex-col md:flex-row justify-between mt-8 space-y-4 md:space-y-0 md:space-x-4">
-                <li class="flex-1 text-center p-4">
-                    <i class="fas fa-laptop-code text-4xl"></i>
-                    <h3 class="text-xl font-bold mt-4">Webový design</h3>
-                    <p class="mt-2">Moderní a responzivní webové stránky</p>
-                </li>
-                <li class="flex-1 text-center p-4">
-                    <i class="fas fa-mobile-alt text-4xl"></i>
-                    <h3 class="text-xl font-bold mt-4">Vývoj aplikací</h3>
-                    <p class="mt-2">Mobilní a webové aplikace na míru</p>
-                </li>
-                <li class="flex-1 text-center p-4">
-                    <i class="fas fa-chart-line text-4xl"></i>
-                    <h3 class="text-xl font-bold mt-4">Digitální marketing</h3>
-                    <p class="mt-2">Efektivní online marketingové strategie</p>
-                </li>
-            </ul>
-            <div class="text-center mt-8">
-                <a href="/sluzby" class="btn inline-block px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300">Všechny služby</a>
-            </div>
+    <section id="services-preview" class="py-16">
+        <h2 class="text-3xl font-bold text-center mb-8">Naše služby</h2>
+        <ul class="services-list flex flex-col md:flex-row justify-between mt-8 space-y-4 md:space-y-0 md:space-x-4">
+            <li class="flex-1 text-center p-4 border border-white rounded">
+                <i class="fas fa-laptop-code text-4xl mb-4"></i>
+                <h3 class="text-xl font-bold">Webový design</h3>
+                <p class="mt-2">Moderní a responzivní webové stránky</p>
+            </li>
+            <li class="flex-1 text-center p-4 border border-white rounded">
+                <i class="fas fa-mobile-alt text-4xl mb-4"></i>
+                <h3 class="text-xl font-bold">Vývoj aplikací</h3>
+                <p class="mt-2">Mobilní a webové aplikace na míru</p>
+            </li>
+            <li class="flex-1 text-center p-4 border border-white rounded">
+                <i class="fas fa-chart-line text-4xl mb-4"></i>
+                <h3 class="text-xl font-bold">Digitální marketing</h3>
+                <p class="mt-2">Efektivní online marketingové strategie</p>
+            </li>
+        </ul>
+        <div class="text-center mt-8">
+            <a href="/sluzby" class="btn inline-block px-6 py-2 bg-white text-black rounded hover:bg-gray-200 transition duration-300">Všechny služby</a>
         </div>
     </section>
-
-    <section id="latest-projects" class="section py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Nejnovější projekty</h2>
-            <div class="project-grid grid grid-cols-1 md:grid-cols-3 gap-8">
-                {latestProjects.map(project => (
-                    <div class="project-card bg-white rounded shadow overflow-hidden flex flex-col justify-between" data-category={project.category}>
-                        <div>
-                            <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
-                            <h2 class="text-xl font-bold p-4">{project.title}</h2>
-                            <p class="px-4">{project.description}</p>
-                            <div class="technologies flex flex-wrap p-4">
-                                {project.technologies.map(tech => (
-                                    <span class="tech-tag bg-blue-500 text-white px-2 py-1 rounded mr-2 mb-2 text-sm">{tech}</span>
-                                ))}
-                            </div>
+    <section id="latest-projects" class="py-16">
+        <h2 class="text-3xl font-bold text-center mb-8">Nejnovější projekty</h2>
+        <div class="project-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+            {latestProjects.map(project => (
+                <div class="project-card border border-white rounded overflow-hidden flex flex-col justify-between" data-category={project.category}>
+                    <div>
+                        <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
+                        <h2 class="text-xl font-bold p-4">{project.title}</h2>
+                        <p class="px-4">{project.description}</p>
+                        <div class="technologies flex flex-wrap p-4">
+                            {project.technologies.map(tech => (
+                                <span class="tech-tag bg-white text-black px-2 py-1 rounded mr-2 mb-2 text-sm">{tech}</span>
+                            ))}
                         </div>
-                        <a href={`/portfolio/${project.id}`} class="view-details block px-4 py-2 bg-blue-500 text-white text-center rounded mt-auto">Zobrazit detaily</a>
                     </div>
-                ))}
-            </div>
+                    <a href={`/portfolio/${project.id}`} class="view-details block px-4 py-2 bg-white text-black text-center rounded mt-auto hover:bg-gray-200 transition-colors">Zobrazit detaily</a>
+                </div>
+            ))}
         </div>
     </section>
-
     <ClientLogos />
-
-    <section id="blog-preview" class="section py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Nejnovější články</h2>
-            <div class="article-grid grid grid-cols-1 md:grid-cols-3 gap-8">
-                {latestArticles.map(article => (
-                    <div class="article-card bg-white rounded shadow overflow-hidden">
-                        <img src={article.image} alt={article.title} class="w-full h-48 object-cover" />
-                        <h2 class="text-xl font-bold p-4">{article.title}</h2>
-                        <p class="px-4">{article.excerpt}</p>
-                        <a href={`/blog/${article.slug}`} class="view-details block px-4 py-2 bg-blue-500 text-white text-center rounded">Číst více</a>
-                    </div>
-                ))}
-            </div>
-            <div class="text-center mt-8">
-                <a href="/blog" class="btn inline-block px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300">Číst více</a>
-            </div>
+    <section id="blog-preview" class="py-16">
+        <h2 class="text-3xl font-bold text-center mb-8">Nejnovější články</h2>
+        <div class="article-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+            {latestArticles.map(article => (
+                <div class="article-card border border-white rounded overflow-hidden">
+                    <img src={article.image} alt={article.title} class="w-full h-48 object-cover" />
+                    <h2 class="text-xl font-bold p-4">{article.title}</h2>
+                    <p class="px-4">{article.excerpt}</p>
+                    <a href={`/blog/${article.slug}`} class="view-details block px-4 py-2 bg-white text-black text-center rounded mt-4 hover:bg-gray-200 transition-colors">Číst více</a>
+                </div>
+            ))}
+        </div>
+        <div class="text-center mt-8">
+            <a href="/blog" class="btn inline-block px-6 py-2 bg-white text-black rounded hover:bg-gray-200 transition duration-300">Číst více</a>
         </div>
     </section>
-
-    <section id="contact-cta" class="section py-16 text-center bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-4">Připraveni začít?</h2>
-            <p class="mt-4 mb-6">Kontaktujte nás a společně vytvoříme vaše digitální řešení.</p>
-            <a href="/kontakt" class="cta-button inline-block px-6 py-3 bg-orange-500 text-white rounded font-bold hover:bg-orange-600 transition duration-300">Začněte projekt</a>
-        </div>
+    <section id="contact-cta" class="py-16 text-center">
+        <h2 class="text-3xl font-bold mb-4">Připraveni začít?</h2>
+        <p class="mt-4 mb-6">Kontaktujte nás a společně vytvoříme vaše digitální řešení.</p>
+        <a href="/kontakt" class="cta-button inline-block px-6 py-3 bg-white text-black rounded font-bold hover:bg-gray-200 transition duration-300">Začněte projekt</a>
     </section>
 </Layout>
 

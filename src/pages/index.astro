@@ -2,10 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import ClientLogos from '../components/ClientLogos.astro';
 import { projects } from '../data/projects.js';
-import { articles } from '../data/articles.js';
+
 import Hero from '../components/Hero.astro';
 const latestProjects = projects.slice(0, 3);
-const latestArticles = articles.slice(0, 3);
+
 ---
 <Layout title="DigitalFusion - Vaše digitální řešení">
     <Hero 
@@ -69,22 +69,6 @@ const latestArticles = articles.slice(0, 3);
         </div>
     </section>
     <ClientLogos />
-    <section id="blog-preview" class="py-16">
-        <h2 class="text-3xl font-bold text-center mb-8">Nejnovější články</h2>
-        <div class="article-grid grid grid-cols-1 md:grid-cols-3 gap-8">
-            {latestArticles.map(article => (
-                <div class="article-card border border-white rounded overflow-hidden">
-                    <img src={article.image} alt={article.title} class="w-full h-48 object-cover" />
-                    <h2 class="text-xl font-bold p-4">{article.title}</h2>
-                    <p class="px-4">{article.excerpt}</p>
-                    <a href={`/blog/${article.slug}`} class="view-details block px-4 py-2 bg-white text-black text-center rounded mt-4 hover:bg-gray-200 transition-colors">Číst více</a>
-                </div>
-            ))}
-        </div>
-        <div class="text-center mt-8">
-            <a href="/blog" class="btn inline-block px-6 py-2 bg-white text-black rounded hover:bg-gray-200 transition duration-300">Číst více</a>
-        </div>
-    </section>
     <section id="contact-cta" class="py-16 text-center">
         <h2 class="text-3xl font-bold mb-4">Připraveni začít?</h2>
         <p class="mt-4 mb-6">Kontaktujte nás a společně vytvoříme vaše digitální řešení.</p>
