@@ -4,8 +4,8 @@
             <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
     </button>
-    <div id="mobile-menu-content" class="absolute left-0 right-0 overflow-hidden transition-all duration-300 ease-in-out bg-gray-800 bg-opacity-50 rounded-b-3xl" style="top: 100%; max-height: 0;">
-        <nav class="text-center py-4 px-6 rounded-b-3xl bg-gray-800 bg-opacity-50">
+    <div id="mobile-menu-content" class="absolute left-0 right-0 overflow-hidden transition-all duration-300 ease-in-out rounded-b-3xl" style="top: 100%; max-height: 0;">
+        <nav class="text-center py-4 px-6">
             <ul>
                 <li class="my-3"><a href="/" class="text-white text-xl hover:text-blue-300 transition-colors duration-300">Domů</a></li>
                 <li class="my-3"><a href="/o-nas" class="text-white text-xl hover:text-blue-300 transition-colors duration-300">O nás</a></li>
@@ -16,33 +16,26 @@
         </nav>
     </div>
 </div>
-
 <script>
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenuContent = document.getElementById('mobile-menu-content');
-    const header = document.querySelector('header'); // Předpokládáme, že hlavička má tag <header>
+    const header = document.getElementById('main-header');
     const arrowIcon = mobileMenuToggle?.querySelector('svg');
     let isOpen = false;
-
     function toggleMenu() {
         isOpen = !isOpen;
-        if (mobileMenuContent) {
+        if (mobileMenuContent && header) {
             if (isOpen) {
                 mobileMenuContent.style.maxHeight = `${mobileMenuContent.scrollHeight}px`;
-                mobileMenuContent.classList.add('bg-opacity-95');
-                mobileMenuContent.classList.remove('bg-opacity-0');
-                header?.classList.add('scrolled');
+                header.classList.add('menu-open');
                 arrowIcon?.classList.add('rotate-180');
             } else {
                 mobileMenuContent.style.maxHeight = '0';
-                mobileMenuContent.classList.remove('bg-opacity-95');
-                mobileMenuContent.classList.add('bg-opacity-0');
-                header?.classList.remove('scrolled');
+                header.classList.remove('menu-open');
                 arrowIcon?.classList.remove('rotate-180');
             }
         }
     }
-
     if (mobileMenuToggle) {
         mobileMenuToggle.addEventListener('click', toggleMenu);
     }
