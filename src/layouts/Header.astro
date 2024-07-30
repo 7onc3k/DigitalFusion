@@ -1,20 +1,50 @@
 ---
 import MobileMenu from "./MobileMenu.astro";
 ---
-<header class="fixed top-0 left-0 right-0 z-50 bg-transparent text-white pt-8 md:pt-12">
-    <div class="container mx-auto px-6">
-        <nav class="flex justify-between items-center relative">
+<header id="main-header" class="fixed top-8 left-12 right-12 z-50 transition-all duration-300 ease-in-out">
+    <div class="header-background absolute inset-0 rounded-3xl transition-all duration-300 ease-in-out"></div>
+    <div class="container mx-auto px-8 relative z-10">
+        <nav class="flex justify-between items-center py-4">
             <div class="logo text-2xl md:text-3xl font-bold tracking-wider z-50">DigitalFusion</div>
             <div class="hidden md:block">
                 <ul class="flex items-center">
-                    <li class="mx-3"><a href="/" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Domů</a></li>
-                    <li class="mx-3"><a href="/o-nas" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">O nás</a></li>
-                    <li class="mx-3"><a href="/sluzby" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Služby</a></li>
-                    <li class="mx-3"><a href="/portfolio" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Portfolio</a></li>
-                    <li class="mx-3"><a href="/kontakt" class="hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Kontakt</a></li>
+                    <li class="mx-3"><a href="/" class="nav-link hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Domů</a></li>
+                    <li class="mx-3"><a href="/o-nas" class="nav-link hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">O nás</a></li>
+                    <li class="mx-3"><a href="/sluzby" class="nav-link hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Služby</a></li>
+                    <li class="mx-3"><a href="/portfolio" class="nav-link hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Portfolio</a></li>
+                    <li class="mx-3"><a href="/kontakt" class="nav-link hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">Kontakt</a></li>
                 </ul>
             </div>
             <MobileMenu />
         </nav>
     </div>
 </header>
+<style>
+    #main-header {
+        background-color: transparent;
+    }
+    .header-background {
+        background-color: rgba(128, 128, 128, 0);
+        backdrop-filter: blur(10px);
+        opacity: 1;
+    }
+    #main-header.scrolled .header-background {
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+    #main-header.scrolled .nav-link,
+    #main-header.scrolled .logo {
+        color: #000;
+    }
+</style>
+<script>
+    const header = document.getElementById('main-header');
+    const scrollThreshold = 50;
+    function handleScroll() {
+        if (window.scrollY > scrollThreshold) {
+            header?.classList.add('scrolled');
+        } else {
+            header?.classList.remove('scrolled');
+        }
+    }
+    window.addEventListener('scroll', handleScroll);
+</script>
