@@ -1,10 +1,10 @@
 ---
 import MobileMenu from "./MobileMenu.astro";
 ---
-<header id="main-header" class="fixed top-8 left-12 right-12 z-50 transition-all duration-300 ease-in-out">
+<header id="main-header" class="fixed top-8 left-6 right-6 z-50 transition-all duration-300 ease-in-out">
     <div class="header-background absolute inset-0 rounded-3xl transition-all duration-300 ease-in-out"></div>
-    <div class="container mx-auto px-8 relative z-10">
-        <nav class="flex justify-between items-center py-4">
+    <div class="relative z-10">
+        <nav class="flex justify-between items-center py-4 px-6">
             <div class="logo text-2xl md:text-3xl font-bold tracking-wider z-50">DigitalFusion</div>
             <div class="hidden md:block">
                 <ul class="flex items-center">
@@ -24,12 +24,12 @@ import MobileMenu from "./MobileMenu.astro";
         background-color: transparent;
     }
     .header-background {
-        background-color: rgba(128, 128, 128, 0);
+        background-color: rgba(128, 128, 128, 0.1);
         backdrop-filter: blur(10px);
         opacity: 1;
     }
     #main-header.scrolled .header-background {
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(255, 255, 255, 0.8);
     }
     #main-header.scrolled .nav-link,
     #main-header.scrolled .logo {
