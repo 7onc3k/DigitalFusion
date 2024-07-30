@@ -1,9 +1,9 @@
 ---
 import MobileMenu from "./MobileMenu.astro";
 ---
-<header id="main-header" class="fixed top-8 left-6 right-6 md:top-12 md:left-12 md:right-12 z-50 transition-all duration-300 ease-in-out">
+<div id="header-container" class="fixed top-8 left-6 right-6 md:top-12 md:left-12 md:right-12 z-50 transition-all duration-300 ease-in-out">
     <div class="header-background absolute inset-0 rounded-3xl transition-all duration-300 ease-in-out"></div>
-    <div class="relative z-10">
+    <header id="main-header" class="relative z-10">
         <nav class="flex justify-between items-center py-4 px-6">
             <div class="logo text-2xl md:text-3xl font-bold tracking-wider z-50">DigitalFusion</div>
             <div class="hidden md:block">
@@ -17,37 +17,37 @@ import MobileMenu from "./MobileMenu.astro";
             </div>
             <MobileMenu />
         </nav>
-    </div>
-</header>
+    </header>
+</div>
 <style>
-    #main-header {
+    #header-container {
         background-color: transparent;
+        transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out;
     }
     .header-background {
         background-color: rgba(255, 255, 255, 0);
         opacity: 1;
     }
-    #main-header.scrolled .header-background {
+    #header-container.scrolled .header-background,
+    #header-container.menu-open .header-background {
         background-color: rgba(255, 255, 255, 0.5);
         backdrop-filter: blur(10px);
     }
-    #main-header.scrolled .nav-link,
-    #main-header.scrolled .logo {
+    #header-container.scrolled .nav-link,
+    #header-container.scrolled .logo,
+    #header-container.menu-open .nav-link,
+    #header-container.menu-open .logo {
         color: #000;
-    }
-    #main-header.menu-open .header-background {
-        background-color: rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(10px);
     }
 </style>
 <script>
-    const header = document.getElementById('main-header');
+    const headerContainer = document.getElementById('header-container');
     const scrollThreshold = 50;
     function handleScroll() {
         if (window.scrollY > scrollThreshold) {
-            header?.classList.add('scrolled');
+            headerContainer?.classList.add('scrolled');
         } else {
-            header?.classList.remove('scrolled');
+            headerContainer?.classList.remove('scrolled');
         }
     }
     window.addEventListener('scroll', handleScroll);
