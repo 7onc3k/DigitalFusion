@@ -1,7 +1,7 @@
 ---
 import MobileMenu from "./MobileMenu.astro";
 ---
-<header id="main-header" class="fixed top-8 left-6 right-6 z-50 transition-all duration-300 ease-in-out">
+<header id="main-header" class="fixed top-8 left-6 right-6 md:top-12 md:left-12 md:right-12 z-50 transition-all duration-300 ease-in-out">
     <div class="header-background absolute inset-0 rounded-3xl transition-all duration-300 ease-in-out"></div>
     <div class="relative z-10">
         <nav class="flex justify-between items-center py-4 px-6">
@@ -24,12 +24,13 @@ import MobileMenu from "./MobileMenu.astro";
         background-color: transparent;
     }
     .header-background {
-        background-color: rgba(128, 128, 128, 0.1);
-        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0);
+        
         opacity: 1;
     }
     #main-header.scrolled .header-background {
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(10px);
     }
     #main-header.scrolled .nav-link,
     #main-header.scrolled .logo {
