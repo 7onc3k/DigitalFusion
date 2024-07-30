@@ -1,13 +1,11 @@
----
----
 <div class="md:hidden">
     <button id="mobile-menu-toggle" class="text-white focus:outline-none relative z-50">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 transform transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
     </button>
-    <div id="mobile-menu-content" class="absolute left-0 right-0 overflow-hidden transition-all duration-300 ease-in-out bg-gray-800 bg-opacity-95" style="top: 100%; max-height: 0;">
-        <nav class="text-center py-4">
+    <div id="mobile-menu-content" class="absolute left-0 right-0 overflow-hidden transition-all duration-300 ease-in-out bg-gray-800 bg-opacity-50 rounded-b-3xl" style="top: 100%; max-height: 0;">
+        <nav class="text-center py-4 px-6 rounded-b-3xl bg-gray-800 bg-opacity-50">
             <ul>
                 <li class="my-3"><a href="/" class="text-white text-xl hover:text-blue-300 transition-colors duration-300">Domů</a></li>
                 <li class="my-3"><a href="/o-nas" class="text-white text-xl hover:text-blue-300 transition-colors duration-300">O nás</a></li>
@@ -22,6 +20,7 @@
 <script>
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenuContent = document.getElementById('mobile-menu-content');
+    const header = document.querySelector('header'); // Předpokládáme, že hlavička má tag <header>
     const arrowIcon = mobileMenuToggle?.querySelector('svg');
     let isOpen = false;
 
@@ -30,9 +29,15 @@
         if (mobileMenuContent) {
             if (isOpen) {
                 mobileMenuContent.style.maxHeight = `${mobileMenuContent.scrollHeight}px`;
+                mobileMenuContent.classList.add('bg-opacity-95');
+                mobileMenuContent.classList.remove('bg-opacity-0');
+                header?.classList.add('scrolled');
                 arrowIcon?.classList.add('rotate-180');
             } else {
                 mobileMenuContent.style.maxHeight = '0';
+                mobileMenuContent.classList.remove('bg-opacity-95');
+                mobileMenuContent.classList.add('bg-opacity-0');
+                header?.classList.remove('scrolled');
                 arrowIcon?.classList.remove('rotate-180');
             }
         }
