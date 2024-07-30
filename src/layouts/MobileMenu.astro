@@ -1,11 +1,11 @@
 <div class="md:hidden">
     <button id="mobile-menu-toggle" class="text-current focus:outline-none relative z-50">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 transform transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 transform transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="6 9 12 15 18 9"></polyline>
       </svg>
     </button>
     <div id="mobile-menu-container" class="absolute left-0 right-0 overflow-hidden transition-all duration-500 ease-in-out">
-      <div id="mobile-menu-content" class="py-4 px-6 transform translate-y-[-100%] transition-transform duration-500 ease-in-out">
+      <div id="mobile-menu-content" class="py-4 px-6 transform transition-all duration-500 ease-in-out">
         <nav class="text-center">
           <ul>
             <li class="my-3"><a href="/" class="text-current text-xl hover:text-gray-300 transition-colors duration-300">Domů</a></li>
@@ -22,13 +22,13 @@
   <style>
     #mobile-menu-container {
       max-height: 0;
-      transition: max-height 0.5s ease-in-out 0.5s; /* Přidáno zpoždění 0.5s */
+      transition: max-height 0.5s ease-in-out;
     }
     #mobile-menu-container.open {
       max-height: 100vh;
-      transition: max-height 0.5s ease-in-out;
     }
     #mobile-menu-content {
+      transform: translateY(-100%);
       transition: transform 0.5s ease-in-out;
     }
     #mobile-menu-content.open {
@@ -52,20 +52,29 @@
           mobileMenuContent.classList.add('open');
           headerContainer.classList.add('menu-open');
           arrowIcon?.classList.add('rotate-180');
+          
+          // Nastavení výšky kontejneru menu
+          const contentHeight = mobileMenuContent.offsetHeight;
+          mobileMenuContainer.style.maxHeight = `${contentHeight}px`;
+          
           // Nastavení výšky headeru po krátké prodlevě
           setTimeout(() => {
-            const totalHeight = headerContainer.offsetHeight + mobileMenuContent.offsetHeight;
+            const totalHeight = headerContainer.offsetHeight + contentHeight;
             headerContainer.style.height = `${totalHeight}px`;
           }, 50);
         } else {
           mobileMenuContent.classList.remove('open');
           arrowIcon?.classList.remove('rotate-180');
-          // Zpoždění skrytí pozadí
+          
+          // Resetování výšky kontejneru menu
+          mobileMenuContainer.style.maxHeight = '0';
+          
+          // Zpoždění odstranění třídy 'open' z kontejneru a resetování výšky headeru
           setTimeout(() => {
             mobileMenuContainer.classList.remove('open');
             headerContainer.classList.remove('menu-open');
             headerContainer.style.height = '';
-          }, 500); // Zpoždění odpovídá délce animace textu
+          }, 500);
         }
       }
     }
