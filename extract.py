@@ -4,15 +4,18 @@ import pyperclip
 # Zde nastavte True pro zahrnutí konfiguračních souborů, False pro jejich vynechání
 INCLUDE_CONFIG = True
 
-def extract_content(root_dir, extensions):
+# Zde nastavte plnou cestu k adresáři projektu
+PROJECT_DIR = r"C:\Users\thanh\Downloads\Programy\DigitalFusion"
+
+def extract_content(project_dir, extensions):
     content = []
-    src_dir = os.path.join(root_dir, 'src')
+    src_dir = os.path.join(project_dir, 'src')
     
-    # Zpracování konfiguračních souborů v kořenovém adresáři
+    # Zpracování konfiguračních souborů v kořenovém adresáři projektu
     if INCLUDE_CONFIG:
-        for file in os.listdir(root_dir):
+        for file in os.listdir(project_dir):
             if file in ['.env', '.env.local', 'package.json', 'tsconfig.json', 'next.config.js', 'next.config.mjs']:
-                file_path = os.path.join(root_dir, file)
+                file_path = os.path.join(project_dir, file)
                 content.extend(process_file(file_path))
 
     # Zpracování ostatních souborů ve složce src
@@ -43,11 +46,10 @@ def process_file(file_path):
     return content
 
 if __name__ == "__main__":
-    current_dir = os.path.dirname(os.path.abspath(__file__))
     extensions = ['.tsx', '.js', '.ts', '.css', '.astro']
-    output_file = "extracted_content.txt"
+    output_file = os.path.join(PROJECT_DIR, "extracted_content.txt")
     
-    extracted_content = extract_content(current_dir, extensions)
+    extracted_content = extract_content(PROJECT_DIR, extensions)
     
     # Uložení do souboru
     with open(output_file, 'w', encoding='utf-8') as f:
