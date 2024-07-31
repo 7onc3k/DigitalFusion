@@ -1,11 +1,13 @@
-<div class="md:hidden">
-  <button id="mobile-menu-toggle" class="text-current focus:outline-none relative z-50 p-2">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 transform transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+---
+---
+<div class="md:hidden fixed top-8 right-6 z-50">
+  <button id="mobile-menu-toggle" class="text-white bg-black bg-opacity-50 rounded-full p-2 focus:outline-none relative z-50">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <polyline points="6 9 12 15 18 9"></polyline>
     </svg>
   </button>
-  <div id="mobile-menu-container" class="absolute left-0 right-0 overflow-hidden transition-all duration-500 ease-in-out">
-    <div id="mobile-menu-content" class="py-4 px-6 transform transition-all duration-500 ease-in-out">
+  <div id="mobile-menu-container" class="fixed top-0 right-0 w-full max-w-sm bg-white text-black overflow-hidden transition-all duration-500 ease-in-out">
+    <div id="mobile-menu-content" class="py-4 px-6">
       <nav class="text-center">
         <ul>
           <li class="my-3"><a href="/" class="text-black text-xl hover:text-gray-600 transition-colors duration-300">Domů</a></li>
@@ -20,66 +22,44 @@
 </div>
 <style>
   #mobile-menu-container {
-    max-height: 0;
-    transition: max-height 0.5s ease-in-out;
+    height: 0;
+    transition: height 0.5s ease-in-out;
   }
   #mobile-menu-container.open {
-    max-height: 100vh;
-  }
-  #mobile-menu-content {
-    transform: translateY(-100%);
-    transition: transform 0.5s ease-in-out;
-  }
-  #mobile-menu-content.open {
-    transform: translateY(0);
+    height: 100vh;
   }
   #mobile-menu-toggle {
-    padding: 10px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  #mobile-menu-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.7);
   }
 </style>
 <script>
   const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
   const mobileMenuContainer = document.getElementById('mobile-menu-container');
-  const mobileMenuContent = document.getElementById('mobile-menu-content');
-  const headerContainer = document.getElementById('header-container');
   const arrowIcon = mobileMenuToggle?.querySelector('svg');
   let isOpen = false;
-
   function toggleMenu() {
     isOpen = !isOpen;
-    if (mobileMenuContainer && mobileMenuContent && headerContainer) {
+    if (mobileMenuContainer && arrowIcon) {
       if (isOpen) {
         mobileMenuContainer.classList.add('open');
-        mobileMenuContent.classList.add('open');
-        headerContainer.classList.add('menu-open');
-        arrowIcon?.classList.add('rotate-180');
-        
-        // Nastavení výšky kontejneru menu
-        const contentHeight = mobileMenuContent.offsetHeight;
-        mobileMenuContainer.style.maxHeight = `${contentHeight}px`;
-        
-        // Nastavení výšky headeru po krátké prodlevě
-        setTimeout(() => {
-          const totalHeight = headerContainer.offsetHeight + contentHeight;
-          headerContainer.style.height = `${totalHeight}px`;
-        }, 50);
+        arrowIcon.classList.add('rotate-180');
+        // Plynulé rozšíření pozadí
+        const contentHeight = mobileMenuContainer.scrollHeight;
+        mobileMenuContainer.style.height = `${contentHeight}px`;
       } else {
-        mobileMenuContent.classList.remove('open');
-        arrowIcon?.classList.remove('rotate-180');
-        
-        // Resetování výšky kontejneru menu
-        mobileMenuContainer.style.maxHeight = '0';
-        
-        // Zpoždění odstranění třídy 'open' z kontejneru a resetování výšky headeru
+        arrowIcon.classList.remove('rotate-180');
+        // Plynulé zmenšení pozadí
+        mobileMenuContainer.style.height = '0';
+        // Odstranění třídy 'open' po animaci
         setTimeout(() => {
           mobileMenuContainer.classList.remove('open');
-          headerContainer.classList.remove('menu-open');
-          headerContainer.style.height = '';
         }, 500);
       }
     }
   }
-
   if (mobileMenuToggle) {
     mobileMenuToggle.addEventListener('click', toggleMenu);
   }
