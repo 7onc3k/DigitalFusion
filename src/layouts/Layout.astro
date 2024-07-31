@@ -1,7 +1,6 @@
 ---
 import Particles from "./Particles.astro";
 import Header from "./Header.astro";
-import MobileMenu from "./MobileMenu.astro";
 import Footer from "./Footer.astro";
 import particlesOptions from "../config/particlesOptions";
 interface Props {
@@ -28,7 +27,6 @@ const { title, noTopPadding = false } = Astro.props;
         </div>
         <div class="relative z-10 flex flex-col min-h-screen">
             <Header />
-            <MobileMenu />
             <main class={`flex-grow container mx-auto px-4 ${noTopPadding ? 'pt-0' : 'pt-20'}`}>
                 <slot />
             </main>
