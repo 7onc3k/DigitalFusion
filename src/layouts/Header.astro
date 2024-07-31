@@ -27,9 +27,11 @@ const navItems = [
         </nav>
         <div id="mobile-menu-container" class="md:hidden overflow-hidden transition-all duration-500 ease-in-out h-0">
             <nav class="py-4 px-6">
-                <ul class="flex flex-col items-center space-y-4">
-                    {navItems.map(item => (
-                        <li><a href={item.href} class="nav-link text-xl hover:text-gray-300 transition-colors duration-300">{item.text}</a></li>
+                <ul class="flex flex-col items-center space-y-4 pb-6">
+                    {navItems.map((item, index) => (
+                        <li class={`${index === navItems.length - 1 ? 'mt-6' : ''}`}>
+                            <a href={item.href} class="nav-link text-xl hover:text-gray-300 transition-colors duration-300">{item.text}</a>
+                        </li>
                     ))}
                 </ul>
             </nav>
