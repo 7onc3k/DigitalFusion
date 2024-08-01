@@ -127,9 +127,6 @@ class FileInsertApp:
             full_content = f"{file_path}\n\n{content}"
             pyperclip.copy(full_content)
             
-            # Přidáno pro výpis obsahu, který se vkládá
-            print(f"Vkládám do schránky: {full_content}")
-
             self.keyboard_controller.press(Key.backspace)
             self.keyboard_controller.release(Key.backspace)
             self.keyboard_controller.press(Key.ctrl)
