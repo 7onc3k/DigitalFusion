@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run npm dev",
+            "type": "shell",
+            "command": "npm run dev",
+            "problemMatcher": [],
+            "presentation": {
+                "group": "dev-tasks",
+                "panel": "new"
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        },
+        {
+            "label": "Run automated.py",
+            "type": "shell",
+            "command": "python automated.py",
+            "problemMatcher": [],
+            "presentation": {
+                "group": "dev-tasks",
+                "panel": "new"
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        }
+    ]
+}

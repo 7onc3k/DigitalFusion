@@ -1,0 +1,15 @@
+{
+    "terminal.integrated.splitCwd": "workspaceRoot",
+    "terminal.integrated.persistentCustomTerminals": [
+        {
+            "name": "NPM Dev",
+            "command": "npm run dev",
+            "split": "right"
+        },
+        {
+            "name": "Automated Script",
+            "command": "python automated.py",
+            "split": "right"
+        }
+    ]
+}
