@@ -14,7 +14,7 @@ class FileInsertApp:
     def __init__(self):
         self.root = None
         self.selector = None
-        self.directory = os.path.expanduser("~")
+        self.directory = os.path.expanduser(r"C:\Users\thanh\Downloads\Programy\DigitalFusion\src")
         self.keyboard_controller = Controller()
         self.selector_open = False
         self.current_selection = 0
@@ -66,7 +66,12 @@ class FileInsertApp:
 
     def load_files(self):
         print(f"Načítám soubory z adresáře: {self.directory}")
-        self.files = [f for f in os.listdir(self.directory) if os.path.isfile(os.path.join(self.directory, f))]
+        self.files = []
+        for root, dirs, files in os.walk(self.directory):
+            for file in files:
+                full_path = os.path.join(root, file)
+                rel_path = os.path.relpath(full_path, self.directory)
+                self.files.append(rel_path)
         self.update_file_list()
 
     def update_file_list(self):
@@ -86,7 +91,13 @@ class FileInsertApp:
     def filter_files(self, event):
         search_term = self.search_entry.get().lower()
         current_file = self.files[self.current_selection] if self.files else None
-        self.files = [f for f in os.listdir(self.directory) if os.path.isfile(os.path.join(self.directory, f)) and search_term in f.lower()]
+        self.files = []
+        for root, dirs, files in os.walk(self.directory):
+            for file in files:
+                full_path = os.path.join(root, file)
+                rel_path = os.path.relpath(full_path, self.directory)
+                if search_term in rel_path.lower():
+                    self.files.append(rel_path)
         self.update_file_list()
         if current_file in self.files:
             self.current_selection = self.files.index(current_file)
@@ -113,7 +124,8 @@ class FileInsertApp:
             with open(file_path, 'r', encoding='utf-8') as file:
                 content = file.read()
             
-            pyperclip.copy(content)
+            full_content = f"{file_path}\n\n{content}"
+            pyperclip.copy(full_content)
             
             self.keyboard_controller.press(Key.backspace)
             self.keyboard_controller.release(Key.backspace)
@@ -122,7 +134,7 @@ class FileInsertApp:
             self.keyboard_controller.release('v')
             self.keyboard_controller.release(Key.ctrl)
             
-            print(f"Obsah souboru vložen: {len(content)} znaků")
+            print(f"Obsah souboru vložen: {len(full_content)} znaků")
             self.on_closing(event)
 
     def on_closing(self, event=None):
