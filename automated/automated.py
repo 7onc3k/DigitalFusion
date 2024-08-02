@@ -7,6 +7,7 @@ import re
 # Konstanty
 PROJECT_DIR = r"C:\Users\thanh\Downloads\Programy\DigitalFusion"
 INCLUDE_CONFIG = True
+APPEND_TO_CLIPBOARD = False  # True pro přidání, False pro nahrazení
 
 def extract_content(project_dir, extensions):
     content = []
@@ -73,29 +74,46 @@ def is_processable(content):
     return 'FILE_PATH:' in content and '<CODE_START>' in content
 
 def main():
-    print("Program běží. Stiskněte Ctrl+C pro ukončení.")
+    print("Program běží. Stiskněte Ctrl+Shift+\\ pro aktivaci nebo Ctrl+C pro ukončení.")
+    initialized = False
     last_clipboard = ''
     
     while True:
         try:
-            if keyboard.is_pressed('ctrl+shift+v'):
-                print("Detekována zkratka Ctrl+Shift+V")
+            if keyboard.is_pressed('ctrl+shift+\\'):
+                if not initialized:
+                    print("Program aktivován. Začínám sledovat změny.")
+                    initialized = True
+                    last_clipboard = pyperclip.paste()
+                    time.sleep(0.5)  # Krátká pauza pro uvolnění kláves
+                    continue
+
+                print("Detekována zkratka Ctrl+Shift+\\")
                 extracted_content = extract_content(PROJECT_DIR, ['.tsx', '.js', '.ts', '.css', '.astro'])
-                pyperclip.copy(extracted_content)
-                print("Obsah extrahován a zkopírován do schránky")
+                
+                if APPEND_TO_CLIPBOARD:
+                    current_content = pyperclip.paste()
+                    new_content = current_content + "\n\n" + extracted_content
+                    pyperclip.copy(new_content)
+                    print("Obsah extrahován a přidán do schránky")
+                else:
+                    pyperclip.copy(extracted_content)
+                    print("Obsah extrahován a nahradil obsah schránky")
+                
                 keyboard.press_and_release('ctrl+v')
                 print("Obsah vložen")
                 time.sleep(1)
-            
-            current_clipboard = pyperclip.paste()
-            if current_clipboard != last_clipboard:
-                print("Detekována změna ve schránce")
-                if is_processable(current_clipboard):
-                    print("Obsah schránky lze zpracovat, spouštím process_clipboard()")
-                    process_clipboard()
-                else:
-                    print("Obsah schránky nelze zpracovat")
-                last_clipboard = current_clipboard
+
+            if initialized:
+                current_clipboard = pyperclip.paste()
+                if current_clipboard != last_clipboard:
+                    print("Detekována změna ve schránce")
+                    if is_processable(current_clipboard):
+                        print("Obsah schránky lze zpracovat, spouštím process_clipboard()")
+                        process_clipboard()
+                    else:
+                        print("Obsah schránky nelze zpracovat")
+                    last_clipboard = current_clipboard
             
             time.sleep(0.1)
         
