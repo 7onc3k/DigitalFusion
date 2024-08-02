@@ -4,11 +4,16 @@
         {
             "name": "NPM Dev",
             "command": "npm run dev",
-            "split": "right"
+            "split": "bottom"
         },
         {
             "name": "Automated Script",
-            "command": "python automated.py",
+            "command": "python automated/automated.py",
+            "split": "right"
+        },
+        {
+            "name": "Main Script",
+            "command": "python automated/main.py",
             "split": "right"
         }
     ]

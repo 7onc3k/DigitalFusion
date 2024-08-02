@@ -17,7 +17,20 @@
         {
             "label": "Run automated.py",
             "type": "shell",
-            "command": "python automated.py",
+            "command": "python ./automated/automated.py",
+            "problemMatcher": [],
+            "presentation": {
+                "group": "dev-tasks",
+                "panel": "new"
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        },
+        {
+            "label": "Run main.py",
+            "type": "shell",
+            "command": "python ./automated/main.py",
             "problemMatcher": [],
             "presentation": {
                 "group": "dev-tasks",
