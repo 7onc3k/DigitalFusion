@@ -12,7 +12,7 @@ class FileInsertApp:
     def __init__(self):
         self.root = None
         self.selector = None
-        self.directory = os.path.abspath('.')
+        self.directory = os.path.abspath(r"C:\Users\thanh\Downloads\Programy\DigitalFusion\src")
         self.keyboard_controller = Controller()
         self.selector_open = False
         self.target_window = None
