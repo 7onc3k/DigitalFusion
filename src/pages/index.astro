@@ -17,8 +17,9 @@ const aboutFeatures = [
         <Hero 
             title="DigitalFusion: Vaše webová transformace začíná zde"
             subtitle="Inovativní webová řešení pro moderní podniky"
-            ctaText="Kontaktujte nás"
-        />
+        >
+            <Button href="/kontakt" size="large">Kontaktujte nás</Button>
+        </Hero>
     </div>
     <section id="about-preview" class="py-16">
         <div class="container mx-auto px-4">
@@ -87,7 +88,7 @@ const aboutFeatures = [
                                 ))}
                             </div>
                         </div>
-                        <a href={`/portfolio/${project.id}`} class="view-details block px-4 py-2 bg-white/10 text-white hover:bg-white/20 transition-colors text-center">Zobrazit detaily</a>
+                        <Button href={`/portfolio/${project.id}`} class="w-full">Zobrazit detaily</Button>
                     </div>
                 ))}
             </div>
@@ -97,7 +98,7 @@ const aboutFeatures = [
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-4 text-white">Připraveni začít?</h2>
             <p class="mt-4 mb-6 text-white">Kontaktujte nás a společně vytvoříme vaše webové řešení.</p>
-            <Button href="/kontakt" size="large">Začněte projekt</Button>
+            <Button href="/kontakt" size="large">Kontaktujte nás</Button>
         </div>
     </section>
 </Layout>

@@ -1,15 +1,17 @@
 ---
-export interface Props {
+interface Props {
     title: string;
     subtitle: string;
-    ctaText: string;
 }
-const { title, subtitle, ctaText } = Astro.props;
+const { title, subtitle } = Astro.props;
 ---
-<section class="hero-section min-h-screen flex items-center justify-center text-center">
-    <div class="hero-content">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">{title}</h1>
-        <p class="text-xl md:text-2xl mb-8">{subtitle}</p>
-        <a href="/kontakt" class="cta-button inline-block px-8 py-3 bg-white text-black rounded-full font-bold text-lg hover:bg-gray-200 transition duration-300">{ctaText}</a>
-    </div>
-</section>
+<div class="hero-section text-center">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">{title}</h1>
+    <p class="text-xl md:text-2xl mb-8 text-white">{subtitle}</p>
+    <slot />
+</div>
+<style>
+    .hero-section {
+        /* Zde můžete přidat další styly pro Hero sekci */
+    }
+</style>
