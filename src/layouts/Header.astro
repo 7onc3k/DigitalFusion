@@ -50,11 +50,16 @@ const navItems = [
         backdrop-filter: blur(10px);
         opacity: 1;
     }
-    #header-container.scrolled .header-background {
+    #header-container.scrolled .header-background,
+    #header-container.menu-open .header-background {
+        
         background-color: rgba(255, 255, 255, 0.6);
+        
     }
     #header-container.scrolled .nav-link,
-    #header-container.scrolled .logo {
+    #header-container.scrolled .logo,
+    #header-container.menu-open .nav-link,
+    #header-container.menu-open .logo {
         color: #000;
     }
     #mobile-menu-container {
@@ -86,14 +91,16 @@ const navItems = [
     // Funkce pro přepínání mobilního menu
     function toggleMenu() {
         isMenuOpen = !isMenuOpen;
-        if (mobileMenuContainer && arrowIcon) {
+        if (mobileMenuContainer && arrowIcon && headerContainer) {
             if (isMenuOpen) {
                 const contentHeight = mobileMenuContainer.scrollHeight;
                 mobileMenuContainer.style.height = `${contentHeight}px`;
                 arrowIcon.style.transform = 'rotate(180deg)';
+                headerContainer.classList.add('menu-open');
             } else {
                 mobileMenuContainer.style.height = '0';
                 arrowIcon.style.transform = 'rotate(0deg)';
+                headerContainer.classList.remove('menu-open');
             }
         }
     }

@@ -1,10 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
 const services = [
     {
         title: "Responzivní webové stránky",
         description: "Vytváříme moderní, plně responzivní webové stránky, které skvěle vypadají na všech zařízeních.",
-        icon: "fas fa-laptop",
+        icon: "mdi:laptop",
         features: [
             "Optimalizace pro mobily a tablety",
             "Rychlé načítání",
@@ -15,7 +16,7 @@ const services = [
     {
         title: "E-commerce řešení",
         description: "Vyvíjíme výkonné a bezpečné e-shopy, které pomohou vašemu podnikání růst online.",
-        icon: "fas fa-shopping-cart",
+        icon: "mdi:cart",
         features: [
             "Intuitivní správa produktů",
             "Bezpečné platební brány",
@@ -26,7 +27,7 @@ const services = [
     {
         title: "Webové aplikace",
         description: "Tvoříme na míru vyvinuté webové aplikace, které zefektivní vaše podnikové procesy.",
-        icon: "fas fa-code",
+        icon: "mdi:code-tags",
         features: [
             "Single-page aplikace (SPA)",
             "Progresivní webové aplikace (PWA)",
@@ -35,50 +36,68 @@ const services = [
         ]
     }
 ];
+const processSteps = [
+    { name: 'Analýza požadavků', icon: 'mdi:clipboard-text' },
+    { name: 'Návrh a prototyp', icon: 'mdi:pencil-ruler' },
+    { name: 'Vývoj', icon: 'mdi:code-braces' },
+    { name: 'Testování', icon: 'mdi:test-tube' },
+    { name: 'Nasazení', icon: 'mdi:rocket-launch' }
+];
 ---
 <Layout title="Služby - DigitalFusion">
-    <h1 class="text-4xl font-bold text-center my-8 text-white">Naše služby</h1>
-    <div class="services-grid grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+    <h1 class="text-4xl font-bold text-center my-12 text-white">Naše služby</h1>
+    <div class="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
         {services.map(service => (
-            <div class="service-card border border-white rounded p-8 text-center flex flex-col h-full">
+            <div class="service-card bg-black bg-opacity-50 rounded-lg p-8 text-center flex flex-col h-full transition-all duration-300 hover:bg-opacity-70">
                 <div class="flex-grow">
-                    <i class={`${service.icon} text-4xl text-white mb-4`}></i>
+                    <Icon name={service.icon} class="text-4xl text-white mb-4 mx-auto" />
                     <h2 class="text-2xl font-bold mb-4 text-white">{service.title}</h2>
-                    <p class="mb-4 text-white">{service.description}</p>
-                    <ul class="features-list list-disc list-inside mb-4 text-white">
+                    <p class="mb-6 text-white">{service.description}</p>
+                    <ul class="features-list space-y-2 mb-6 text-white">
                         {service.features.map(feature => (
-                            <li>{feature}</li>
+                            <li class="flex items-center">
+                                <Icon name="mdi:check-circle" class="text-green-500 mr-2" />
+                                {feature}
+                            </li>
                         ))}
                     </ul>
                 </div>
-                <div class="mt-8 mb-4">
-                    <a href="#" class="btn inline-block px-6 py-3 bg-white text-black rounded hover:bg-gray-200 transition-colors">Zjistit více</a>
+                <div class="mt-4">
+                    <a href="#" class="inline-block w-full px-6 py-3 bg-white text-black rounded-full hover:bg-gray-200 transition-colors">Zjistit více</a>
                 </div>
             </div>
         ))}
     </div>
     <section id="process" class="py-16">
-        <h2 class="text-3xl font-bold text-center text-white">Náš proces vývoje</h2>
-        <div class="process-steps flex flex-col md:flex-row justify-between flex-wrap mt-8">
-            {['Analýza požadavků', 'Návrh a prototyp', 'Vývoj', 'Testování', 'Nasazení'].map((step, index) => (
-                <div class="step flex-1 min-w-[200px] text-center p-4">
-                    <div class="text-4xl text-white mb-4">{index + 1}</div>
-                    <h3 class="text-xl font-bold mb-2 text-white">{step}</h3>
+        <h2 class="text-3xl font-bold text-center text-white mb-12">Náš proces vývoje</h2>
+        <div class="process-steps flex flex-col md:flex-row justify-between items-center max-w-4xl mx-auto">
+            {processSteps.map((step, index) => (
+                <div class="step flex flex-col items-center text-center p-4 mb-8 md:mb-0">
+                    <div class="icon-wrapper bg-white rounded-full p-3 mb-4 relative">
+                        <Icon name={step.icon} class="text-3xl text-black" />
+                        <span class="absolute -top-2 -left-2 bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">{index + 1}</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">{step.name}</h3>
                 </div>
             ))}
         </div>
     </section>
     <section id="technologies" class="py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center text-white">Technologie, které používáme</h2>
-            <div class="tech-icons flex flex-wrap justify-center gap-8 text-white">
-                <i class="fab fa-html5 text-5xl"></i>
-                <i class="fab fa-css3-alt text-5xl"></i>
-                <i class="fab fa-js-square text-5xl"></i>
-                <i class="fab fa-react text-5xl"></i>
-                <i class="fab fa-node-js text-5xl"></i>
-                <i class="fab fa-php text-5xl"></i>
-                <i class="fab fa-wordpress text-5xl"></i>
+            <h2 class="text-3xl font-bold mb-12 text-center text-white">Technologie, které používáme</h2>
+            <div class="tech-icons flex flex-wrap justify-center gap-12 text-white">
+                <div class="tech-icon flex flex-col items-center">
+                    <Icon name="mdi:language-javascript" class="text-6xl mb-2" />
+                    <span>JavaScript</span>
+                </div>
+                <div class="tech-icon flex flex-col items-center">
+                    <Icon name="mdi:shopify" class="text-6xl mb-2" />
+                    <span>Shopify</span>
+                </div>
+                <div class="tech-icon flex flex-col items-center">
+                    <Icon name="mdi:language-html5" class="text-6xl mb-2" />
+                    <span>HTML</span>
+                </div>
             </div>
         </div>
     </section>
@@ -87,7 +106,7 @@ const services = [
             <h2 class="text-3xl font-bold mb-6 text-center text-white">Připraveni na nový web?</h2>
             <p class="mt-4 mb-8 text-center max-w-2xl mx-auto text-white">Kontaktujte nás pro nezávaznou konzultaci a zjistěte, jak vám můžeme pomoci s vaším webovým projektem.</p>
             <div class="text-center">
-                <a href="/kontakt" class="btn btn-large inline-block px-8 py-4 bg-white text-black rounded hover:bg-gray-200 transition-colors text-lg font-bold">Kontaktujte nás</a>
+                <a href="/kontakt" class="inline-block px-8 py-4 bg-white text-black rounded-full hover:bg-gray-200 transition-colors text-lg font-bold">Kontaktujte nás</a>
             </div>
         </div>
     </section>
