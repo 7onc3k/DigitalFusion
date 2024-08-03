@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
+import Button from '../components/Button.astro';
 const services = [
     {
         title: "Responzivní webové stránky",
@@ -65,7 +66,7 @@ const processSteps = [
                     </div>
                 </div>
                 <div class="mt-4 flex justify-center">
-                    <a href="#" class="inline-block w-3/4 px-6 py-3 bg-white text-black rounded-full transition-colors">Zjistit více</a>
+                    <Button href="#" variant="secondary" class="w-3/4">Zjistit více</Button>
                 </div>
             </div>
         ))}
@@ -108,7 +109,7 @@ const processSteps = [
             <h2 class="text-3xl font-bold mb-6 text-center text-white">Připraveni na nový web?</h2>
             <p class="mt-4 mb-8 text-center max-w-2xl mx-auto text-white">Kontaktujte nás pro nezávaznou konzultaci a zjistěte, jak vám můžeme pomoci s vaším webovým projektem.</p>
             <div class="text-center">
-                <a href="/kontakt" class="inline-block px-8 py-4 bg-white text-black rounded-full transition-colors text-lg font-bold">Kontaktujte nás</a>
+                <Button href="/kontakt" size="large">Kontaktujte nás</Button>
             </div>
         </div>
     </section>

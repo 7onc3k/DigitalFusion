@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { projects } from '../data/projects.js';
 import { Icon } from 'astro-icon/components';
 import Hero from '../components/Hero.astro';
+import Button from '../components/Button.astro';
 const latestProjects = projects.slice(0, 3);
 const aboutFeatures = [
     { icon: 'mdi:account-group', title: 'Kdo jsme', description: 'Jsme tým expertů na webový vývoj, připraveni posunout vaše podnikání do budoucnosti. S našimi inovativními řešeními a strategickým přístupem vám pomůžeme uspět v rychle se měnícím digitálním světě.' },
@@ -36,7 +37,7 @@ const aboutFeatures = [
                 ))}
             </div>
             <div class="text-center">
-                <a href="/o-nas" class="btn inline-block px-8 py-3 bg-transparent text-white border border-white rounded-full hover:bg-white hover:text-black transition duration-300">Poznejte nás blíže</a>
+                <Button href="/o-nas" variant="secondary">Poznejte nás blíže</Button>
             </div>
         </div>
     </section>
@@ -67,7 +68,7 @@ const aboutFeatures = [
                 </li>
             </ul>
             <div class="text-center mt-8">
-                <a href="/sluzby" class="btn inline-block px-6 py-3 bg-transparent text-white border border-white rounded-full hover:bg-white hover:text-black transition duration-300">Všechny služby</a>
+                <Button href="/sluzby" variant="secondary">Všechny služby</Button>
             </div>
         </div>
     </section>
@@ -96,7 +97,7 @@ const aboutFeatures = [
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-4 text-white">Připraveni začít?</h2>
             <p class="mt-4 mb-6 text-white">Kontaktujte nás a společně vytvoříme vaše webové řešení.</p>
-            <a href="/kontakt" class="cta-button inline-block px-8 py-3 bg-transparent text-white border border-white rounded-full font-bold hover:bg-white hover:text-black transition duration-300">Začněte projekt</a>
+            <Button href="/kontakt" size="large">Začněte projekt</Button>
         </div>
     </section>
 </Layout>

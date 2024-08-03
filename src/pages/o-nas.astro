@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
 const teamMembers = [
     {
         name: "Jan Novák",
@@ -89,7 +90,7 @@ const values = [
             <h2 class="text-3xl font-bold text-center mb-8">Kariéra u nás</h2>
             <p class="mt-4 text-center max-w-3xl mx-auto">Hledáme talentované a motivované jedince, kteří chtějí být součástí našeho týmu. Nabízíme dynamické pracovní prostředí, možnosti profesního růstu a práci na zajímavých projektech.</p>
             <div class="text-center mt-8">
-                <a href="/kariera" class="btn inline-block px-6 py-2 bg-white text-black rounded hover:bg-gray-200 transition duration-300">Prohlédnout volné pozice</a>
+                <Button href="/kariera">Prohlédnout volné pozice</Button>
             </div>
         </div>
     </section>

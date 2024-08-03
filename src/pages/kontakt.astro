@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
 ---
 <Layout title="Kontakt - DigitalFusion">
     <h1 class="text-4xl font-bold text-center my-8">Kontaktujte nás</h1>
@@ -28,7 +29,7 @@ import Layout from '../layouts/Layout.astro';
                     <label for="message" class="block mb-2">Zpráva:</label>
                     <textarea id="message" name="message" required class="w-full p-2 border border-white bg-black text-white rounded h-40"></textarea>
                 </div>
-                <button type="submit" class="px-4 py-2 bg-white text-black rounded hover:bg-gray-200">Odeslat</button>
+                <Button type="submit">Odeslat</Button>
             </form>
         </section>
         <section id="contact-info" class="flex-1 p-4 mt-8 md:mt-0">
