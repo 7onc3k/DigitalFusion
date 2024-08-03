@@ -9,11 +9,11 @@ export const projects = [
     },
     {
         id: "project-2",
-        title: "Mobilní aplikace ABC",
-        description: "Inovativní mobilní aplikace pro správu času a produktivity.",
+        title: "Webová aplikace ABC",
+        description: "Inovativní webová aplikace pro správu času a produktivity.",
         image: "/images/portfolio/project2.jpg",
-        category: "Mobilní aplikace",
-        technologies: ["React Native", "Firebase"]
+        category: "Webové aplikace",
+        technologies: ["React", "Firebase"]
     },
     {
         id: "project-3",
@@ -22,5 +22,6 @@ export const projects = [
         image: "/images/portfolio/project3.jpg",
         category: "Webdesign",
         technologies: ["HTML5", "CSS3", "JavaScript"]
-    }
+    },
+    // Zde můžete přidat další projekty
 ];

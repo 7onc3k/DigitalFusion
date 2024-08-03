@@ -1,40 +1,84 @@
 ---
 const navItems = [
-  { href: "/", text: "Domů" },
-  { href: "/o-nas", text: "O nás" },
-  { href: "/sluzby", text: "Služby" },
-  { href: "/portfolio", text: "Portfolio" },
-  { href: "/kontakt", text: "Kontakt" }
+    { href: "/", text: "Domů" },
+    { href: "/o-nas", text: "O nás" },
+    { href: "/sluzby", text: "Služby" },
+    { href: "/portfolio", text: "Portfolio" },
+    { href: "/kontakt", text: "Kontakt" },
 ];
 ---
-<div id="header-container" class="fixed top-8 left-6 right-6 md:top-12 md:left-12 md:right-12 z-50 transition-all duration-300 ease-in-out">
-    <div class="header-background absolute inset-0 rounded-3xl transition-all duration-300 ease-in-out"></div>
+
+<div
+    id="header-container"
+    class="fixed top-8 left-6 right-6 md:top-12 md:left-12 md:right-12 z-50 transition-all duration-300 ease-in-out"
+>
+    <div
+        class="header-background absolute inset-0 rounded-3xl transition-all duration-300 ease-in-out"
+    >
+    </div>
     <header id="main-header" class="relative z-10">
         <nav class="flex justify-between items-center py-4 px-6">
-            <a href="/" class="logo text-2xl md:text-3xl font-bold tracking-wider z-50 hover:text-gray-300 transition-colors duration-300">DigitalFusion</a>
+            <a
+                href="/"
+                class="logo text-2xl md:text-3xl font-bold tracking-wider z-50 hover:text-gray-300 transition-colors duration-300"
+                >DigitalFusion</a
+            >
             <div class="hidden md:block">
                 <ul class="flex items-center">
-                    {navItems.map(item => (
-                        <li class="mx-3"><a href={item.href} class="nav-link hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider">{item.text}</a></li>
-                    ))}
+                    {
+                        navItems.map((item) => (
+                            <li class="mx-3">
+                                <a
+                                    href={item.href}
+                                    class="nav-link hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider"
+                                >
+                                    {item.text}
+                                </a>
+                            </li>
+                        ))
+                    }
                 </ul>
             </div>
-            <button id="mobile-menu-toggle" class="md:hidden text-current focus:outline-none relative z-50 p-2">
+            <button
+                id="mobile-menu-toggle"
+                class="md:hidden text-current focus:outline-none relative z-50 p-2"
+            >
                 <div class="w-8 h-8 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-6 h-6 transform transition-transform duration-500"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
             </button>
         </nav>
-        <div id="mobile-menu-container" class="md:hidden overflow-hidden transition-all duration-500 ease-in-out h-0">
+        <div
+            id="mobile-menu-container"
+            class="md:hidden overflow-hidden transition-all duration-500 ease-in-out h-0"
+        >
             <nav class="py-4 px-6">
                 <ul class="flex flex-col items-center space-y-4 pb-6">
-                    {navItems.map((item, index) => (
-                        <li class={`${index === navItems.length - 1 ? 'mt-6' : ''}`}>
-                            <a href={item.href} class="nav-link text-xl hover:text-gray-300 transition-colors duration-300">{item.text}</a>
-                        </li>
-                    ))}
+                    {
+                        navItems.map((item, index) => (
+                            <li
+                                class={`${index === navItems.length - 1 ? "mt-6" : ""}`}
+                            >
+                                <a
+                                    href={item.href}
+                                    class="nav-link text-xl hover:text-gray-300 transition-colors duration-300"
+                                >
+                                    {item.text}
+                                </a>
+                            </li>
+                        ))
+                    }
                 </ul>
             </nav>
         </div>
@@ -43,23 +87,23 @@ const navItems = [
 <style>
     #header-container {
         background-color: transparent;
-        transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        transition:
+            height 0.3s ease-in-out,
+            background-color 0.3s ease-in-out;
     }
     .header-background {
-        background-color: rgba(255, 255, 255, 0);
+        background-color: rgba(34, 34, 34, 0); /* Barva tlačítek a projektů */
         backdrop-filter: blur(5px);
         opacity: 1;
     }
     #header-container.scrolled .header-background,
     #header-container.menu-open .header-background {
-        background-color: rgba(255, 255, 255, 0.6);
+        background-color: rgba(69, 69, 69, 0.8); /* Barva tlačítek a projektů */
     }
     #header-container.scrolled .nav-link,
     #header-container.scrolled .logo,
     #header-container.menu-open .nav-link,
-    #header-container.menu-open .logo {
-        color: #000;
-    }
+   
     #mobile-menu-container {
         transition: height 0.5s ease-in-out;
     }
@@ -71,21 +115,23 @@ const navItems = [
     }
 </style>
 <script>
-    const headerContainer = document.getElementById('header-container');
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const mobileMenuContainer = document.getElementById('mobile-menu-container');
-    const arrowIcon = mobileMenuToggle?.querySelector('svg');
+    const headerContainer = document.getElementById("header-container");
+    const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+    const mobileMenuContainer = document.getElementById(
+        "mobile-menu-container",
+    );
+    const arrowIcon = mobileMenuToggle?.querySelector("svg");
     let isMenuOpen = false;
     // Funkce pro ovládání scrollování
     const scrollThreshold = 50;
     function handleScroll() {
         if (window.scrollY > scrollThreshold) {
-            headerContainer?.classList.add('scrolled');
+            headerContainer?.classList.add("scrolled");
         } else {
-            headerContainer?.classList.remove('scrolled');
+            headerContainer?.classList.remove("scrolled");
         }
     }
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     // Funkce pro přepínání mobilního menu
     function toggleMenu() {
         isMenuOpen = !isMenuOpen;
@@ -93,23 +139,29 @@ const navItems = [
             if (isMenuOpen) {
                 const contentHeight = mobileMenuContainer.scrollHeight;
                 mobileMenuContainer.style.height = `${contentHeight}px`;
-                arrowIcon.style.transform = 'rotate(180deg)';
-                headerContainer.classList.add('menu-open');
+                arrowIcon.style.transform = "rotate(180deg)";
+                headerContainer.classList.add("menu-open");
             } else {
-                mobileMenuContainer.style.height = '0';
-                arrowIcon.style.transform = 'rotate(0deg)';
-                headerContainer.classList.remove('menu-open');
+                mobileMenuContainer.style.height = "0";
+                arrowIcon.style.transform = "rotate(0deg)";
+                headerContainer.classList.remove("menu-open");
             }
         }
     }
     // Přidání event listeneru pro tlačítko mobilního menu
     if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('click', toggleMenu);
+        mobileMenuToggle.addEventListener("click", toggleMenu);
     }
     // Zavření menu při kliknutí mimo něj
-    document.addEventListener('click', (event) => {
+    document.addEventListener("click", (event) => {
         const target = event.target as Node;
-        if (isMenuOpen && mobileMenuContainer && !mobileMenuContainer.contains(target) && target !== mobileMenuToggle && !mobileMenuToggle?.contains(target)) {
+        if (
+            isMenuOpen &&
+            mobileMenuContainer &&
+            !mobileMenuContainer.contains(target) &&
+            target !== mobileMenuToggle &&
+            !mobileMenuToggle?.contains(target)
+        ) {
             toggleMenu();
         }
     });

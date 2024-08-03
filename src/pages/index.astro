@@ -4,6 +4,7 @@ import { projects } from '../data/projects.js';
 import { Icon } from 'astro-icon/components';
 import Hero from '../components/Hero.astro';
 import Button from '../components/Button.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 const latestProjects = projects.slice(0, 3);
 const aboutFeatures = [
     { icon: 'mdi:account-group', title: 'Kdo jsme', description: 'Jsme tým expertů na webový vývoj, připraveni posunout vaše podnikání do budoucnosti. S našimi inovativními řešeními a strategickým přístupem vám pomůžeme uspět v rychle se měnícím digitálním světě.' },
@@ -26,8 +27,8 @@ const aboutFeatures = [
             <h2 class="text-3xl font-bold text-center mb-12 text-white">O DigitalFusion</h2>
             <div class="about-features grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 {aboutFeatures.map(feature => (
-                    <div class="feature-card flex flex-col items-center p-6 rounded-lg">
-                        <div class="feature-icon mb-4 flex items-center justify-center w-16 h-16">
+                    <div class="feature-card flex flex-col items-center p-6 rounded-3xl bg-white/10 transition-all duration-300 hover:bg-white/20">
+                        <div class="feature-icon mb-4 flex items-center justify-center w-16 h-16 bg-white/20 rounded-full">
                             <Icon name={feature.icon} class="text-4xl text-white" />
                         </div>
                         <div class="feature-content text-center">
@@ -46,23 +47,23 @@ const aboutFeatures = [
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-8 text-white">Naše služby</h2>
             <ul class="services-list grid grid-cols-1 md:grid-cols-3 gap-8">
-                <li class="text-center p-6 rounded-lg">
-                    <div class="flex items-center justify-center mb-4">
-                        <Icon name="mdi:laptop" class="text-5xl text-white" />
+                <li class="text-center p-6 rounded-3xl bg-white/10 transition-all duration-300 hover:bg-white/20">
+                    <div class="flex items-center justify-center mb-4 bg-white/20 w-16 h-16 rounded-full mx-auto">
+                        <Icon name="mdi:laptop" class="text-4xl text-white" />
                     </div>
                     <h3 class="text-xl font-bold text-white">Webový design</h3>
                     <p class="mt-2 text-white">Moderní a responzivní webové stránky</p>
                 </li>
-                <li class="text-center p-6 rounded-lg">
-                    <div class="flex items-center justify-center mb-4">
-                        <Icon name="mdi:cart" class="text-5xl text-white" />
+                <li class="text-center p-6 rounded-3xl bg-white/10 transition-all duration-300 hover:bg-white/20">
+                    <div class="flex items-center justify-center mb-4 bg-white/20 w-16 h-16 rounded-full mx-auto">
+                        <Icon name="mdi:cart" class="text-4xl text-white" />
                     </div>
                     <h3 class="text-xl font-bold text-white">E-commerce řešení</h3>
                     <p class="mt-2 text-white">Výkonné a bezpečné e-shopy</p>
                 </li>
-                <li class="text-center p-6 rounded-lg">
-                    <div class="flex items-center justify-center mb-4">
-                        <Icon name="mdi:code-tags" class="text-5xl text-white" />
+                <li class="text-center p-6 rounded-3xl bg-white/10 transition-all duration-300 hover:bg-white/20">
+                    <div class="flex items-center justify-center mb-4 bg-white/20 w-16 h-16 rounded-full mx-auto">
+                        <Icon name="mdi:code-tags" class="text-4xl text-white" />
                     </div>
                     <h3 class="text-xl font-bold text-white">Webové aplikace</h3>
                     <p class="mt-2 text-white">Zakázkové webové aplikace na míru</p>
@@ -78,18 +79,7 @@ const aboutFeatures = [
             <h2 class="text-3xl font-bold text-center mb-8 text-white">Nejnovější projekty</h2>
             <div class="project-grid grid grid-cols-1 md:grid-cols-3 gap-8">
                 {latestProjects.map(project => (
-                    <div class="project-card rounded-lg overflow-hidden flex flex-col justify-between backdrop-blur-md bg-white/10 transition-all duration-300 hover:bg-white/20" data-category={project.category}>
-                        <div class="p-6">
-                            <h2 class="text-xl font-bold mb-2 text-white">{project.title}</h2>
-                            <p class="text-white mb-4">{project.description}</p>
-                            <div class="technologies flex flex-wrap">
-                                {project.technologies.map(tech => (
-                                    <span class="tech-tag bg-white/20 text-white px-2 py-1 rounded mr-2 mb-2 text-sm">{tech}</span>
-                                ))}
-                            </div>
-                        </div>
-                        <Button href={`/portfolio/${project.id}`} class="w-full">Zobrazit detaily</Button>
-                    </div>
+                    <ProjectCard {...project} />
                 ))}
             </div>
         </div>
