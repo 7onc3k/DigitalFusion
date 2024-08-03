@@ -20,25 +20,14 @@ const categories = ["Všechny", ...new Set(projects.map(project => project.categ
                     </div>
                 ))}
             </div>
-            <!-- Detaily projektů -->
-            <div class="project-details-container mt-8">
-                {projects.map(project => (
-                    <div id={project.id} class="project-details hidden backdrop-blur-md bg-white/10 rounded-3xl shadow p-6 mt-4">
-                        <h2 class="text-2xl font-bold mb-4 text-white">{project.title}</h2>
-                        <p class="mb-4 text-white">{project.description}</p>
-                        <!-- Zde můžete přidat další detaily projektu -->
-                    </div>
-                ))}
-            </div>
         </div>
     </section>
 </Layout>
 <script>
-    // Skript pro filtrování projektů a zobrazení detailů
+    // Skript pro filtrování projektů
     const categoryButtons = document.querySelectorAll('.category-btn') as NodeListOf<HTMLButtonElement>;
     const projectItems = document.querySelectorAll('.project-item') as NodeListOf<HTMLElement>;
     const projectGrid = document.getElementById('project-grid') as HTMLElement;
-    const projectDetails = document.querySelectorAll('.project-details') as NodeListOf<HTMLElement>;
     function filterProjects(category: string) {
         projectItems.forEach(item => {
             const card = item.querySelector('.project-card') as HTMLElement;
@@ -62,20 +51,6 @@ const categories = ["Všechny", ...new Set(projects.map(project => project.categ
             // Zvýraznění aktivního tlačítka
             categoryButtons.forEach(btn => btn.classList.remove('bg-white/30'));
             button.classList.add('bg-white/30');
-        });
-    });
-    const viewDetailsLinks = document.querySelectorAll('.view-details') as NodeListOf<HTMLAnchorElement>;
-    viewDetailsLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href')!.substring(1);
-            projectDetails.forEach(detail => {
-                if (detail.id === targetId) {
-                    detail.style.display = 'block';
-                } else {
-                    detail.style.display = 'none';
-                }
-            });
         });
     });
 </script>

@@ -22,11 +22,7 @@ const teamMembers = [
     }
 ];
 const milestones = [
-    { year: 2010, event: "Založení DigitalFusion" },
-    { year: 2015, event: "Otevření pobočky v Brně" },
-    { year: 2018, event: "Získání ocenění 'Nejlepší digitální agentura roku'" },
-    { year: 2020, event: "Expanze na mezinárodní trh" },
-    { year: 2023, event: "Oslavy 13 let na trhu a 100+ spokojených klientů" }
+    { year: 2024, event: "Založení DigitalFusion" }
 ];
 const values = [
     { icon: 'fas fa-lightbulb', title: 'Inovace', description: 'Neustále hledáme nové způsoby, jak zlepšit naše služby a produkty.' },
@@ -39,35 +35,24 @@ const values = [
     <section id="mission-vision" class="section py-16">
         <div class="container mx-auto px-4">
             <h1 class="text-4xl font-bold text-center mb-8">O nás</h1>
-            <p class="mt-4 text-center max-w-3xl mx-auto">Naší misí je pomáhat firmám uspět v digitálním světě prostřednictvím inovativních řešení a strategií. Naše vize je stát se lídrem v oblasti digitální transformace a přinášet hodnotu našim klientům, zaměstnancům a společnosti.</p>
+            <p class="mt-4 text-center max-w-3xl mx-auto">Jako nově založená firma je naší misí pomáhat firmám uspět v digitálním světě prostřednictvím inovativních řešení a strategií. Naše vize je stát se lídrem v oblasti digitální transformace a přinášet hodnotu našim klientům, zaměstnancům a společnosti.</p>
         </div>
     </section>
     <section id="history" class="section py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Naše historie</h2>
-            <div class="timeline relative max-w-2xl mx-auto">
-                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-white"></div>
-                {milestones.map((milestone, index) => (
-                    <div class="timeline-item relative mb-8 flex">
-                        <div class="w-1/2 pr-8 text-right">
-                            {index % 2 === 0 && (
-                                <>
-                                    <h3 class="font-bold text-white">{milestone.year}</h3>
-                                    <p>{milestone.event}</p>
-                                </>
-                            )}
-                        </div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white rounded-full border-4 border-black z-10"></div>
-                        <div class="w-1/2 pl-8">
-                            {index % 2 !== 0 && (
-                                <>
-                                    <h3 class="font-bold text-white">{milestone.year}</h3>
-                                    <p>{milestone.event}</p>
-                                </>
-                            )}
-                        </div>
+            <div class="flex justify-center">
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg text-center max-w-2xl">
+                    <div class="inline-block bg-white text-black font-bold text-2xl px-4 py-2 rounded-full mb-4">
+                        {milestones[0].year}
                     </div>
-                ))}
+                    <h3 class="text-xl font-bold mb-4">{milestones[0].event}</h3>
+                    <p>
+                        Naše cesta začíná zde. S vizí stát se lídrem v digitální transformaci 
+                        jsme položili základy pro inovativní řešení, která budou formovat 
+                        budoucnost digitálního světa.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -88,7 +73,7 @@ const values = [
     <section id="careers" class="section py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-8">Kariéra u nás</h2>
-            <p class="mt-4 text-center max-w-3xl mx-auto">Hledáme talentované a motivované jedince, kteří chtějí být součástí našeho týmu. Nabízíme dynamické pracovní prostředí, možnosti profesního růstu a práci na zajímavých projektech.</p>
+            <p class="mt-4 text-center max-w-3xl mx-auto">Jako nově založená firma hledáme talentované a motivované jedince, kteří chtějí být součástí našeho rostoucího týmu. Nabízíme dynamické pracovní prostředí, možnosti profesního růstu a práci na zajímavých projektech.</p>
             <div class="text-center mt-8">
                 <Button href="/kariera">Prohlédnout volné pozice</Button>
             </div>
