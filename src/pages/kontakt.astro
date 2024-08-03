@@ -10,15 +10,15 @@ import Button from '../components/Button.astro';
             <form action="/odeslat" method="post" id="contact-form" class="space-y-4">
                 <div class="form-group">
                     <label for="name" class="block mb-2">Jméno:</label>
-                    <input type="text" id="name" name="name" required class="w-full p-2 border border-white bg-black text-white rounded">
+                    <input type="text" id="name" name="name" required class="w-full p-2 border border-white bg-black text-white rounded-full">
                 </div>
                 <div class="form-group">
                     <label for="email" class="block mb-2">Email:</label>
-                    <input type="email" id="email" name="email" required class="w-full p-2 border border-white bg-black text-white rounded">
+                    <input type="email" id="email" name="email" required class="w-full p-2 border border-white bg-black text-white rounded-full">
                 </div>
                 <div class="form-group">
                     <label for="subject" class="block mb-2">Předmět:</label>
-                    <select id="subject" name="subject" required class="w-full p-2 border border-white bg-black text-white rounded">
+                    <select id="subject" name="subject" required class="w-full p-2 border border-white bg-black text-white rounded-full">
                         <option value="">Vyberte předmět</option>
                         <option value="general">Obecný dotaz</option>
                         <option value="support">Technická podpora</option>
@@ -27,7 +27,7 @@ import Button from '../components/Button.astro';
                 </div>
                 <div class="form-group">
                     <label for="message" class="block mb-2">Zpráva:</label>
-                    <textarea id="message" name="message" required class="w-full p-2 border border-white bg-black text-white rounded h-40"></textarea>
+                    <textarea id="message" name="message" required class="w-full p-2 border border-white bg-black text-white rounded-2xl h-40"></textarea>
                 </div>
                 <Button type="submit">Odeslat</Button>
             </form>
@@ -46,13 +46,8 @@ import Button from '../components/Button.astro';
             </div>
         </section>
     </div>
-    <section id="map" class="py-16">
-        <h2 class="text-3xl font-bold text-center mb-8">Kde nás najdete</h2>
-        <div id="google-map" class="h-96 w-full"></div>
-    </section>
 </Layout>
 <script>
-    declare var google: any;
     // Skript pro validaci formuláře
     const form = document.getElementById('contact-form');
     if (form) {
@@ -62,55 +57,4 @@ import Button from '../components/Button.astro';
             alert('Formulář byl odeslán!');
         });
     }
-    // Skript pro načtení Google Maps
-    function initMap() {
-        if (typeof google !== 'undefined') {
-            const map = new google.maps.Map(document.getElementById('google-map'), {
-                center: {lat: 50.0755, lng: 14.4378}, // Praha
-                zoom: 15,
-                styles: [
-                    {
-                        elementType: "geometry",
-                        stylers: [{ color: "#242f3e" }]
-                    },
-                    {
-                        elementType: "labels.text.stroke",
-                        stylers: [{ color: "#242f3e" }]
-                    },
-                    {
-                        elementType: "labels.text.fill",
-                        stylers: [{ color: "#746855" }]
-                    },
-                    {
-                        featureType: "administrative.locality",
-                        elementType: "labels.text.fill",
-                        stylers: [{ color: "#d59563" }]
-                    },
-                    {
-                        featureType: "road",
-                        elementType: "geometry",
-                        stylers: [{ color: "#38414e" }]
-                    },
-                    {
-                        featureType: "road",
-                        elementType: "geometry.stroke",
-                        stylers: [{ color: "#212a37" }]
-                    },
-                    {
-                        featureType: "road",
-                        elementType: "labels.text.fill",
-                        stylers: [{ color: "#9ca5b3" }]
-                    }
-                ]
-            });
-            const marker = new google.maps.Marker({
-                position: {lat: 50.0755, lng: 14.4378},
-                map: map,
-                title: 'DigitalFusion'
-            });
-        } else {
-            console.error('Google Maps API není dostupné.');
-        }
-    }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
