@@ -48,34 +48,36 @@ const processSteps = [
     <h1 class="text-4xl font-bold text-center my-12 text-white">Naše služby</h1>
     <div class="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
         {services.map(service => (
-            <div class="service-card bg-black bg-opacity-50 rounded-lg p-8 text-center flex flex-col h-full transition-all duration-300 hover:bg-opacity-70">
-                <div class="flex-grow">
-                    <Icon name={service.icon} class="text-4xl text-white mb-4 mx-auto" />
-                    <h2 class="text-2xl font-bold mb-4 text-white">{service.title}</h2>
-                    <p class="mb-6 text-white">{service.description}</p>
-                    <ul class="features-list space-y-2 mb-6 text-white">
-                        {service.features.map(feature => (
-                            <li class="flex items-center">
-                                <Icon name="mdi:check-circle" class="text-green-500 mr-2" />
-                                {feature}
-                            </li>
-                        ))}
-                    </ul>
+            <div class="service-card bg-black rounded-lg p-8 text-center flex flex-col h-full transition-all duration-300">
+                <div class="flex-grow flex flex-col items-center">
+                    <div class="w-3/4 mx-auto">
+                        <Icon name={service.icon} class="text-4xl text-white mb-4 mx-auto" />
+                        <h2 class="text-2xl font-bold mb-4 text-white">{service.title}</h2>
+                        <p class="mb-6 text-white">{service.description}</p>
+                        <ul class="features-list space-y-2 mb-6 text-white">
+                            {service.features.map(feature => (
+                                <li class="flex items-center">
+                                    <Icon name="mdi:check-circle" class="text-white mr-2" />
+                                    <span class="text-left">{feature}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-                <div class="mt-4">
-                    <a href="#" class="inline-block w-full px-6 py-3 bg-white text-black rounded-full hover:bg-gray-200 transition-colors">Zjistit více</a>
+                <div class="mt-4 flex justify-center">
+                    <a href="#" class="inline-block w-3/4 px-6 py-3 bg-white text-black rounded-full transition-colors">Zjistit více</a>
                 </div>
             </div>
         ))}
     </div>
     <section id="process" class="py-16">
         <h2 class="text-3xl font-bold text-center text-white mb-12">Náš proces vývoje</h2>
-        <div class="process-steps flex flex-col md:flex-row justify-between items-center max-w-4xl mx-auto">
+        <div class="process-steps flex flex-col md:flex-row justify-between items-center max-w-4xl mx-auto relative">
             {processSteps.map((step, index) => (
-                <div class="step flex flex-col items-center text-center p-4 mb-8 md:mb-0">
+                <div class="step flex flex-col items-center text-center p-4 mb-8 md:mb-0 relative z-10">
                     <div class="icon-wrapper bg-white rounded-full p-3 mb-4 relative">
                         <Icon name={step.icon} class="text-3xl text-black" />
-                        <span class="absolute -top-2 -left-2 bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">{index + 1}</span>
+                        <span class="absolute -top-2 -left-2 bg-black text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">{index + 1}</span>
                     </div>
                     <h3 class="text-lg font-bold mb-2 text-white">{step.name}</h3>
                 </div>
@@ -106,7 +108,7 @@ const processSteps = [
             <h2 class="text-3xl font-bold mb-6 text-center text-white">Připraveni na nový web?</h2>
             <p class="mt-4 mb-8 text-center max-w-2xl mx-auto text-white">Kontaktujte nás pro nezávaznou konzultaci a zjistěte, jak vám můžeme pomoci s vaším webovým projektem.</p>
             <div class="text-center">
-                <a href="/kontakt" class="inline-block px-8 py-4 bg-white text-black rounded-full hover:bg-gray-200 transition-colors text-lg font-bold">Kontaktujte nás</a>
+                <a href="/kontakt" class="inline-block px-8 py-4 bg-white text-black rounded-full transition-colors text-lg font-bold">Kontaktujte nás</a>
             </div>
         </div>
     </section>
