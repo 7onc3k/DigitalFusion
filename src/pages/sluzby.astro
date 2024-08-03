@@ -72,9 +72,9 @@ const processSteps = [
     </div>
     <section id="process" class="py-16">
         <h2 class="text-3xl font-bold text-center text-white mb-12">Náš proces vývoje</h2>
-        <div class="process-steps flex flex-col md:flex-row justify-between items-center max-w-4xl mx-auto relative">
+        <div class="process-steps grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-8 max-w-5xl mx-auto">
             {processSteps.map((step, index) => (
-                <div class="step flex flex-col items-center text-center p-4 mb-8 md:mb-0 relative z-10">
+                <div class="step flex flex-col items-center text-center p-4 relative">
                     <div class="icon-wrapper bg-white rounded-full p-3 mb-4 relative">
                         <Icon name={step.icon} class="text-3xl text-black" />
                         <span class="absolute -top-2 -left-2 bg-black text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">{index + 1}</span>
