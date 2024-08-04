@@ -8,7 +8,7 @@ import { Icon } from 'astro-icon/components';
     <div class="contact-container flex flex-col md:flex-row justify-between mb-8">
         <section id="contact-form-section" class="flex-1 p-4">
             <h2 class="text-2xl font-bold mb-4">Kontaktní formulář</h2>
-            <form id="contact-form" class="space-y-4">
+            <form action="/api/send-email" method="post" id="contact-form" class="space-y-4">
                 <div class="form-group">
                     <label for="name" class="block mb-2">Jméno:</label>
                     <input type="text" id="name" name="name" required class="w-full p-2 border border-white bg-black text-white rounded-full">
@@ -53,39 +53,26 @@ import { Icon } from 'astro-icon/components';
     </div>
 </Layout>
 <script>
+    // Skript pro validaci a odeslání formuláře
     const form = document.getElementById('contact-form') as HTMLFormElement;
     if (form) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const formData = new FormData(form);
             try {
-                console.log('Sending form data...');
                 const response = await fetch('/api/send-email', {
                     method: 'POST',
                     body: formData
                 });
-                console.log('Response status:', response.status);
-                const contentType = response.headers.get("content-type");
-                if (contentType && contentType.indexOf("application/json") !== -1) {
-                    const data = await response.json();
-                    console.log('Response data:', data);
-                    if (!response.ok) {
-                        throw new Error(data.message || `HTTP error! status: ${response.status}`);
-                    }
-                    alert(data.message || 'Formulář byl úspěšně odeslán!');
+                if (response.ok) {
+                    alert('Formulář byl úspěšně odeslán!');
                     form.reset();
                 } else {
-                    const text = await response.text();
-                    console.error('Non-JSON response:', text);
-                    throw new Error('Unexpected response from server');
+                    throw new Error('Odeslání formuláře selhalo');
                 }
-            } catch (error: unknown) {
-                console.error('Error sending form:', error);
-                let errorMessage = 'Při odesílání formuláře došlo k chybě';
-                if (error instanceof Error) {
-                    errorMessage += `: ${error.message}`;
-                }
-                alert(errorMessage);
+            } catch (error) {
+                alert('Při odesílání formuláře došlo k chybě. Prosím, zkuste to znovu později.');
+                console.error('Chyba při odesílání formuláře:', error);
             }
         });
     }
