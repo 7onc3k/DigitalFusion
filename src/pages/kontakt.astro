@@ -65,13 +65,20 @@ import { Icon } from 'astro-icon/components';
                     body: formData
                 });
                 console.log('Response status:', response.status);
-                const data = await response.json();
-                console.log('Response data:', data);
-                if (!response.ok) {
-                    throw new Error(data.message || `HTTP error! status: ${response.status}`);
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                    const data = await response.json();
+                    console.log('Response data:', data);
+                    if (!response.ok) {
+                        throw new Error(data.message || `HTTP error! status: ${response.status}`);
+                    }
+                    alert(data.message || 'Formulář byl úspěšně odeslán!');
+                    form.reset();
+                } else {
+                    const text = await response.text();
+                    console.error('Non-JSON response:', text);
+                    throw new Error('Unexpected response from server');
                 }
-                alert(data.message || 'Formulář byl úspěšně odeslán!');
-                form.reset();
             } catch (error: unknown) {
                 console.error('Error sending form:', error);
                 let errorMessage = 'Při odesílání formuláře došlo k chybě';

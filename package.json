@@ -26,5 +26,8 @@
     "tsparticles": "^3.5.0",
     "tsparticles-engine": "^2.12.0",
     "typescript": "^5.5.2"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^6.4.15"
   }
 }
