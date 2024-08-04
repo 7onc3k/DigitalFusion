@@ -8,9 +8,9 @@ interface Props {
     image: string;
     category: string;
     technologies: string[];
-    url: string; // Přidáno URL
+    url: string;
 }
-const { id, title, description, image, category, technologies, url } = Astro.props;
+const { title, description, image, category, technologies, url } = Astro.props;
 // Mapování technologií na ikony
 const techIcons: { [key: string]: string } = {
     "HTML": "mdi:language-html5",
@@ -35,7 +35,7 @@ const techIcons: { [key: string]: string } = {
             ))}
         </div>
         <div class="mt-auto">
-            <Button href={url} class="w-full" target="_blank" rel="noopener noreferrer">Otevřít projekt</Button>
+            <Button href={url} class="w-full">Otevřít projekt</Button>
         </div>
     </div>
 </div>

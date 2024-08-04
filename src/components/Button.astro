@@ -5,6 +5,8 @@ interface Props {
     variant?: 'primary' | 'secondary' | 'outline';
     size?: 'small' | 'medium' | 'large';
     class?: string;
+    target?: string;
+    rel?: string;
 }
 const {
     href,
@@ -12,6 +14,8 @@ const {
     variant = 'primary',
     size = 'medium',
     class: className,
+    target,
+    rel,
     ...rest
 } = Astro.props;
 const baseStyles = "inline-block font-bold rounded-full transition-all duration-300 text-center text-white bg-white bg-opacity-20 hover:bg-opacity-30";
@@ -27,6 +31,8 @@ const Element = href ? 'a' : 'button';
     href={href}
     type={Element === 'button' ? type : undefined}
     class={classes}
+    target={target}
+    rel={rel}
     {...rest}
 >
     <slot />

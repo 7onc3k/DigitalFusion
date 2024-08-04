@@ -27,7 +27,6 @@ const categories = ["Všechny", ...new Set(projects.map(project => project.categ
     // Skript pro filtrování projektů
     const categoryButtons = document.querySelectorAll('.category-btn') as NodeListOf<HTMLButtonElement>;
     const projectItems = document.querySelectorAll('.project-item') as NodeListOf<HTMLElement>;
-    const projectGrid = document.getElementById('project-grid') as HTMLElement;
     function filterProjects(category: string) {
         projectItems.forEach(item => {
             const card = item.querySelector('.project-card') as HTMLElement;
@@ -39,7 +38,7 @@ const categories = ["Všechny", ...new Set(projects.map(project => project.categ
         });
         // Zarovnání viditelných projektů
         const visibleItems = Array.from(projectItems).filter(item => item.style.display !== 'none');
-        visibleItems.forEach((item, index) => {
+        visibleItems.forEach(item => {
             item.style.gridColumn = `auto`;
             item.style.gridRow = `auto`;
         });
