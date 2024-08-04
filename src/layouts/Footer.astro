@@ -1,17 +1,41 @@
 ---
 import Button from '../components/Button.astro';
+import { Icon } from 'astro-icon/components';
 ---
 <footer class="bg-transparent text-white py-8 md:py-12">
     <div class="container mx-auto px-6">
-        <div class="footer-content grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="footer-section">
                 <h3 class="text-lg font-bold mb-4">Rychlé odkazy</h3>
                 <ul class="space-y-2">
                     <li><a href="/" class="hover:text-gray-300 transition-colors duration-300">Domů</a></li>
                     <li><a href="/o-nas" class="hover:text-gray-300 transition-colors duration-300">O nás</a></li>
                     <li><a href="/sluzby" class="hover:text-gray-300 transition-colors duration-300">Služby</a></li>
+                    <li><a href="/portfolio" class="hover:text-gray-300 transition-colors duration-300">Portfolio</a></li>
                     <li><a href="/kontakt" class="hover:text-gray-300 transition-colors duration-300">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="text-lg font-bold mb-4">Ostatní</h3>
+                <ul class="space-y-2">
                     <li><a href="/kariera" class="hover:text-gray-300 transition-colors duration-300">Kariéra</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="text-lg font-bold mb-4">Kontaktní údaje</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-center">
+                        <Icon name="mdi:phone" class="mr-2" />
+                        <span>+420 735 928 928</span>
+                    </li>
+                    <li class="flex items-center">
+                        <Icon name="mdi:email" class="mr-2" />
+                        <span>info@digitalfusion.cz</span>
+                    </li>
+                    <li class="flex items-center">
+                        <Icon name="mdi:map-marker" class="mr-2" />
+                        <span>Zelený pruh 95, 140 00 Praha 4-Braník</span>
+                    </li>
                 </ul>
             </div>
             <div class="footer-section">

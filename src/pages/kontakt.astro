@@ -1,13 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
+import { Icon } from 'astro-icon/components';
 ---
 <Layout title="Kontakt - DigitalFusion">
     <h1 class="text-4xl font-bold text-center my-8">Kontaktujte nás</h1>
     <div class="contact-container flex flex-col md:flex-row justify-between mb-8">
-        <section id="contact-form" class="flex-1 p-4">
+        <section id="contact-form-section" class="flex-1 p-4">
             <h2 class="text-2xl font-bold mb-4">Kontaktní formulář</h2>
-            <form action="/odeslat" method="post" id="contact-form" class="space-y-4">
+            <form action="/api/send-email" method="post" id="contact-form" class="space-y-4">
                 <div class="form-group">
                     <label for="name" class="block mb-2">Jméno:</label>
                     <input type="text" id="name" name="name" required class="w-full p-2 border border-white bg-black text-white rounded-full">
@@ -32,22 +33,47 @@ import Button from '../components/Button.astro';
                 <Button type="submit">Odeslat</Button>
             </form>
         </section>
-        <section id="contact-info" class="flex-1 p-4 mt-8 md:mt-0">
-            <h2 class="text-2xl font-bold mb-4">Kontaktní údaje</h2>
-            <p><i class="fas fa-phone"></i> Telefon: +420 123 456 789</p>
-            <p><i class="fas fa-envelope"></i> Email: info@digitalfusion.cz</p>
-            <p><i class="fas fa-map-marker-alt"></i> Adresa: Ulice 123, Město, PSČ</p>
+        <section id="contact-info" class="flex-1 p-4 mt-8 md:mt-0 md:ml-8">
+            <h2 class="text-2xl font-bold mb-6">Kontaktní údaje</h2>
+            <div class="space-y-4">
+                <div class="flex items-center">
+                    <Icon name="mdi:phone" class="text-2xl mr-4" />
+                    <p>+420 735 928 928</p>
+                </div>
+                <div class="flex items-center">
+                    <Icon name="mdi:email" class="text-2xl mr-4" />
+                    <p>info@digitalfusion.cz</p>
+                </div>
+                <div class="flex items-start">
+                    <Icon name="mdi:map-marker" class="text-2xl mr-4 mt-1" />
+                    <p>Zelený pruh 95,<br>140 00 Praha 4-Braník</p>
+                </div>
+            </div>
         </section>
     </div>
 </Layout>
 <script>
-    // Skript pro validaci formuláře
-    const form = document.getElementById('contact-form');
+    // Skript pro validaci a odeslání formuláře
+    const form = document.getElementById('contact-form') as HTMLFormElement;
     if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            // Zde přidejte logiku pro validaci a odeslání formuláře
-            alert('Formulář byl odeslán!');
+            const formData = new FormData(form);
+            try {
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    body: formData
+                });
+                if (response.ok) {
+                    alert('Formulář byl úspěšně odeslán!');
+                    form.reset();
+                } else {
+                    throw new Error('Odeslání formuláře selhalo');
+                }
+            } catch (error) {
+                alert('Při odesílání formuláře došlo k chybě. Prosím, zkuste to znovu později.');
+                console.error('Chyba při odesílání formuláře:', error);
+            }
         });
     }
 </script>
