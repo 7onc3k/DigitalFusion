@@ -8,7 +8,7 @@ import { Icon } from 'astro-icon/components';
     <div class="contact-container flex flex-col md:flex-row justify-between mb-8">
         <section id="contact-form-section" class="flex-1 p-4">
             <h2 class="text-2xl font-bold mb-4">Kontaktní formulář</h2>
-            <form action="/api/send-email" method="post" id="contact-form" class="space-y-4">
+            <form action="https://formspree.io/f/mnnadwlp" method="POST" id="contact-form" class="space-y-4">
                 <div class="form-group">
                     <label for="name" class="block mb-2">Jméno:</label>
                     <input type="text" id="name" name="name" required class="w-full p-2 border border-white bg-black text-white rounded-full">
@@ -30,7 +30,12 @@ import { Icon } from 'astro-icon/components';
                     <label for="message" class="block mb-2">Zpráva:</label>
                     <textarea id="message" name="message" required class="w-full p-2 border border-white bg-black text-white rounded-2xl h-40"></textarea>
                 </div>
-                <Button type="submit">Odeslat</Button>
+                <div class="flex items-center space-x-4">
+                    <Button type="submit">Odeslat</Button>
+                    <div id="form-status" class="hidden opacity-0 transition-opacity duration-300 bg-green-500 text-white px-4 py-2 rounded-full">
+                        Formulář byl úspěšně odeslán!
+                    </div>
+                </div>
             </form>
         </section>
         <section id="contact-info" class="flex-1 p-4 mt-8 md:mt-0 md:ml-8">
@@ -52,21 +57,30 @@ import { Icon } from 'astro-icon/components';
         </section>
     </div>
 </Layout>
+
 <script>
-    // Skript pro validaci a odeslání formuláře
     const form = document.getElementById('contact-form') as HTMLFormElement;
-    if (form) {
+    const formStatus = document.getElementById('form-status');
+
+    if (form && formStatus) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const formData = new FormData(form);
             try {
-                const response = await fetch('/api/send-email', {
+                const response = await fetch(form.action, {
                     method: 'POST',
-                    body: formData
+                    body: new FormData(form),
+                    headers: {'Accept': 'application/json'}
                 });
                 if (response.ok) {
-                    alert('Formulář byl úspěšně odeslán!');
                     form.reset();
+                    formStatus.classList.remove('hidden');
+                    formStatus.classList.add('opacity-100');
+                    setTimeout(() => {
+                        formStatus.classList.remove('opacity-100');
+                        setTimeout(() => {
+                            formStatus.classList.add('hidden');
+                        }, 300);
+                    }, 3000);
                 } else {
                     throw new Error('Odeslání formuláře selhalo');
                 }
