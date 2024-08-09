@@ -251,5 +251,24 @@
       "Imports an icon component from an external library"
     ],
     "category": "UI Component"
+  },
+  "src/file_processor.py": {
+    "type": "Python module",
+    "description": "This module likely contains asynchronous functions for processing files, utilizing a logger for logging purposes.",
+    "exports": [
+      "process_file"
+    ],
+    "imports": [
+      "utils.logger"
+    ],
+    "functions": [
+      "process_file - An asynchronous function for processing files, with logging of the first 100 characters to avoid clutter."
+    ],
+    "hooks": [],
+    "attributes": [
+      "Asynchronous processing",
+      "Logging"
+    ],
+    "category": "File Processing"
   }
 }
