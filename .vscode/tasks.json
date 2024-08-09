@@ -2,42 +2,44 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Run npm dev",
+            "label": "Run npm dev and main.py",
+            "type": "shell",
+            "dependsOn": ["npm dev", "Python main.py"],
+            "dependsOrder": "parallel",
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": false
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        },
+        {
+            "label": "npm dev",
             "type": "shell",
             "command": "npm run dev",
             "problemMatcher": [],
             "presentation": {
                 "group": "dev-tasks",
-                "panel": "new"
-            },
-            "runOptions": {
-                "runOn": "folderOpen"
+                "panel": "dedicated"
             }
         },
         {
-            "label": "Run automated.py",
+            "label": "Python main.py",
             "type": "shell",
-            "command": "python ./automated/automated.py",
+            "command": "python",
+            "args": [
+                "C:\\Users\\thanh\\Downloads\\Programy\\DigitalFusion\\automated_softdev\\src\\main.py"
+            ],
             "problemMatcher": [],
             "presentation": {
                 "group": "dev-tasks",
-                "panel": "new"
-            },
-            "runOptions": {
-                "runOn": "folderOpen"
-            }
-        },
-        {
-            "label": "Run main.py",
-            "type": "shell",
-            "command": "python ./automated/main.py",
-            "problemMatcher": [],
-            "presentation": {
-                "group": "dev-tasks",
-                "panel": "new"
-            },
-            "runOptions": {
-                "runOn": "folderOpen"
+                "panel": "dedicated"
             }
         }
     ]
