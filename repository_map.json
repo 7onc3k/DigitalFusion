@@ -1,22 +1,7 @@
 {
-  "src/data/projects.js": {
-    "type": "JavaScript/TypeScript",
-    "description": "Exports a constant array named 'projects' containing project details.",
-    "exports": [
-      "projects"
-    ],
-    "imports": [],
-    "functions": [],
-    "hooks": [],
-    "attributes": [
-      "id",
-      "title"
-    ],
-    "category": "Data"
-  },
   "src/layouts/Header.astro": {
     "type": "JavaScript module",
-    "description": "Defines a navigation menu with a list of items, each containing a URL and a display text.",
+    "description": "Defines a navigation menu with a list of items, each containing a URL and a text label.",
     "exports": [],
     "imports": [],
     "functions": [],
@@ -25,45 +10,6 @@
       "navItems"
     ],
     "category": "Data definition"
-  },
-  "src/env.d.ts": {
-    "type": "TypeScript with Astro",
-    "description": "A file that likely contains client-side code for an Astro project, potentially focusing on logging functionality.",
-    "exports": [],
-    "imports": [],
-    "functions": [],
-    "hooks": [],
-    "attributes": [
-      "Logging"
-    ],
-    "category": "Client-side"
-  },
-  "src/components/Button.astro": {
-    "type": "TypeScript Interface",
-    "description": "Defines the properties for a component, potentially a button or link, with options for href, type, and variant.",
-    "exports": [],
-    "imports": [],
-    "functions": [],
-    "hooks": [],
-    "attributes": [
-      "href",
-      "type",
-      "variant"
-    ],
-    "category": "Component Definition"
-  },
-  "src/components/Card.astro": {
-    "type": "JavaScript/TypeScript",
-    "description": "Defines an interface for component props and deconstructs them for use in a functional component.",
-    "exports": [],
-    "imports": [],
-    "functions": [],
-    "hooks": [],
-    "attributes": [
-      "Props interface",
-      "Deconstruction of props"
-    ],
-    "category": "Component Props Definition"
   },
   "src/config/particlesOptions.ts": {
     "type": "JavaScript/TypeScript",
@@ -79,18 +25,33 @@
     ],
     "category": "Configuration"
   },
+  "src/data/projects.js": {
+    "type": "JavaScript/TypeScript module",
+    "description": "Exports a constant array named 'projects' containing project objects with details such as id and title.",
+    "exports": [
+      "projects"
+    ],
+    "imports": [],
+    "functions": [],
+    "hooks": [],
+    "attributes": [
+      "static data",
+      "project details"
+    ],
+    "category": "Data module"
+  },
   "src/components/Hero.astro": {
     "type": "TypeScript/JavaScript",
-    "description": "Defines a React component or module that likely handles displaying a title and subtitle, potentially within an Astro project context.",
+    "description": "Defines an interface for component properties and attempts to destructure them from an unknown source.",
     "exports": [],
     "imports": [],
     "functions": [],
     "hooks": [],
     "attributes": [
-      "Props interface",
+      "TypeScript interface",
       "Destructuring assignment"
     ],
-    "category": "UI Component"
+    "category": "Component Interface Definition"
   },
   "src/layouts/Layout.astro": {
     "type": "Astro Component",
@@ -104,14 +65,14 @@
     "functions": [],
     "hooks": [],
     "attributes": [
-      "Component-based structure",
-      "Potential for modularity"
+      "Component composition",
+      "Potential for layout structure"
     ],
-    "category": "UI/UX Components"
+    "category": "UI/Layout"
   },
   "src/layouts/Particles.astro": {
-    "type": "TypeScript/JavaScript file",
-    "description": "Defines an interface for particles properties, likely for a React component handling particle animations.",
+    "type": "JavaScript/TypeScript",
+    "description": "Defines an interface for particles properties, likely used in a context where particle animations or effects are managed.",
     "exports": [
       "ParticlesProps"
     ],
@@ -123,26 +84,50 @@
     "attributes": [
       "ParticlesProps interface"
     ],
-    "category": "Interface Definition"
+    "category": "Interfaces and Types"
   },
-  "src/pages/o-nas.astro": {
-    "type": "Astro Component",
-    "description": "An Astro component file that likely defines a UI component or page layout using imported Astro components.",
+  "src/env.d.ts": {
+    "type": "TypeScript with Astro Client Reference",
+    "description": "This code snippet includes a reference to the Astro client types, suggesting it's part of a project using Astro for web development, likely focusing on client-side interactions or components.",
     "exports": [],
-    "imports": [
-      "Layout from '../layouts/Layout.astro'",
-      "Button from '../components/Button.astro'"
-    ],
+    "imports": [],
     "functions": [],
     "hooks": [],
     "attributes": [
-      "Uses Astro components for layout and UI elements"
+      "Astro client reference"
     ],
-    "category": "UI Component"
+    "category": "Web Development"
+  },
+  "src/components/Card.astro": {
+    "type": "JavaScript/TypeScript",
+    "description": "Defines an interface for component props and potentially deconstructs them in a function or component.",
+    "exports": [],
+    "imports": [],
+    "functions": [],
+    "hooks": [],
+    "attributes": [
+      "Props interface",
+      "Deconstruction of href, title, body"
+    ],
+    "category": "Component Props Definition"
+  },
+  "src/components/Button.astro": {
+    "type": "TypeScript/JavaScript",
+    "description": "Defines an interface for component props, likely for a button or link component, specifying optional href, type, and variant properties.",
+    "exports": [],
+    "imports": [],
+    "functions": [],
+    "hooks": [],
+    "attributes": [
+      "href",
+      "type",
+      "variant"
+    ],
+    "category": "Interface Definition"
   },
   "src/pages/kariera.astro": {
     "type": "Astro Component",
-    "description": "An Astro component file that likely defines a UI component or page layout using imported Astro components.",
+    "description": "A component file that likely defines a UI element or page structure using Astro, importing layout and button components for composition.",
     "exports": [],
     "imports": [
       "Layout from '../layouts/Layout.astro'",
@@ -151,13 +136,29 @@
     "functions": [],
     "hooks": [],
     "attributes": [
-      "Uses Astro components for layout and UI elements"
+      "UI composition",
+      "Component reusability"
+    ],
+    "category": "UI Component"
+  },
+  "src/pages/sluzby.astro": {
+    "type": "JavaScript/TypeScript",
+    "description": "This file appears to be part of a web application, possibly using Astro for building user interfaces.",
+    "exports": [],
+    "imports": [
+      "Layout from '../layouts/Layout.astro'",
+      "Icon from 'astro-icon/components'"
+    ],
+    "functions": [],
+    "hooks": [],
+    "attributes": [
+      "Uses Astro for layout and icons"
     ],
     "category": "UI Component"
   },
   "src/layouts/Footer.astro": {
-    "type": "JavaScript/TypeScript with Astro",
-    "description": "A file that likely contains components or elements for an Astro-based web project, focusing on UI elements like buttons and icons.",
+    "type": "Astro Component",
+    "description": "A component file that likely includes a button and an icon, designed for use within an Astro project.",
     "exports": [],
     "imports": [
       "Button from '../components/Button.astro'",
@@ -166,30 +167,14 @@
     "functions": [],
     "hooks": [],
     "attributes": [
-      "UI component integration",
+      "Integration of UI components",
       "Potential for interactive elements"
-    ],
-    "category": "UI Components"
-  },
-  "src/pages/kontakt.astro": {
-    "type": "Astro Component",
-    "description": "A component file that likely defines a UI element or page structure using Astro, importing layout and button components.",
-    "exports": [],
-    "imports": [
-      "Layout from '../layouts/Layout.astro'",
-      "Button from '../components/Button.astro'"
-    ],
-    "functions": [],
-    "hooks": [],
-    "attributes": [
-      "Uses Astro components",
-      "Imports layout and button components"
     ],
     "category": "UI Component"
   },
-  "src/pages/portfolio.astro": {
+  "src/pages/index.astro": {
     "type": "JavaScript/Astro",
-    "description": "This file likely serves as a component or page within an Astro project, responsible for rendering project data within a specific layout.",
+    "description": "This file likely serves as a component or page within an Astro project, responsible for rendering project information using a specific layout.",
     "exports": [],
     "imports": [
       "Layout from '../layouts/Layout.astro'",
@@ -198,12 +183,29 @@
     "functions": [],
     "hooks": [],
     "attributes": [
-      "Uses Astro's component-based layout system",
-      "Imports project data for rendering"
+      "Uses a specific layout",
+      "Renders project information"
     ],
-    "category": "UI Component/Page"
+    "category": "Component/Page"
   },
-  "src/pages/index.astro": {
+  "src/pages/o-nas.astro": {
+    "type": "Astro Component",
+    "description": "An Astro component file that likely includes a layout and a button component, potentially for logging purposes.",
+    "exports": [],
+    "imports": [
+      "Layout from '../layouts/Layout.astro'",
+      "Button from '../components/Button.astro'"
+    ],
+    "functions": [
+      "Unknown due to code truncation"
+    ],
+    "hooks": [],
+    "attributes": [
+      "Uses Astro components for layout and button"
+    ],
+    "category": "UI Components"
+  },
+  "src/pages/portfolio.astro": {
     "type": "JavaScript/Astro",
     "description": "This file likely serves as a component or page within an Astro project, responsible for rendering project data within a specified layout.",
     "exports": [],
@@ -214,14 +216,30 @@
     "functions": [],
     "hooks": [],
     "attributes": [
-      "Uses Astro's component-based layout system",
+      "Uses Astro's component-based structure",
       "Imports project data for rendering"
     ],
-    "category": "UI Component/Page"
+    "category": "Component/Page"
+  },
+  "src/pages/kontakt.astro": {
+    "type": "Astro Component",
+    "description": "A component file that likely defines a UI element or page structure using Astro, a modern static site builder.",
+    "exports": [],
+    "imports": [
+      "Layout from '../layouts/Layout.astro'",
+      "Button from '../components/Button.astro'"
+    ],
+    "functions": [],
+    "hooks": [],
+    "attributes": [
+      "Uses Astro's component syntax",
+      "Imports other Astro components for composition"
+    ],
+    "category": "UI Component"
   },
   "src/components/ProjectCard.astro": {
     "type": "JavaScript/TypeScript",
-    "description": "A file that likely defines a component or module, possibly related to UI elements such as buttons and icons.",
+    "description": "A file that likely contains component definitions or utility functions, possibly for a web application using Astro for component rendering.",
     "exports": [],
     "imports": [
       "./Button.astro",
@@ -230,45 +248,9 @@
     "functions": [],
     "hooks": [],
     "attributes": [
-      "Imports a Button component from a local file",
-      "Imports an Icon component from an external library"
+      "Uses Astro components",
+      "Imports an Icon component from astro-icon"
     ],
-    "category": "UI Component"
-  },
-  "src/pages/sluzby.astro": {
-    "type": "JavaScript/TypeScript",
-    "description": "This file appears to be part of a web application, possibly using Astro for building user interfaces. It imports components and possibly hooks for functionality.",
-    "exports": [],
-    "imports": [
-      "Layout from '../layouts/Layout.astro'",
-      "Icon from 'astro-icon/components'"
-    ],
-    "functions": [],
-    "hooks": [],
-    "attributes": [
-      "Uses Astro for UI components",
-      "Imports a layout from a relative path",
-      "Imports an icon component from an external library"
-    ],
-    "category": "UI Component"
-  },
-  "src/file_processor.py": {
-    "type": "Python module",
-    "description": "This module likely contains asynchronous functions for processing files, utilizing a logger for logging purposes.",
-    "exports": [
-      "process_file"
-    ],
-    "imports": [
-      "utils.logger"
-    ],
-    "functions": [
-      "process_file - An asynchronous function for processing files, with logging of the first 100 characters to avoid clutter."
-    ],
-    "hooks": [],
-    "attributes": [
-      "Asynchronous processing",
-      "Logging"
-    ],
-    "category": "File Processing"
+    "category": "Component or Utility"
   }
 }

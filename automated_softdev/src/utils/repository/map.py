@@ -66,15 +66,16 @@ class RepositoryMap:
         async with aiohttp.ClientSession() as session:
             tasks = []
             for file_path in changed_files:
-                # Normalizujeme cestu
-                normalized_path = os.path.normpath(file_path).replace(os.sep, '/')
-                full_path = os.path.join(self.config.project_dir, file_path)
-                if os.path.exists(full_path) and any(file_path.endswith(ext) for ext in self.config.file_extensions):
-                    tasks.append(process_file(session, self.api_client, full_path, normalized_path, current_map))
-                elif normalized_path in current_map:
-                    del current_map[normalized_path]
-                    print(f"Odstraněn popis pro smazaný soubor: {normalized_path}")
-                    logger.info(f"Odstraněn popis pro smazaný soubor: {normalized_path}")
+                if file_path.startswith('src/'):
+                    # Normalizujeme cestu
+                    normalized_path = os.path.normpath(file_path).replace(os.sep, '/')
+                    full_path = os.path.join(self.config.project_dir, file_path)
+                    if os.path.exists(full_path) and any(file_path.endswith(ext) for ext in self.config.file_extensions):
+                        tasks.append(process_file(session, self.api_client, full_path, normalized_path, current_map))
+                    elif normalized_path in current_map:
+                        del current_map[normalized_path]
+                        print(f"Odstraněn popis pro smazaný soubor: {normalized_path}")
+                        logger.info(f"Odstraněn popis pro smazaný soubor: {normalized_path}")
             await asyncio.gather(*tasks)
         return current_map
 

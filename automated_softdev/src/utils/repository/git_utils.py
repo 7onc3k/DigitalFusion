@@ -7,7 +7,7 @@ logger = get_logger(__name__)
 async def get_changed_files(project_dir: str) -> List[str]:
     try:
         process = await asyncio.create_subprocess_exec(
-            'git', 'diff', '--name-only', 'HEAD^', 'HEAD',
+            'git', 'diff', '--name-only', 'HEAD^', 'HEAD', '--', 'src',
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
             cwd=project_dir
@@ -18,7 +18,7 @@ async def get_changed_files(project_dir: str) -> List[str]:
             logger.error(f"Git diff chyba: {stderr.decode()}")
         changed_files = stdout.decode().splitlines()
         print(f"Git diff výstup: {stdout.decode()}")
-        logger.info(f"Zjištěno {len(changed_files)} změněných souborů")
+        logger.info(f"Zjištěno {len(changed_files)} změněných souborů v src")
         return changed_files
     except Exception as e:
         print(f"Chyba při získávání změněných souborů: {str(e)}")

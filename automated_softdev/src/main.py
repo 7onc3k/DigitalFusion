@@ -16,14 +16,15 @@ def create_pre_push_hook(config):
         if not os.path.exists(hooks_dir):
             os.makedirs(hooks_dir)
         
-        relative_path = os.path.relpath(
-            os.path.join(config.project_dir, 'src', 'utils', 'repository', 'map.py'),
-            hooks_dir
-        )
+        # Použijeme cestu z konfigurace a přidáme k ní cestu k map.py
+        map_path = os.path.join(config.project_dir, "automated_softdev", "src", "utils", "repository", "map.py")
+        
+        # Použijeme dvojité zpětné lomítko pro Windows cesty v shell skriptu
+        map_path = map_path.replace("\\", "\\\\")
         
         hook_content = f"""#!/bin/sh
 
-python "{relative_path}"
+python "{map_path}"
 
 # Pokud skript selže (návratový kód není 0), zabráníme pushu
 exit_code=$?
