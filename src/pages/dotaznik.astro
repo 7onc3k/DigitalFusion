@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<Layout title="Dotazník - DigitalFusion">
+    <div class="fixed inset-0 z-50 bg-black flex flex-col">
+        <div class="absolute top-0 left-0 p-4 z-10">
+            <button onclick="history.back()" class="flex items-center space-x-2 text-white hover:text-gray-300 transition-colors duration-300">
+                <Icon name="mdi:arrow-left" class="w-6 h-6" />
+                <span>Zpět</span>
+            </button>
+        </div>
+        <div id="typeform-container" class="absolute inset-0">
+            <div data-tf-live="01J6YWW7H09HBQ9J0P4Y0QJGFR"></div>
+        </div>
+    </div>
+</Layout>
+
+<script is:inline src="//embed.typeform.com/next/embed.js"></script>
+
+<script is:inline>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const container = document.getElementById('typeform-container');
+    const embed = container.querySelector('[data-tf-live]');
+    if (embed) {
+      embed.style.height = '100%';
+      embed.style.width = '100%';
+      
+      // Nastavení výšky pro vnitřní div
+      const innerDiv = embed.querySelector('[data-tf-widget]');
+      if (innerDiv) {
+        innerDiv.style.height = '100%';
+      }
+      
+      // Nastavení výšky pro iframe
+      const iframe = embed.querySelector('iframe');
+      if (iframe) {
+        iframe.style.height = '100%';
+      }
+    }
+  });
+</script>
+
+<style>
+  #typeform-container, #typeform-container > div {
+    height: 100%;
+    width: 100%;
+  }
+</style>
+
+<style is:global>
+  #typeform-container,
+  #typeform-container > div,
+  #typeform-container > div > div,
+  #typeform-container iframe {
+    height: 100% !important;
+    min-height: 100vh !important;
+  }
+  
+  .tf-v1-widget {
+    height: 100% !important;
+  }
+</style>
