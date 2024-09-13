@@ -222,8 +222,8 @@
     "category": "Component/Page"
   },
   "src/pages/kontakt.astro": {
-    "type": "Astro Component",
-    "description": "A component file that likely defines a UI element or page structure using Astro, a modern static site builder.",
+    "type": "File type",
+    "description": "This file appears to be a module in an Astro project, likely a component or page file that imports layout and UI components.",
     "exports": [],
     "imports": [
       "Layout from '../layouts/Layout.astro'",
@@ -232,10 +232,9 @@
     "functions": [],
     "hooks": [],
     "attributes": [
-      "Uses Astro's component syntax",
-      "Imports other Astro components for composition"
+      "Imports layout and button components"
     ],
-    "category": "UI Component"
+    "category": "Astro Component"
   },
   "src/components/ProjectCard.astro": {
     "type": "JavaScript/TypeScript",
