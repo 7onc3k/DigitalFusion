@@ -1,0 +1,108 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+import Button from '../components/Button.astro';
+
+const processSteps = [
+    { 
+        name: 'Konzultace', 
+        icon: 'mdi:handshake', 
+        description: 'Začneme nezávaznou konzultací, kde společně probereme vaše potřeby a cíle. Vysvětlíme vám naše řešení a možnosti realizace.' 
+    },
+    { 
+        name: 'Design', 
+        icon: 'mdi:palette-outline', 
+        description: 'Vytvoříme detailní designový návrh, který společně prodiskutujeme. Důraz klademe na uživatelskou přívětivost a moderní trendy.' 
+    },
+    { 
+        name: 'Vývoj', 
+        icon: 'mdi:code-braces', 
+        description: 'Realizujeme projekt pomocí moderních technologií. Pravidelně vás informujeme o postupu vývoje.' 
+    },
+    { 
+        name: 'Testování', 
+        icon: 'mdi:test-tube', 
+        description: 'Důkladně testujeme všechny funkce a získáváme vaši zpětnou vazbu pro případné úpravy.' 
+    },
+    { 
+        name: 'Nasazení', 
+        icon: 'mdi:rocket-launch', 
+        description: 'Bezpečně nasadíme hotové řešení a zajistíme plynulý start vašeho projektu.' 
+    },
+    { 
+        name: 'Podpora', 
+        icon: 'mdi:cog-sync', 
+        description: 'Poskytujeme dlouhodobou technickou podporu a pomáháme s dalším rozvojem projektu.' 
+    }
+];
+
+const techValues = [
+    {
+        title: 'Růst a škálování',
+        description: 'Díky moderním technologiím můžeme společně růst a škálovat váš podnik. Naše řešení jsou připravena na budoucí rozšíření a změny.'
+    },
+    {
+        title: 'Transparentní technologie',
+        description: 'Využíváme open-source technologie jako TypeScript, které jsou transparentní, aktivně vyvíjené a podporované globální komunitou vývojářů.'
+    },
+    {
+        title: 'Plná kontrola',
+        description: 'Veškerý kód je plně customizovatelný. Pro netechnické uživatele implementujeme různé nástroje a technologie (např. správu obsahu, analytiky nebo automatizace), které umožní snadnou práci se systémem.'
+    },
+    {
+        title: 'Vlastnictví kódu',
+        description: 'Pokud nebudete spokojeni s naší spoluprací, poskytneme vám kompletní zdrojový kód. Můžete tak bez problémů pokračovat s jiným dodavatelem.'
+    }
+];
+---
+
+<Layout title="Jak to funguje - DigitalFusion">
+    <div class="container mx-auto px-4 py-16">
+        <h1 class="text-4xl font-bold text-center mb-12">Jak spolupracujeme</h1>
+        
+        <section id="process" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-12">Proces vývoje</h2>
+            <div class="process-steps grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                {processSteps.map((step, index) => (
+                    <div class="step rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300">
+                        <span class="text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mb-4">
+                            {index + 1}
+                        </span>
+                        <div class="icon-wrapper rounded-full p-4 mb-4">
+                            <Icon name={step.icon} class="text-3xl" />
+                        </div>
+                        <div class="step-content">
+                            <h3 class="text-xl font-bold mb-2">{step.name}</h3>
+                            <p class="text-gray-300">{step.description}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <section id="technologies" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-16">Výhody spolupráce s námi</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                {techValues.map((value, index) => (
+                    <div class="flex flex-col items-start group hover:-translate-y-1 transition-transform duration-300">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="text-primary-500 text-2xl font-bold">{(index + 1).toString().padStart(2, '0')}</span>
+                            <div class="h-[2px] w-12 bg-primary-500/50"></div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 group-hover:text-primary-500 transition-colors">{value.title}</h3>
+                        <p class="text-gray-300 text-lg">{value.description}</p>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <section id="cta" class="text-center">
+            <h2 class="text-3xl font-bold mb-6">Začněme spolupracovat</h2>
+            <p class="mb-8 max-w-2xl mx-auto">
+                Pojďme společně vytvořit něco výjimečného. První konzultace je nezávazná.
+            </p>
+            <Button href="/kontakt" size="large">Nezávazná konzultace</Button>
+        </section>
+    </div>
+</Layout> 

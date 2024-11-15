@@ -1,51 +1,104 @@
 ---
-import Button from '../components/Button.astro';
-import { Icon } from 'astro-icon/components';
+import Button from "../components/Button.astro";
+import { Icon } from "astro-icon/components";
+
+// Define footer links structure
+const footerLinks = {
+    main: [
+        { href: "/", text: "Domů" },
+        { href: "/sluzby", text: "Služby" },
+        { href: "/portfolio", text: "Portfolio" },
+        { href: "/kontakt", text: "Kontakt" },
+    ],
+    legal: [
+        { href: "/terms", text: "Obchodní podmínky" },
+        { href: "/privacy", text: "Ochrana osobních údajů" },
+        { href: "/cookies", text: "Cookies" },
+    ],
+};
 ---
+
 <footer class="bg-transparent text-white py-8 md:py-12">
     <div class="container mx-auto px-6">
         <div class="footer-content grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="footer-section">
-                <h3 class="text-lg font-bold mb-4">Rychlé odkazy</h3>
+                <h3 class="text-lg font-bold mb-4">Menu</h3>
+
                 <ul class="space-y-2">
-                    <li><a href="/" class="hover:text-gray-300 transition-colors duration-300">Domů</a></li>
-                    <li><a href="/o-nas" class="hover:text-gray-300 transition-colors duration-300">O nás</a></li>
-                    <li><a href="/sluzby" class="hover:text-gray-300 transition-colors duration-300">Služby</a></li>
-                    <li><a href="/portfolio" class="hover:text-gray-300 transition-colors duration-300">Portfolio</a></li>
-                    <li><a href="/kontakt" class="hover:text-gray-300 transition-colors duration-300">Kontakt</a></li>
+                    {
+                        footerLinks.main.map((link) => (
+                            <li>
+                                <a
+                                    href={link.href}
+                                    class="hover:text-gray-300 transition-colors duration-300"
+                                >
+                                    {link.text}
+                                </a>
+                            </li>
+                        ))
+                    }
                 </ul>
             </div>
+
             <div class="footer-section">
-                <h3 class="text-lg font-bold mb-4">Ostatní</h3>
+                <h3 class="text-lg font-bold mb-4">Právní náležitosti</h3>
+
                 <ul class="space-y-2">
-                    <li><a href="/kariera" class="hover:text-gray-300 transition-colors duration-300">Kariéra</a></li>
+                    {
+                        footerLinks.legal.map((link) => (
+                            <li>
+                                <a
+                                    href={link.href}
+                                    class="hover:text-gray-300 transition-colors duration-300"
+                                >
+                                    {link.text}
+                                </a>
+                            </li>
+                        ))
+                    }
                 </ul>
             </div>
+
             <div class="footer-section">
                 <h3 class="text-lg font-bold mb-4">Kontaktní údaje</h3>
+
                 <ul class="space-y-2">
                     <li class="flex items-center">
                         <Icon name="mdi:phone" class="mr-2" />
+
                         <span>+420 735 928 928</span>
                     </li>
+
                     <li class="flex items-center">
                         <Icon name="mdi:email" class="mr-2" />
+
                         <span>info@digitalfusion.cz</span>
                     </li>
+
                     <li class="flex items-center">
                         <Icon name="mdi:map-marker" class="mr-2" />
+
                         <span>Zelený pruh 95, 140 00 Praha 4-Braník</span>
                     </li>
                 </ul>
             </div>
+
             <div class="footer-section">
                 <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+
                 <form class="newsletter-form space-y-2">
-                    <input type="email" placeholder="Váš e-mail" required class="w-full p-2 bg-transparent border border-white rounded-full text-white placeholder-gray-300">
+                    <input
+                        type="email"
+                        placeholder="Váš e-mail"
+                        required
+                        class="w-full p-2 bg-transparent border border-white rounded-full text-white placeholder-gray-300"
+                    />
+
                     <Button type="submit" class="w-full">Odebírat</Button>
                 </form>
             </div>
         </div>
+
         <div class="footer-bottom text-center mt-8">
             <p>&copy; 2024 DigitalFusion. Všechna práva vyhrazena.</p>
         </div>

@@ -1,114 +1,227 @@
 ---
+
 import Layout from '../layouts/Layout.astro';
+
 import Button from '../components/Button.astro';
+
 import { Icon } from 'astro-icon/components';
+
 ---
+
 <Layout title="Kontakt - DigitalFusion">
+
     <div class="container mx-auto px-4 py-12">
+
         <h1 class="text-4xl md:text-5xl font-bold text-center mb-12">Kontaktujte nás</h1>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <section id="contact-form-section" class="bg-white/10 rounded-xl p-8 shadow-lg flex flex-col">
-                <h2 class="text-2xl md:text-3xl font-bold mb-6">Kontaktní formulář</h2>
-                <form action="https://formspree.io/f/mnnadwlp" method="POST" id="contact-form" class="space-y-6 flex-grow">
-                    <div class="form-group">
-                        <label for="name" class="block mb-2 text-lg">Jméno:</label>
-                        <input type="text" id="name" name="name" required class="w-full p-3 border border-white bg-black text-white rounded-full">
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="block mb-2 text-lg">Email:</label>
-                        <input type="email" id="email" name="email" required class="w-full p-3 border border-white bg-black text-white rounded-full">
-                    </div>
-                    <div class="form-group">
-                        <label for="subject" class="block mb-2 text-lg">Předmět:</label>
-                        <select id="subject" name="subject" required class="w-full p-3 border border-white bg-black text-white rounded-full">
-                            <option value="">Vyberte předmět</option>
-                            <option value="general">Obecný dotaz</option>
-                            <option value="support">Technická podpora</option>
-                            <option value="sales">Obchodní oddělení</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message" class="block mb-2 text-lg">Zpráva:</label>
-                        <textarea id="message" name="message" required class="w-full p-3 border border-white bg-black text-white rounded-2xl h-40"></textarea>
-                    </div>
-                </form>
-                <div class="mt-6 flex items-center space-x-4">
-                    <Button type="submit" class="w-full px-8 py-3 text-lg">Odeslat</Button>
-                    <div id="form-status" class="hidden opacity-0 transition-opacity duration-300 bg-green-500 text-white px-4 py-2 rounded-full mt-4">
-                        Formulář byl úspěšně odeslán!
-                    </div>
-                </div>
-            </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
             <div class="flex flex-col justify-between space-y-8">
-                <section id="contact-info" class="bg-white/10 rounded-xl p-8 shadow-lg flex flex-col">
-                    <h2 class="text-2xl md:text-3xl font-bold mb-6">Kontaktní údaje</h2>
-                    <div class="space-y-6 flex-grow">
-                        <div class="flex items-center">
-                            <Icon name="mdi:phone" class="text-3xl mr-4" />
-                            <p class="text-lg">+420 735 928 928</p>
-                        </div>
-                        <div class="flex items-center">
-                            <Icon name="mdi:email" class="text-3xl mr-4" />
-                            <p class="text-lg">info@digitalfusion.cz</p>
-                        </div>
-                        <div class="flex items-start">
-                            <Icon name="mdi:map-marker" class="text-3xl mr-4 mt-1" />
-                            <p class="text-lg">Zelený pruh 95,<br>140 00 Praha 4-Braník</p>
-                        </div>
+
+                <section id="collaboration-cta" class="rounded-xl">
+
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6">Spolupráce</h2>
+
+                    <div>
+
+                        <h3 class="text-xl font-semibold mb-4">Jste připraveni spolupracovat?</h3>
+
+                        <p class="mb-6">Pokud jste rozhodnutí s námi spolupracovat, vyplňte prosím náš krátký dotazník. Pomůže nám to lépe porozumět vašim potřebám a připravit pro vás nejvhodnější nabídku.</p>
+
                     </div>
-                    <div class="mt-6">
-                        <Button href="tel:+420735928928" variant="primary" class="w-full px-8 py-3 text-lg flex items-center justify-center">
-                            <Icon name="mdi:phone" class="mr-2" />
-                            Zavolat
-                        </Button>
-                    </div>
+
+                    <Button href="/dotaznik" variant="primary" class="w-full px-8 py-3 text-lg">
+
+                        Vyplnit nezávazný dotazník
+
+                    </Button>
+
                 </section>
 
-                <section id="collaboration-cta" class="bg-white/10 rounded-xl p-8 shadow-lg">
-                    <h2 class="text-2xl md:text-3xl font-bold mb-6">Spolupráce</h2>
+                <section id="contact-info" class="rounded-xl flex flex-col justify-between">
+
                     <div>
-                        <h3 class="text-xl font-semibold mb-4">Jste připraveni spolupracovat?</h3>
-                        <p class="mb-6">Pokud jste rozhodnutí s námi spolupracovat, vyplňte prosím náš krátký dotazník. Pomůže nám to lépe porozumět vašim potřebám a připravit pro vás nejvhodnější nabídku.</p>
+
+                        <h2 class="text-2xl md:text-3xl font-bold mb-6">Kontaktní údaje</h2>
+
+                        <div class="space-y-6">
+
+                            <div class="flex items-center">
+
+                                <Icon name="mdi:phone" class="text-3xl mr-4" />
+
+                                <p class="text-lg">+420 735 928 928</p>
+
+                            </div>
+
+                            <div class="flex items-center">
+
+                                <Icon name="mdi:email" class="text-3xl mr-4" />
+
+                                <p class="text-lg">info@digitalfusion.cz</p>
+
+                            </div>
+
+                            <div class="flex items-start">
+
+                                <Icon name="mdi:map-marker" class="text-3xl mr-4 mt-1" />
+
+                                <p class="text-lg">Zelený pruh 95,<br>140 00 Praha 4-Braník</p>
+
+                            </div>
+
+                        </div>
+
                     </div>
-                    <Button href="/dotaznik" variant="primary" class="w-full px-8 py-3 text-lg">
-                        Vyplnit nezávazný dotazník
-                    </Button>
+
+                    <div class="mt-6">
+
+                        <Button href="tel:+420735928928" variant="primary" class="w-full px-8 py-3 text-lg flex items-center justify-center">
+
+                            <Icon name="mdi:phone" class="mr-2" />
+
+                            Zavolat
+
+                        </Button>
+
+                    </div>
+
                 </section>
+
             </div>
+
+            <section id="contact-form-section" class="rounded-xl flex flex-col justify-between">
+
+                <div>
+
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6">Kontaktní formulář</h2>
+
+                    <form action="https://formspree.io/f/mnnadwlp" method="POST" id="contact-form" class="space-y-6">
+
+                        <div class="form-group">
+
+                            <label for="name" class="block mb-2 text-lg">Jméno:</label>
+
+                            <input type="text" id="name" name="name" required class="w-full p-3 border border-white bg-black text-white rounded-full">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="email" class="block mb-2 text-lg">Email:</label>
+
+                            <input type="email" id="email" name="email" required class="w-full p-3 border border-white bg-black text-white rounded-full">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="message" class="block mb-2 text-lg">Zpráva:</label>
+
+                            <textarea id="message" name="message" required class="w-full p-3 border border-white bg-black text-white rounded-2xl h-40"></textarea>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="flex items-center space-x-2">
+
+                                <input type="checkbox" required class="form-checkbox" name="gdpr-consent">
+
+                                <span class="text-sm">Souhlasím se zpracováním osobních údajů dle <a href="/gdpr" class="underline">GDPR</a></span>
+
+                            </label>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="mt-6 flex items-center space-x-4">
+
+                    <Button type="submit" class="w-full px-8 py-3 text-lg">Odeslat</Button>
+
+                    <div id="form-status" class="hidden opacity-0 transition-opacity duration-300 bg-green-500 text-white px-4 py-2 rounded-full mt-4">
+
+                        Formulář byl úspěšně odeslán!
+
+                    </div>
+
+                </div>
+
+            </section>
+
         </div>
+
     </div>
+
 </Layout>
 
+
+
 <script>
+
     const form = document.getElementById('contact-form') as HTMLFormElement;
+
     const formStatus = document.getElementById('form-status');
 
+
+
     if (form && formStatus) {
+
         form.addEventListener('submit', async (e) => {
+
             e.preventDefault();
+
             try {
+
                 const response = await fetch(form.action, {
+
                     method: 'POST',
+
                     body: new FormData(form),
+
                     headers: {'Accept': 'application/json'}
+
                 });
+
                 if (response.ok) {
+
                     form.reset();
+
                     formStatus.classList.remove('hidden');
+
                     formStatus.classList.add('opacity-100');
+
                     setTimeout(() => {
+
                         formStatus.classList.remove('opacity-100');
+
                         setTimeout(() => {
+
                             formStatus.classList.add('hidden');
+
                         }, 300);
+
                     }, 3000);
+
                 } else {
+
                     throw new Error('Odeslání formuláře selhalo');
+
                 }
+
             } catch (error) {
+
                 alert('Při odesílání formuláře došlo k chybě. Prosím, zkuste to znovu později.');
+
                 console.error('Chyba při odesílání formuláře:', error);
+
             }
+
         });
+
     }
+
 </script>

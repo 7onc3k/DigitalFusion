@@ -2,51 +2,54 @@
 import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
 import Button from '../components/Button.astro';
+
 const services = [
     {
-        title: "Responzivní webové stránky",
-        description: "Vytváříme moderní, plně responzivní webové stránky, které skvěle vypadají na všech zařízeních.",
-        icon: "mdi:laptop",
+        title: "Web Design",
+        description: "Vytváříme jedinečný design webových stránek přesně podle vašich představ a potřeb vašeho podnikání.",
+        icon: "mdi:palette",
         features: [
-            "Optimalizace pro mobily a tablety",
-            "Rychlé načítání",
-            "Moderní design",
-            "Uživatelsky přívětivé rozhraní"
+            "Moderní a atraktivní design",
+            "Unikátní vizuální identita",
+            "UX/UI optimalizace",
+            "Grafické prvky na míru"
         ]
     },
     {
-        title: "E-commerce řešení",
-        description: "Vyvíjíme výkonné a bezpečné e-shopy, které pomohou vašemu podnikání růst online.",
-        icon: "mdi:cart",
-        features: [
-            "Intuitivní správa produktů",
-            "Bezpečné platební brány",
-            "Optimalizace pro konverze",
-            "Integrace s ERP systémy"
-        ]
-    },
-    {
-        title: "Webové aplikace",
-        description: "Tvoříme na míru vyvinuté webové aplikace, které zefektivní vaše podnikové procesy.",
+        title: "Vývoj webu",
+        description: "Přetváříme design v plně funkční webové stránky s důrazem na rychlost a spolehlivost.",
         icon: "mdi:code-tags",
         features: [
-            "Single-page aplikace (SPA)",
-            "Progresivní webové aplikace (PWA)",
-            "Integrace API",
-            "Škálovatelná architektura"
+            "Čistý a optimalizovaný kód",
+            "Responzivní zobrazení",
+            "Rychlé načítání",
+            "Zabezpečení webu"
+        ]
+    },
+    {
+        title: "Správa a podpora",
+        description: "Poskytujeme komplexní podporu a údržbu vašeho webu po jeho spuštění.",
+        icon: "mdi:cog",
+        features: [
+            "Pravidelné aktualizace",
+            "Technická podpora",
+            "Monitoring výkonu",
+            "Správa obsahu"
         ]
     }
 ];
-const processSteps = [
-    { name: 'Analýza požadavků', icon: 'mdi:clipboard-text' },
-    { name: 'Návrh a prototyp', icon: 'mdi:pencil-ruler' },
-    { name: 'Vývoj', icon: 'mdi:code-braces' },
-    { name: 'Testování', icon: 'mdi:test-tube' },
-    { name: 'Nasazení', icon: 'mdi:rocket-launch' }
-];
 ---
 <Layout title="Služby - DigitalFusion">
-    <h1 class="text-4xl font-bold text-center my-12 text-white">Naše služby</h1>
+    <h1 class="text-4xl font-bold text-center my-12 text-white">Webové stránky na míru</h1>
+    
+    <div class="max-w-3xl mx-auto mb-12 text-center text-white">
+        <p class="text-lg">
+            Specializujeme se na tvorbu profesionálních webových stránek na míru. 
+            Od návrhu až po realizaci vytvoříme web, který perfektně reprezentuje vaši značku 
+            a pomáhá vám dosáhnout vašich cílů.
+        </p>
+    </div>
+
     <div class="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
         {services.map(service => (
             <div class="service-card bg-black rounded-lg p-8 text-center flex flex-col h-full transition-all duration-300">
@@ -71,45 +74,18 @@ const processSteps = [
             </div>
         ))}
     </div>
-    <section id="process" class="py-16">
-        <h2 class="text-3xl font-bold text-center text-white mb-12">Náš proces vývoje</h2>
-        <div class="process-steps grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-8 max-w-5xl mx-auto">
-            {processSteps.map((step, index) => (
-                <div class="step flex flex-col items-center text-center p-4 relative">
-                    <div class="icon-wrapper bg-white rounded-full p-3 mb-4 relative">
-                        <Icon name={step.icon} class="text-3xl text-black" />
-                        <span class="absolute -top-2 -left-2 bg-black text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">{index + 1}</span>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2 text-white">{step.name}</h3>
-                </div>
-            ))}
-        </div>
-    </section>
-    <section id="technologies" class="py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center text-white">Technologie, které používáme</h2>
-            <div class="tech-icons flex flex-wrap justify-center gap-12 text-white">
-                <div class="tech-icon flex flex-col items-center">
-                    <Icon name="mdi:language-javascript" class="text-6xl mb-2" />
-                    <span>JavaScript</span>
-                </div>
-                <div class="tech-icon flex flex-col items-center">
-                    <Icon name="mdi:shopify" class="text-6xl mb-2" />
-                    <span>Shopify</span>
-                </div>
-                <div class="tech-icon flex flex-col items-center">
-                    <Icon name="mdi:language-html5" class="text-6xl mb-2" />
-                    <span>HTML</span>
-                </div>
-            </div>
-        </div>
-    </section>
+
     <section id="cta" class="py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-6 text-center text-white">Připraveni na nový web?</h2>
-            <p class="mt-4 mb-8 text-center max-w-2xl mx-auto text-white">Kontaktujte nás pro nezávaznou konzultaci a zjistěte, jak vám můžeme pomoci s vaším webovým projektem.</p>
+            <h2 class="text-3xl font-bold mb-6 text-center text-white">Začněme spolupracovat</h2>
+            <p class="mt-4 mb-8 text-center max-w-2xl mx-auto text-white">
+                Máte zájem o profesionální webové stránky? Kontaktujte nás pro nezávaznou konzultaci 
+                a společně vytvoříme web, který předčí vaše očekávání.
+            </p>
             <div class="text-center">
-                <Button href="/kontakt" size="large" variant="secondary" class="text-white bg-white bg-opacity-20 hover:bg-opacity-30">Kontaktujte nás</Button>
+                <Button href="/kontakt" size="large" variant="secondary" class="text-white bg-white bg-opacity-20 hover:bg-opacity-30">
+                    Kontaktujte nás
+                </Button>
             </div>
         </div>
     </section>

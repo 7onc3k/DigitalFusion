@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Cookies Policy - DigitalFusion">
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <h1 class="text-4xl font-bold mb-8">Zásady používání cookies</h1>
+        
+        <div class="space-y-8 text-white/90">
+            <section>
+                <h2 class="text-2xl font-bold mb-4">Co jsou cookies?</h2>
+                <p>Cookies jsou malé textové soubory, které jsou ukládány do vašeho prohlížeče nebo zařízení při návštěvě našich webových stránek. Pomáhají nám zajistit základní funkčnost stránek, bezpečnost, a také nám poskytují informace o tom, jak se stránky používají.</p>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-4">Jaké cookies používáme?</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Nezbytné cookies</h3>
+                        <p>Tyto cookies jsou nutné pro základní funkčnost webu. Nelze je vypnout.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Analytické cookies</h3>
+                        <p>Pomáhají nám pochopit, jak návštěvníci používají web. Všechna data jsou anonymizována.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Marketingové cookies</h3>
+                        <p>Používají se k sledování návštěvníků napříč webovými stránkami. Záměrem je zobrazovat reklamy, které jsou relevantní a zajímavé pro jednotlivé uživatele.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-4">Jak spravovat cookies?</h2>
+                <p>Většina webových prohlížečů umožňuje spravovat cookies prostřednictvím nastavení. Můžete:</p>
+                <ul class="list-disc list-inside mt-2 space-y-2">
+                    <li>Zobrazit cookies uložené ve vašem prohlížeči</li>
+                    <li>Odstranit jednotlivé cookies</li>
+                    <li>Blokovat cookies třetích stran</li>
+                    <li>Blokovat cookies ze specifických webů</li>
+                    <li>Blokovat všechny cookies</li>
+                    <li>Odstranit všechny cookies při zavření prohlížeče</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-4">Nastavení cookies</h2>
+                <p>Své preference ohledně cookies můžete změnit kliknutím na tlačítko níže:</p>
+                <button id="cookie-settings" class="mt-4 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors duration-300">
+                    Upravit nastavení cookies
+                </button>
+            </section>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    document.getElementById('cookie-settings')?.addEventListener('click', () => {
+        // Zde implementovat otevření cookie consent modalu
+        console.log('Otevřít nastavení cookies');
+    });
+</script> 

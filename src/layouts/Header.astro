@@ -1,9 +1,14 @@
 ---
 const navItems = [
-    { href: "/", text: "Domů" },
-    { href: "/o-nas", text: "O nás" },
     { href: "/sluzby", text: "Služby" },
+
+
     { href: "/portfolio", text: "Portfolio" },
+
+    { href: "/jak-to-funguje", text: "Jak to funguje" },
+
+    { href: "/o-nas", text: "O nás" },
+
     { href: "/kontakt", text: "Kontakt" },
 ];
 ---
@@ -16,6 +21,7 @@ const navItems = [
         class="header-background absolute inset-0 rounded-3xl transition-all duration-300 ease-in-out"
     >
     </div>
+
     <header id="main-header" class="relative z-10">
         <nav class="flex justify-between items-center py-4 px-6">
             <a
@@ -23,6 +29,7 @@ const navItems = [
                 class="logo text-2xl md:text-3xl font-bold tracking-wider z-50 hover:text-gray-300 transition-colors duration-300"
                 >DigitalFusion</a
             >
+
             <div class="hidden md:block">
                 <ul class="flex items-center">
                     {
@@ -39,6 +46,7 @@ const navItems = [
                     }
                 </ul>
             </div>
+
             <button
                 id="mobile-menu-toggle"
                 class="md:hidden text-current focus:outline-none relative z-50 p-2"
@@ -59,6 +67,7 @@ const navItems = [
                 </div>
             </button>
         </nav>
+
         <div
             id="mobile-menu-container"
             class="md:hidden overflow-hidden transition-all duration-500 ease-in-out h-0"
@@ -84,46 +93,62 @@ const navItems = [
         </div>
     </header>
 </div>
+
 <style>
     #header-container {
         background-color: transparent;
+
         transition:
             height 0.3s ease-in-out,
             background-color 0.3s ease-in-out;
     }
+
     .header-background {
         background-color: rgba(34, 34, 34, 0); /* Barva tlačítek a projektů */
+
         backdrop-filter: blur(5px);
+
         opacity: 1;
     }
+
     #header-container.scrolled .header-background,
     #header-container.menu-open .header-background {
         background-color: rgba(69, 69, 69, 0.8); /* Barva tlačítek a projektů */
     }
+
     #header-container.scrolled .nav-link,
     #header-container.scrolled .logo,
     #header-container.menu-open .nav-link,
-   
     #mobile-menu-container {
         transition: height 0.5s ease-in-out;
     }
+
     #mobile-menu-toggle {
         cursor: pointer;
     }
+
     #mobile-menu-toggle .w-8 {
         touch-action: manipulation;
     }
 </style>
+
 <script>
     const headerContainer = document.getElementById("header-container");
+
     const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+
     const mobileMenuContainer = document.getElementById(
         "mobile-menu-container",
     );
+
     const arrowIcon = mobileMenuToggle?.querySelector("svg");
+
     let isMenuOpen = false;
+
     // Funkce pro ovládání scrollování
+
     const scrollThreshold = 50;
+
     function handleScroll() {
         if (window.scrollY > scrollThreshold) {
             headerContainer?.classList.add("scrolled");
@@ -131,30 +156,44 @@ const navItems = [
             headerContainer?.classList.remove("scrolled");
         }
     }
+
     window.addEventListener("scroll", handleScroll);
+
     // Funkce pro přepínání mobilního menu
+
     function toggleMenu() {
         isMenuOpen = !isMenuOpen;
+
         if (mobileMenuContainer && arrowIcon && headerContainer) {
             if (isMenuOpen) {
                 const contentHeight = mobileMenuContainer.scrollHeight;
+
                 mobileMenuContainer.style.height = `${contentHeight}px`;
+
                 arrowIcon.style.transform = "rotate(180deg)";
+
                 headerContainer.classList.add("menu-open");
             } else {
                 mobileMenuContainer.style.height = "0";
+
                 arrowIcon.style.transform = "rotate(0deg)";
+
                 headerContainer.classList.remove("menu-open");
             }
         }
     }
+
     // Přidání event listeneru pro tlačítko mobilního menu
+
     if (mobileMenuToggle) {
         mobileMenuToggle.addEventListener("click", toggleMenu);
     }
+
     // Zavření menu při kliknutí mimo něj
+
     document.addEventListener("click", (event) => {
         const target = event.target as Node;
+
         if (
             isMenuOpen &&
             mobileMenuContainer &&
