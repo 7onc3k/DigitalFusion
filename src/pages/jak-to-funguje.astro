@@ -57,22 +57,19 @@ const techValues = [
 ---
 
 <Layout title="Jak to funguje - DigitalFusion">
-    <div class="container mx-auto px-4 py-16">
-        <h1 class="text-4xl font-bold text-center mb-12">Jak spolupracujeme</h1>
+    <main class="container mx-auto px-4 py-16">
+        <h1 class="text-5xl font-bold text-center mb-16 text-white">Jak to funguje</h1>
         
-        <section id="process" class="mb-16">
-            <h2 class="text-3xl font-bold text-center mb-12">Proces vývoje</h2>
+        <section class="mb-20">
+            <h2 class="text-4xl font-bold text-center mb-12">Proces vývoje</h2>
             <div class="process-steps grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 {processSteps.map((step, index) => (
-                    <div class="step rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300">
-                        <span class="text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mb-4">
-                            {index + 1}
-                        </span>
+                    <div class="step rounded-xl p-6 flex flex-col items-center text-center">
+                        <h3 class="text-2xl font-bold mb-2">{step.name}</h3>
                         <div class="icon-wrapper rounded-full p-4 mb-4">
                             <Icon name={step.icon} class="text-3xl" />
                         </div>
                         <div class="step-content">
-                            <h3 class="text-xl font-bold mb-2">{step.name}</h3>
                             <p class="text-gray-300">{step.description}</p>
                         </div>
                     </div>
@@ -80,9 +77,8 @@ const techValues = [
             </div>
         </section>
 
-        <section id="technologies" class="mb-16">
-            <h2 class="text-3xl font-bold text-center mb-16">Výhody spolupráce s námi</h2>
-            
+        <section class="mb-20">
+            <h2 class="text-4xl font-bold text-center mb-16">Výhody spolupráce</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
                 {techValues.map((value, index) => (
                     <div class="flex flex-col items-start group hover:-translate-y-1 transition-transform duration-300">
@@ -97,12 +93,12 @@ const techValues = [
             </div>
         </section>
 
-        <section id="cta" class="text-center">
-            <h2 class="text-3xl font-bold mb-6">Začněme spolupracovat</h2>
+        <section class="text-center">
+            <h2 class="text-3xl font-bold mb-8">Začněme spolupracovat</h2>
             <p class="mb-8 max-w-2xl mx-auto">
                 Pojďme společně vytvořit něco výjimečného. První konzultace je nezávazná.
             </p>
             <Button href="/kontakt" size="large">Nezávazná konzultace</Button>
         </section>
-    </div>
+    </main>
 </Layout> 

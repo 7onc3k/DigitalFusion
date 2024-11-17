@@ -29,68 +29,64 @@ const values = [
 ---
 
 <Layout title="O nás - DigitalFusion">
-    <section id="mission-vision" class="section py-16">
-        <div class="container mx-auto px-4">
-            <h1 class="text-4xl font-bold text-center mb-8">O nás</h1>
+    <main class="container mx-auto px-4 py-16">
+        <h1 class="text-5xl font-bold text-center mb-16 text-white">O nás</h1>
+
+        <section class="mb-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Naše vize</h2>
             <p class="mt-4 text-center max-w-3xl mx-auto">
                 Vize naší společnosti je pomáhat klientům budovat silnou online prezenci prostřednictvím profesionálních webových řešení, 
                 které našim klientům pomohou lépe oslovit jejich cílové zákazníky a posílit jejich digitální identitu. 
                 Rosteme společně s našimi klienty a vytváříme dlouhodobá partnerství založená na důvěře a výsledcích.
             </p>
-        </div>
-    </section>
+        </section>
 
-    <section id="team" class="section py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Náš tým</h2>
+        <section class="mb-20">
+            <h2 class="text-4xl font-bold text-center mb-12">Náš tým</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {teamMembers.map(member => (
                     <div class="team-member text-center">
                         <div class="mb-4 bg-primary/10 w-48 h-48 rounded-full flex items-center justify-center mx-auto">
                             <i class={`${member.icon} text-6xl text-primary`}></i>
                         </div>
-                        <h3 class="text-xl font-bold">{member.name}</h3>
+                        <h3 class="text-2xl font-bold">{member.name}</h3>
                         <p class="text-gray-400">{member.position}</p>
                     </div>
                 ))}
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="what-we-do" class="section py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Co děláme</h2>
+        <section class="mb-20">
+            <h2 class="text-4xl font-bold text-center mb-8">Co děláme</h2>
             <div class="max-w-3xl mx-auto text-center">
                 <p class="text-lg">
                     Specializujeme se na vývoj moderních webových řešení a digitálních strategií, 
-                    které pomohou vaší firmě růst v online prostředí. Nabízíme komplexní služby 
-                    od návrhu až po implementaci, vždy s důrazem na kvalitu a efektivitu.
+                    které pomohou vaší firmě růst v online prostředí.
                 </p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="values" class="section py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Naše hodnoty</h2>
+        <section class="mb-20">
+            <h2 class="text-4xl font-bold text-center mb-12">Naše hodnoty</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mt-8">
                 {values.map(value => (
                     <div class="value-item text-center p-6">
                         <i class={`${value.icon} text-4xl text-primary mb-4 block`}></i>
-                        <h3 class="text-xl font-bold mb-3">{value.title}</h3>
+                        <h3 class="text-2xl font-bold mb-3">{value.title}</h3>
                         <p class="text-gray-300">{value.description}</p>
                     </div>
                 ))}
             </div>
-        </div>
-    </section>
-    <section id="careers" class="section py-16">
-        <div class="container mx-auto px-4">
+        </section>
+
+        <section class="py-12">
             <h2 class="text-3xl font-bold text-center mb-8">Kariéra u nás</h2>
-            <p class="mt-4 text-center max-w-3xl mx-auto">Jako nově založená firma hledáme talentované a motivované jedince, kteří chtějí být součástí našeho rostoucího týmu. Nabízíme dynamické pracovní prostředí, možnosti profesního růstu a práci na zajímavých projektech.</p>
+            <p class="mt-4 text-center max-w-3xl mx-auto">
+                Jako nově založená firma hledáme talentované a motivované jedince, kteří chtějí být součástí našeho rostoucího týmu.
+            </p>
             <div class="text-center mt-8">
                 <Button href="/kariera">Prohlédnout volné pozice</Button>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 </Layout>

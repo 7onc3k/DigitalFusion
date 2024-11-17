@@ -9,153 +9,64 @@ import { Icon } from 'astro-icon/components';
 ---
 
 <Layout title="Kontakt - DigitalFusion">
-
-    <div class="container mx-auto px-4 py-12">
-
-        <h1 class="text-4xl md:text-5xl font-bold text-center mb-12">Kontaktujte nás</h1>
+    <main class="container mx-auto px-4 py-16">
+        <h1 class="text-5xl font-bold text-center mb-16 text-white">Kontakt</h1>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-
-            <div class="flex flex-col justify-between space-y-8">
-
-                <section id="collaboration-cta" class="rounded-xl">
-
-                    <h2 class="text-2xl md:text-3xl font-bold mb-6">Spolupráce</h2>
-
-                    <div>
-
-                        <h3 class="text-xl font-semibold mb-4">Jste připraveni spolupracovat?</h3>
-
-                        <p class="mb-6">Pokud jste rozhodnutí s námi spolupracovat, vyplňte prosím náš krátký dotazník. Pomůže nám to lépe porozumět vašim potřebám a připravit pro vás nejvhodnější nabídku.</p>
-
-                    </div>
-
+            <section class="flex flex-col justify-between space-y-8">
+                <div>
+                    <h2 class="text-4xl font-bold mb-8">Spolupráce</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Jste připraveni spolupracovat?</h3>
+                    <p class="mb-6">Pokud jste rozhodnutí s námi spolupracovat, vyplňte prosím náš krátký dotazník.</p>
                     <Button href="/dotaznik" variant="primary" class="w-full px-8 py-3 text-lg">
-
                         Vyplnit nezávazný dotazník
-
                     </Button>
-
-                </section>
-
-                <section id="contact-info" class="rounded-xl flex flex-col justify-between">
-
-                    <div>
-
-                        <h2 class="text-2xl md:text-3xl font-bold mb-6">Kontaktní údaje</h2>
-
-                        <div class="space-y-6">
-
-                            <div class="flex items-center">
-
-                                <Icon name="mdi:phone" class="text-3xl mr-4" />
-
-                                <p class="text-lg">+420 735 928 928</p>
-
-                            </div>
-
-                            <div class="flex items-center">
-
-                                <Icon name="mdi:email" class="text-3xl mr-4" />
-
-                                <p class="text-lg">info@digitalfusion.cz</p>
-
-                            </div>
-
-                            <div class="flex items-start">
-
-                                <Icon name="mdi:map-marker" class="text-3xl mr-4 mt-1" />
-
-                                <p class="text-lg">Zelený pruh 95,<br>140 00 Praha 4-Braník</p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="mt-6">
-
-                        <Button href="tel:+420735928928" variant="primary" class="w-full px-8 py-3 text-lg flex items-center justify-center">
-
-                            <Icon name="mdi:phone" class="mr-2" />
-
-                            Zavolat
-
-                        </Button>
-
-                    </div>
-
-                </section>
-
-            </div>
-
-            <section id="contact-form-section" class="rounded-xl flex flex-col justify-between">
+                </div>
 
                 <div>
-
-                    <h2 class="text-2xl md:text-3xl font-bold mb-6">Kontaktní formulář</h2>
-
-                    <form action="https://formspree.io/f/mnnadwlp" method="POST" id="contact-form" class="space-y-6">
-
-                        <div class="form-group">
-
-                            <label for="name" class="block mb-2 text-lg">Jméno:</label>
-
-                            <input type="text" id="name" name="name" required class="w-full p-3 border border-white bg-black text-white rounded-full">
-
+                    <h2 class="text-4xl font-bold mb-8">Kontaktní údaje</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <Icon name="mdi:phone" class="text-3xl mr-4" />
+                            <p class="text-lg">+420 735 928 928</p>
                         </div>
-
-                        <div class="form-group">
-
-                            <label for="email" class="block mb-2 text-lg">Email:</label>
-
-                            <input type="email" id="email" name="email" required class="w-full p-3 border border-white bg-black text-white rounded-full">
-
+                        <div class="flex items-center">
+                            <Icon name="mdi:email" class="text-3xl mr-4" />
+                            <p class="text-lg">info@digitalfusion.cz</p>
                         </div>
-
-                        <div class="form-group">
-
-                            <label for="message" class="block mb-2 text-lg">Zpráva:</label>
-
-                            <textarea id="message" name="message" required class="w-full p-3 border border-white bg-black text-white rounded-2xl h-40"></textarea>
-
+                        <div class="flex items-start">
+                            <Icon name="mdi:map-marker" class="text-3xl mr-4 mt-1" />
+                            <p class="text-lg">Zelený pruh 95,<br>140 00 Praha 4-Braník</p>
                         </div>
-
-                        <div class="form-group">
-
-                            <label class="flex items-center space-x-2">
-
-                                <input type="checkbox" required class="form-checkbox" name="gdpr-consent">
-
-                                <span class="text-sm">Souhlasím se zpracováním osobních údajů dle <a href="/gdpr" class="underline">GDPR</a></span>
-
-                            </label>
-
-                        </div>
-
-                    </form>
-
-                </div>
-
-                <div class="mt-6 flex items-center space-x-4">
-
-                    <Button type="submit" class="w-full px-8 py-3 text-lg">Odeslat</Button>
-
-                    <div id="form-status" class="hidden opacity-0 transition-opacity duration-300 bg-green-500 text-white px-4 py-2 rounded-full mt-4">
-
-                        Formulář byl úspěšně odeslán!
-
                     </div>
-
                 </div>
-
             </section>
 
+            <section>
+                <h2 class="text-4xl font-bold mb-8">Kontaktní formulář</h2>
+                <form action="https://formspree.io/f/mnnadwlp" method="POST" id="contact-form" class="space-y-6">
+                    <div class="form-group">
+                        <label for="name" class="block mb-2 text-lg">Jméno:</label>
+                        <input type="text" id="name" name="name" required class="w-full p-3 border border-white bg-black text-white rounded-full">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="block mb-2 text-lg">Email:</label>
+                        <input type="email" id="email" name="email" required class="w-full p-3 border border-white bg-black text-white rounded-full">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="block mb-2 text-lg">Zpráva:</label>
+                        <textarea id="message" name="message" required class="w-full p-3 border border-white bg-black text-white rounded-2xl h-40"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" required class="form-checkbox" name="gdpr-consent">
+                            <span class="text-sm">Souhlasím se zpracováním osobních údajů dle <a href="/gdpr" class="underline">GDPR</a></span>
+                        </label>
+                    </div>
+                </form>
+            </section>
         </div>
-
-    </div>
-
+    </main>
 </Layout>
 
 

@@ -37,62 +37,68 @@ const services = [
 ];
 ---
 <Layout title="Služby - DigitalFusion">
-    <h1 class="text-4xl font-bold text-center my-12 text-white">Webové stránky na míru</h1>
-    
-    <div class="max-w-3xl mx-auto mb-12 text-center text-white">
-        <p class="text-lg">
-            Specializujeme se na tvorbu profesionálních webových stránek na míru. 
-            Od návrhu až po realizaci vytvoříme web, který perfektně reprezentuje vaši značku 
-            a pomáhá vám dosáhnout vašich cílů.
-        </p>
-    </div>
-
-    <div class="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-        {services.map(service => (
-            <div class="service-card bg-black rounded-lg p-8 text-center flex flex-col">
-                <div class="mb-6 h-[48px] flex items-center justify-center">
-                    <Icon name={service.icon} class="text-4xl text-white" />
-                </div>
-                
-                <div class="mb-12">
-                    <h2 class="text-2xl font-bold mb-4 text-white">{service.title}</h2>
-                    <p class="text-white h-[60px]">{service.description}</p>
-                </div>
-                
-                <div class="flex-grow mb-8">
-                    <ul class="space-y-4">
-                        {service.features.map(feature => (
-                            <li class="flex items-center justify-center text-white">
-                                <div class="flex items-center w-48">
-                                    <Icon name="mdi:check-circle" class="text-white mr-3 text-xl" />
-                                    <span>{feature}</span>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-                
-                <div>
-                    <Button 
-                        href="/blog" 
-                        variant="secondary" 
-                        class="w-3/4 text-white bg-white bg-opacity-20 hover:bg-opacity-30"
-                    >
-                        Zjistit více
-                    </Button>
-                </div>
+    <main class="container mx-auto px-4 py-16">
+        <h1 class="text-5xl font-bold text-center mb-16 text-white">Služby</h1>
+        
+        <section class="mb-20">
+            <h2 class="text-4xl font-bold text-center mb-8 text-white">Webové stránky na míru</h2>
+            <div class="max-w-3xl mx-auto mb-12 text-center text-white">
+                <p class="text-lg">
+                    Specializujeme se na tvorbu profesionálních webových stránek na míru. 
+                    Od návrhu až po realizaci vytvoříme web, který perfektně reprezentuje vaši značku 
+                    a pomáhá vám dosáhnout vašich cílů.
+                </p>
             </div>
-        ))}
-    </div>
+        </section>
 
-    <section id="cta" class="py-12">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-bold mb-4 text-center text-white">Začněme spolupracovat</h2>
+        <section class="mb-20">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Naše služby</h2>
+            <div class="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {services.map(service => (
+                    <div class="service-card bg-black rounded-lg p-8 text-center flex flex-col">
+                        <div class="mb-6 h-[48px] flex items-center justify-center">
+                            <Icon name={service.icon} class="text-4xl text-white" />
+                        </div>
+                        
+                        <div class="mb-12">
+                            <h3 class="text-2xl font-bold mb-4 text-white">{service.title}</h3>
+                            <p class="text-white h-[60px]">{service.description}</p>
+                        </div>
+                        
+                        <div class="flex-grow mb-8">
+                            <ul class="space-y-4">
+                                {service.features.map(feature => (
+                                    <li class="flex items-center justify-center text-white">
+                                        <div class="flex items-center w-48">
+                                            <Icon name="mdi:check-circle" class="text-white mr-3 text-xl" />
+                                            <span>{feature}</span>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <Button 
+                                href="/blog" 
+                                variant="secondary" 
+                                class="w-3/4 text-white bg-white bg-opacity-20 hover:bg-opacity-30"
+                            >
+                                Zjistit více
+                            </Button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <section class="py-12">
+            <h2 class="text-3xl font-bold mb-8 text-center text-white">Začněme spolupracovat</h2>
             <div class="text-center">
                 <Button href="/kontakt" size="large" variant="secondary" class="text-white bg-white bg-opacity-20 hover:bg-opacity-30">
                     Kontaktujte nás
                 </Button>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 </Layout>
