@@ -1,9 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
-const milestones = [
-    { year: 2024, event: "Založení DigitalFusion" }
+
+const teamMembers = [
+    { 
+        name: 'Bc. David Kubánek',
+        position: 'Sales',
+        icon: 'fas fa-user-tie'
+    },
+    {
+        name: 'Tony Nguyen',
+        position: 'Software Engineer',
+        icon: 'fas fa-user-gear'
+    },
+    {
+        name: 'Sebastián Máslo',
+        position: 'Management',
+        icon: 'fas fa-user-check'
+    }
 ];
+
 const values = [
     { icon: 'fas fa-lightbulb', title: 'Inovace', description: 'Neustále hledáme nové způsoby, jak zlepšit naše služby a produkty.' },
     { icon: 'fas fa-check-circle', title: 'Kvalita', description: 'Klademe důraz na vysokou kvalitu ve všem, co děláme.' },
@@ -11,40 +27,58 @@ const values = [
     { icon: 'fas fa-shield-alt', title: 'Integrita', description: 'Jednáme vždy čestně a transparentně.' }
 ];
 ---
+
 <Layout title="O nás - DigitalFusion">
     <section id="mission-vision" class="section py-16">
         <div class="container mx-auto px-4">
             <h1 class="text-4xl font-bold text-center mb-8">O nás</h1>
-            <p class="mt-4 text-center max-w-3xl mx-auto">Jako nově založená firma je naší misí pomáhat firmám uspět v digitálním světě prostřednictvím inovativních řešení a strategií. Naše vize je stát se lídrem v oblasti digitální transformace a přinášet hodnotu našim klientům, zaměstnancům a společnosti.</p>
+            <p class="mt-4 text-center max-w-3xl mx-auto">
+                Vize naší společnosti je pomáhat klientům budovat silnou online prezenci prostřednictvím profesionálních webových řešení, 
+                které našim klientům pomohou lépe oslovit jejich cílové zákazníky a posílit jejich digitální identitu. 
+                Rosteme společně s našimi klienty a vytváříme dlouhodobá partnerství založená na důvěře a výsledcích.
+            </p>
         </div>
     </section>
-    <section id="history" class="section py-16">
+
+    <section id="team" class="section py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Naše historie</h2>
-            <div class="flex justify-center">
-                <div class="bg-opacity-10 p-8 rounded-lg text-center max-w-2xl">
-                    <div class="text-4xl font-bold mb-4">
-                        {milestones[0].year}
+            <h2 class="text-3xl font-bold text-center mb-12">Náš tým</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {teamMembers.map(member => (
+                    <div class="team-member text-center">
+                        <div class="mb-4 bg-primary/10 w-48 h-48 rounded-full flex items-center justify-center mx-auto">
+                            <i class={`${member.icon} text-6xl text-primary`}></i>
+                        </div>
+                        <h3 class="text-xl font-bold">{member.name}</h3>
+                        <p class="text-gray-400">{member.position}</p>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">{milestones[0].event}</h3>
-                    <p class="text-lg">
-                        Naše cesta začíná zde. S vizí stát se lídrem v digitální transformaci 
-                        jsme položili základy pro inovativní řešení, která budou formovat 
-                        budoucnost digitálního světa.
-                    </p>
-                </div>
+                ))}
             </div>
         </div>
     </section>
+
+    <section id="what-we-do" class="section py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Co děláme</h2>
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-lg">
+                    Specializujeme se na vývoj moderních webových řešení a digitálních strategií, 
+                    které pomohou vaší firmě růst v online prostředí. Nabízíme komplexní služby 
+                    od návrhu až po implementaci, vždy s důrazem na kvalitu a efektivitu.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <section id="values" class="section py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Naše hodnoty</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <h2 class="text-3xl font-bold text-center mb-12">Naše hodnoty</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mt-8">
                 {values.map(value => (
-                    <div class="value-item text-center">
-                        <i class={`${value.icon} text-4xl text-white`}></i>
-                        <h3 class="text-xl font-bold mt-4">{value.title}</h3>
-                        <p class="mt-2">{value.description}</p>
+                    <div class="value-item text-center p-6">
+                        <i class={`${value.icon} text-4xl text-primary mb-4 block`}></i>
+                        <h3 class="text-xl font-bold mb-3">{value.title}</h3>
+                        <p class="text-gray-300">{value.description}</p>
                     </div>
                 ))}
             </div>

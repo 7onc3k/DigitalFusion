@@ -6,21 +6,19 @@ import Button from '../components/Button.astro';
 const services = [
     {
         title: "Web Design",
-        description: "Vytváříme jedinečný design webových stránek přesně podle vašich představ a potřeb vašeho podnikání.",
+        description: "Moderní a atraktivní design webových stránek na míru.",
         icon: "mdi:palette",
         features: [
-            "Moderní a atraktivní design",
-            "Unikátní vizuální identita",
+            "Moderní design",
             "UX/UI optimalizace",
-            "Grafické prvky na míru"
+            "Grafické prvky"
         ]
     },
     {
         title: "Vývoj webu",
-        description: "Přetváříme design v plně funkční webové stránky s důrazem na rychlost a spolehlivost.",
+        description: "Výkonné webové stránky s důrazem na rychlost a spolehlivost.",
         icon: "mdi:code-tags",
         features: [
-            "Čistý a optimalizovaný kód",
             "Responzivní zobrazení",
             "Rychlé načítání",
             "Zabezpečení webu"
@@ -28,13 +26,12 @@ const services = [
     },
     {
         title: "Správa a podpora",
-        description: "Poskytujeme komplexní podporu a údržbu vašeho webu po jeho spuštění.",
+        description: "Komplexní podpora a údržba vašeho webu.",
         icon: "mdi:cog",
         features: [
             "Pravidelné aktualizace",
             "Technická podpora",
-            "Monitoring výkonu",
-            "Správa obsahu"
+            "Monitoring výkonu"
         ]
     }
 ];
@@ -52,36 +49,45 @@ const services = [
 
     <div class="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
         {services.map(service => (
-            <div class="service-card bg-black rounded-lg p-8 text-center flex flex-col h-full transition-all duration-300">
-                <div class="flex-grow flex flex-col items-center">
-                    <div class="w-3/4 mx-auto">
-                        <Icon name={service.icon} class="text-4xl text-white mb-4 mx-auto" />
-                        <h2 class="text-2xl font-bold mb-4 text-white">{service.title}</h2>
-                        <p class="mb-6 text-white">{service.description}</p>
-                        <ul class="features-list space-y-2 mb-6 text-white">
-                            {service.features.map(feature => (
-                                <li class="flex items-center">
-                                    <Icon name="mdi:check-circle" class="text-white mr-2" />
-                                    <span class="text-left">{feature}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+            <div class="service-card bg-black rounded-lg p-8 text-center flex flex-col">
+                <div class="mb-6 h-[48px] flex items-center justify-center">
+                    <Icon name={service.icon} class="text-4xl text-white" />
                 </div>
-                <div class="mt-4 flex justify-center">
-                    <Button href="/kontakt" variant="secondary" class="w-3/4 text-white bg-white bg-opacity-20 hover:bg-opacity-30">Zjistit více</Button>
+                
+                <div class="mb-12">
+                    <h2 class="text-2xl font-bold mb-4 text-white">{service.title}</h2>
+                    <p class="text-white h-[60px]">{service.description}</p>
+                </div>
+                
+                <div class="flex-grow mb-8">
+                    <ul class="space-y-4">
+                        {service.features.map(feature => (
+                            <li class="flex items-center justify-center text-white">
+                                <div class="flex items-center w-48">
+                                    <Icon name="mdi:check-circle" class="text-white mr-3 text-xl" />
+                                    <span>{feature}</span>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                
+                <div>
+                    <Button 
+                        href="/blog" 
+                        variant="secondary" 
+                        class="w-3/4 text-white bg-white bg-opacity-20 hover:bg-opacity-30"
+                    >
+                        Zjistit více
+                    </Button>
                 </div>
             </div>
         ))}
     </div>
 
-    <section id="cta" class="py-16">
+    <section id="cta" class="py-12">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-6 text-center text-white">Začněme spolupracovat</h2>
-            <p class="mt-4 mb-8 text-center max-w-2xl mx-auto text-white">
-                Máte zájem o profesionální webové stránky? Kontaktujte nás pro nezávaznou konzultaci 
-                a společně vytvoříme web, který předčí vaše očekávání.
-            </p>
+            <h2 class="text-2xl font-bold mb-4 text-center text-white">Začněme spolupracovat</h2>
             <div class="text-center">
                 <Button href="/kontakt" size="large" variant="secondary" class="text-white bg-white bg-opacity-20 hover:bg-opacity-30">
                     Kontaktujte nás

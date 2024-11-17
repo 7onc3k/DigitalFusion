@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+import Button from '../components/Button.astro';
+
+// Zde později můžeme přidat logiku pro načítání blog postů
+const posts = [];
+---
+
+<Layout title="Blog - DigitalFusion">
+    <div class="container mx-auto px-4 py-12">
+        <h1 class="text-4xl font-bold text-center mb-8 text-white">Blog</h1>
+        
+        {posts.length === 0 ? (
+            <div class="text-center text-white">
+                <p class="text-lg mb-4">Připravujeme pro vás zajímavý obsah.</p>
+                <p>Sledujte nás, brzy přidáme první články.</p>
+            </div>
+        ) : (
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Zde později přidáme zobrazení blog postů */}
+            </div>
+        )}
+    </div>
+</Layout> 
