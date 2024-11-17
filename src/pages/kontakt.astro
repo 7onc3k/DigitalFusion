@@ -1,10 +1,9 @@
 ---
+import Layout from "../layouts/Layout.astro";
 
-import Layout from '../layouts/Layout.astro';
+import Button from "../components/Button.astro";
 
-import Button from '../components/Button.astro';
-
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 
 ---
 
@@ -12,19 +11,30 @@ import { Icon } from 'astro-icon/components';
     <main class="container mx-auto px-4 py-16">
         <h1 class="text-5xl font-bold text-center mb-16 text-white">Kontakt</h1>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <section class="flex flex-col justify-between space-y-8">
-                <div>
-                    <h2 class="text-4xl font-bold mb-8">Spolupráce</h2>
-                    <h3 class="text-2xl font-semibold mb-4">Jste připraveni spolupracovat?</h3>
-                    <p class="mb-6">Pokud jste rozhodnutí s námi spolupracovat, vyplňte prosím náš krátký dotazník.</p>
-                    <Button href="/dotaznik" variant="primary" class="w-full px-8 py-3 text-lg">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 min-h-[600px]">
+            <section class="flex flex-col justify-between h-full space-y-16">
+                <div class="flex-1">
+                    <h2 class="text-4xl font-bold mb-8">Dotazník</h2>
+                    <h3 class="text-2xl font-semibold mb-6">
+                        Jste připraveni spolupracovat?
+                    </h3>
+                    <p class="mb-4 text-lg">
+                        Pokud máte zájem o spolupráci, vyplňte prosím náš krátký dotazník.
+                    </p>
+                    <p class="mb-8 text-lg text-gray-300">
+                        Po vyplnění dotazníku se s vámi spojíme a nabídneme vám <span class="text-white font-semibold">bezplatnou konzultaci</span>, během které probereme vaše potřeby a možnosti spolupráce.
+                    </p>
+                    <Button
+                        href="/dotaznik"
+                        variant="primary"
+                        class="w-full px-8 py-3 text-lg"
+                    >
                         Vyplnit nezávazný dotazník
                     </Button>
                 </div>
 
-                <div>
-                    <h2 class="text-4xl font-bold mb-8">Kontaktní údaje</h2>
+                <div class="flex-1">
+                    <h2 class="text-4xl font-bold mb-6">Kontaktní údaje</h2>
                     <div class="space-y-6">
                         <div class="flex items-center">
                             <Icon name="mdi:phone" class="text-3xl mr-4" />
@@ -35,33 +45,79 @@ import { Icon } from 'astro-icon/components';
                             <p class="text-lg">info@digitalfusion.cz</p>
                         </div>
                         <div class="flex items-start">
-                            <Icon name="mdi:map-marker" class="text-3xl mr-4 mt-1" />
-                            <p class="text-lg">Zelený pruh 95,<br>140 00 Praha 4-Braník</p>
+                            <Icon
+                                name="mdi:map-marker"
+                                class="text-3xl mr-4 mt-1"
+                            />
+                            <p class="text-lg">
+                                Zelený pruh 95,<br />140 00 Praha 4-Braník
+                            </p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section>
-                <h2 class="text-4xl font-bold mb-8">Kontaktní formulář</h2>
-                <form action="https://formspree.io/f/mnnadwlp" method="POST" id="contact-form" class="space-y-6">
-                    <div class="form-group">
-                        <label for="name" class="block mb-2 text-lg">Jméno:</label>
-                        <input type="text" id="name" name="name" required class="w-full p-3 border border-white bg-black text-white rounded-full">
+            <section class="h-full">
+                <h2 class="text-4xl font-bold mb-12">Kontaktní formulář</h2>
+                <form
+                    id="contact-form"
+                    class="space-y-8 flex flex-col h-[calc(100%-5rem)]"
+                    method="POST"
+                >
+                    <div class="flex-1 space-y-8">
+                        <div class="form-group">
+                            <label for="name" class="block mb-3 text-lg">Jméno:</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                required
+                                class="w-full p-3 border border-white bg-black text-white rounded-full"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="block mb-3 text-lg">Email:</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                                class="w-full p-3 border border-white bg-black text-white rounded-full"
+                            />
+                        </div>
+                        <div class="form-group flex-1">
+                            <label for="message" class="block mb-3 text-lg">Zpráva:</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                required
+                                class="w-full p-3 border border-white bg-black text-white rounded-2xl h-48"
+                            ></textarea>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email" class="block mb-2 text-lg">Email:</label>
-                        <input type="email" id="email" name="email" required class="w-full p-3 border border-white bg-black text-white rounded-full">
-                    </div>
-                    <div class="form-group">
-                        <label for="message" class="block mb-2 text-lg">Zpráva:</label>
-                        <textarea id="message" name="message" required class="w-full p-3 border border-white bg-black text-white rounded-2xl h-40"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label class="flex items-center space-x-2">
-                            <input type="checkbox" required class="form-checkbox" name="gdpr-consent">
-                            <span class="text-sm">Souhlasím se zpracováním osobních údajů dle <a href="/gdpr" class="underline">GDPR</a></span>
-                        </label>
+
+                    <div class="space-y-6">
+                        <div class="form-group">
+                            <label class="flex items-center space-x-2">
+                                <input
+                                    type="checkbox"
+                                    required
+                                    class="form-checkbox"
+                                    name="gdpr-consent"
+                                />
+                                <span class="text-sm">
+                                    Souhlasím se zpracováním osobních údajů dle 
+                                    <a href="/gdpr" class="underline">GDPR</a>
+                                </span>
+                            </label>
+                        </div>
+                        <Button
+                            type="submit"
+                            variant="primary"
+                            class="w-full px-8 py-3 text-lg submit-button transition-all duration-300"
+                        >
+                            Odeslat zprávu
+                        </Button>
                     </div>
                 </form>
             </section>
@@ -69,70 +125,55 @@ import { Icon } from 'astro-icon/components';
     </main>
 </Layout>
 
-
-
 <script>
-
     const form = document.getElementById('contact-form') as HTMLFormElement;
+    const submitButton = document.querySelector('.submit-button') as HTMLButtonElement;
 
-    const formStatus = document.getElementById('form-status');
+    const formspreeEndpoint = "mnnadwlp";
 
-
-
-    if (form && formStatus) {
-
+    if (form && submitButton) {
         form.addEventListener('submit', async (e) => {
-
             e.preventDefault();
+            
+            submitButton.textContent = 'Odesílání...';
+            submitButton.disabled = true;
 
             try {
-
-                const response = await fetch(form.action, {
-
+                const formData = new FormData(form);
+                const response = await fetch(`https://formspree.io/f/${formspreeEndpoint}`, {
                     method: 'POST',
-
-                    body: new FormData(form),
-
-                    headers: {'Accept': 'application/json'}
-
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
                 });
 
                 if (response.ok) {
-
                     form.reset();
-
-                    formStatus.classList.remove('hidden');
-
-                    formStatus.classList.add('opacity-100');
-
+                    submitButton.textContent = '✓ Úspěšně odesláno';
+                    submitButton.classList.add('success');
+                    
+                    // Po 3 sekundách vrátíme tlačítko do původního stavu
                     setTimeout(() => {
-
-                        formStatus.classList.remove('opacity-100');
-
-                        setTimeout(() => {
-
-                            formStatus.classList.add('hidden');
-
-                        }, 300);
-
+                        submitButton.textContent = 'Odeslat zprávu';
+                        submitButton.classList.remove('success');
+                        submitButton.disabled = false;
                     }, 3000);
-
                 } else {
-
-                    throw new Error('Odeslání formuláře selhalo');
-
+                    throw new Error('Odeslání se nezdařilo');
                 }
-
             } catch (error) {
-
-                alert('Při odesílání formuláře došlo k chybě. Prosím, zkuste to znovu později.');
-
-                console.error('Chyba při odesílání formuláře:', error);
-
+                console.error('Chyba při odesílání:', error);
+                submitButton.textContent = 'Odeslat zprávu';
+                submitButton.disabled = false;
+                alert('Došlo k chybě při odesílání. Prosím zkuste to znovu.');
             }
-
         });
-
     }
-
 </script>
+
+<style>
+    .submit-button.success {
+        transform: scale(1.02);
+    }
+</style>
