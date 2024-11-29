@@ -2,10 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="Cookies Policy - DigitalFusion">
-    <div class="container mx-auto px-4 py-12 max-w-4xl">
-        <h1 class="text-4xl font-bold mb-8">Zásady používání cookies</h1>
+    <div class="max-w-4xl mx-auto py-24 px-8 md:px-12">
+        <h1 class="text-4xl font-bold mb-12 pl-4">Zásady používání cookies</h1>
         
-        <div class="space-y-8 text-white/90">
+        <div class="space-y-8 text-white/90 pl-4">
             <section>
                 <h2 class="text-2xl font-bold mb-4">Co jsou cookies?</h2>
                 <p>Cookies jsou malé textové soubory, které jsou ukládány do vašeho prohlížeče nebo zařízení při návštěvě našich webových stránek. Pomáhají nám zajistit základní funkčnost stránek, bezpečnost, a také nám poskytují informace o tom, jak se stránky používají.</p>
@@ -13,34 +13,50 @@ import Layout from '../layouts/Layout.astro';
 
             <section>
                 <h2 class="text-2xl font-bold mb-4">Jaké cookies používáme?</h2>
-                <div class="space-y-4">
+                <div class="space-y-4 pl-6">
                     <div>
                         <h3 class="text-xl font-semibold mb-2">Nezbytné cookies</h3>
-                        <p>Tyto cookies jsou nutné pro základní funkčnost webu. Nelze je vypnout.</p>
+                        <p>Tyto cookies jsou nezbytné pro fungování webových stránek. Umožňují základní funkce jako navigaci na stránce a přístup k zabezpečeným sekcím webu.</p>
                     </div>
-                    
                     <div>
                         <h3 class="text-xl font-semibold mb-2">Analytické cookies</h3>
-                        <p>Pomáhají nám pochopit, jak návštěvníci používají web. Všechna data jsou anonymizována.</p>
+                        <p>Pomáhají nám pochopit, jak návštěvníci používají naše stránky. Tyto informace používáme pro vylepšení našeho webu a služeb.</p>
                     </div>
-                    
                     <div>
                         <h3 class="text-xl font-semibold mb-2">Marketingové cookies</h3>
-                        <p>Používají se k sledování návštěvníků napříč webovými stránkami. Záměrem je zobrazovat reklamy, které jsou relevantní a zajímavé pro jednotlivé uživatele.</p>
+                        <p>Používají se ke sledování návštěvníků napříč webovými stránkami. Záměrem je zobrazovat reklamy, které jsou relevantní a zajímavé pro jednotlivé uživatele.</p>
                     </div>
                 </div>
             </section>
 
             <section>
                 <h2 class="text-2xl font-bold mb-4">Jak spravovat cookies?</h2>
-                <p>Většina webových prohlížečů umožňuje spravovat cookies prostřednictvím nastavení. Můžete:</p>
-                <ul class="list-disc list-inside mt-2 space-y-2">
-                    <li>Zobrazit cookies uložené ve vašem prohlížeči</li>
-                    <li>Odstranit jednotlivé cookies</li>
-                    <li>Blokovat cookies třetích stran</li>
-                    <li>Blokovat cookies ze specifických webů</li>
-                    <li>Blokovat všechny cookies</li>
-                    <li>Odstranit všechny cookies při zavření prohlížeče</li>
+                <p class="mb-4">Většina webových prohlížečů umožňuje spravovat cookies prostřednictvím nastavení. Můžete:</p>
+                <ul class="list-none space-y-2 pl-6">
+                    <li class="flex items-start">
+                        <span class="mr-2">•</span>
+                        <span>Zobrazit existující cookies</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-2">•</span>
+                        <span>Odstranit jednotlivé cookies</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-2">•</span>
+                        <span>Blokovat cookies třetích stran</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-2">•</span>
+                        <span>Blokovat cookies ze specifických webů</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-2">•</span>
+                        <span>Blokovat všechna cookies</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-2">•</span>
+                        <span>Odstranit všechna cookies při zavření prohlížeče</span>
+                    </li>
                 </ul>
             </section>
 
@@ -60,4 +76,4 @@ import Layout from '../layouts/Layout.astro';
         // Zde implementovat otevření cookie consent modalu
         console.log('Otevřít nastavení cookies');
     });
-</script> 
+</script>
