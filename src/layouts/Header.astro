@@ -144,21 +144,21 @@ const navItems = [
         position: relative;
         background: linear-gradient(
             90deg,
-            #ffffff,
-            #a5a5a5,
-            #ffffff,
-            #ffffff
+            rgb(255, 255, 255) 0%,
+            rgb(140, 140, 140) 45%,
+            rgb(255, 255, 255) 55%,
+            rgb(255, 255, 255) 100%
         );
-        background-size: 300% 100%;
+        background-size: 200% 100%;
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-        animation: shine 3s linear infinite;
+        animation: shine 2s linear infinite;
     }
 
     @keyframes shine {
         0% {
-            background-position: 300% 50%;
+            background-position: 200% 50%;
         }
         100% {
             background-position: 0% 50%;
