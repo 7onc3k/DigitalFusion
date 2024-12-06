@@ -38,7 +38,11 @@ const navItems = [
                             <li class="mx-3">
                                 <a
                                     href={item.href}
-                                    class="nav-link hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider"
+                                    class={`nav-link hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider ${
+                                        item.text === "Kontakt" 
+                                            ? "lensflare-button" 
+                                            : ""
+                                    }`}
                                 >
                                     {item.text}
                                 </a>
@@ -82,7 +86,11 @@ const navItems = [
                             >
                                 <a
                                     href={item.href}
-                                    class="nav-link text-xl hover:text-gray-300 transition-colors duration-300"
+                                    class={`nav-link text-xl hover:text-gray-300 transition-colors duration-300 ${
+                                        item.text === "Kontakt"
+                                            ? "lensflare-button"
+                                            : ""
+                                    }`}
                                 >
                                     {item.text}
                                 </a>
@@ -130,6 +138,31 @@ const navItems = [
 
     #mobile-menu-toggle .w-8 {
         touch-action: manipulation;
+    }
+
+    .lensflare-button {
+        position: relative;
+        background: linear-gradient(
+            90deg,
+            #ffffff,
+            #a5a5a5,
+            #ffffff,
+            #ffffff
+        );
+        background-size: 300% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: shine 3s linear infinite;
+    }
+
+    @keyframes shine {
+        0% {
+            background-position: 300% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
     }
 </style>
 

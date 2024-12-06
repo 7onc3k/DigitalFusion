@@ -1,42 +1,83 @@
----
-import Particles from "./Particles.astro";
-import Header from "./Header.astro";
-import Footer from "./Footer.astro";
-import particlesOptions from "../config/particlesOptions";
-import CookieConsent from '../components/CookieConsent.astro';
-interface Props {
-    title: string;
-    noTopPadding?: boolean;
-}
-const { title, noTopPadding = false } = Astro.props;
----
-<!doctype html>
-<html lang="cs">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="description" content="DigitalFusion - Vaše digitální řešení" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- Favicon -->
-        <link rel="icon" type="image/png" href="/logo.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="/logo.png" sizes="16x16">
-        <link rel="apple-touch-icon" href="/logo.png" sizes="180x180">
-        <link rel="manifest" href="/site.webmanifest">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-        <meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
-    </head>
-    <body class="flex flex-col min-h-screen bg-black text-white">
-        <div class="absolute inset-0 z-0">
-            <Particles id="tsparticles" options={particlesOptions} />
-        </div>
-        <div class="relative z-10 flex flex-col min-h-screen">
-            <Header />
-            <main class={`flex-grow container mx-auto px-4 ${noTopPadding ? 'pt-0' : 'pt-20'}`}>
-                <slot />
-            </main>
-            <Footer />
-        </div>
-        <CookieConsent />
-    </body>
-</html>
+---
+
+import Particles from "./Particles.astro";
+
+import Header from "./Header.astro";
+
+import Footer from "./Footer.astro";
+
+import particlesOptions from "../config/particlesOptions";
+
+import CookieConsent from '../components/CookieConsent.astro';
+
+interface Props {
+
+    title: string;
+
+    noTopPadding?: boolean;
+
+}
+
+const { title, noTopPadding = false } = Astro.props;
+
+---
+
+<!doctype html>
+
+<html lang="cs">
+
+    <head>
+
+        <meta charset="UTF-8" />
+
+        <meta name="description" content="Nabízíme kreativní řešení pro webové stránky, které zvyšují viditelnost a prodej vaší firmy. Poskytujeme osobní přístup a zajistíme, že váš online obchod perfektně odpovídá vašim obchodním cílům." />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Favicon -->
+
+        <link rel="icon" type="image/png" href="/logo.png" sizes="32x32">
+
+        <link rel="icon" type="image/png" href="/logo.png" sizes="16x16">
+
+        <link rel="apple-touch-icon" href="/logo.png" sizes="180x180">
+
+        <link rel="manifest" href="/site.webmanifest">
+
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+        <meta name="generator" content={Astro.generator} />
+
+        <title>{title}</title>
+
+    </head>
+
+    <body class="flex flex-col min-h-screen bg-black text-white">
+
+        <div class="absolute inset-0 z-0">
+
+            <Particles id="tsparticles" options={particlesOptions} />
+
+        </div>
+
+        <div class="relative z-10 flex flex-col min-h-screen">
+
+            <Header />
+
+            <main class={`flex-grow container mx-auto px-4 ${noTopPadding ? 'pt-0' : 'pt-20'}`}>
+
+                <slot />
+
+            </main>
+
+            <Footer />
+
+        </div>
+
+        <CookieConsent />
+
+    </body>
+
+</html>
