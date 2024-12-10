@@ -12,6 +12,8 @@ const navItems = [
 
     { href: "/kontakt", text: "Kontakt" },
 ];
+
+const currentPath = Astro.url.pathname;
 ---
 
 <div
@@ -40,9 +42,9 @@ const navItems = [
                                     href={item.href}
                                     class={`nav-link hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider ${
                                         item.text === "Kontakt" 
-                                            ? "lensflare-button" 
+                                            ? "lensflare-button font-black" 
                                             : ""
-                                    }`}
+                                    } ${currentPath === item.href ? "border-b-2" : ""}`}
                                 >
                                     {item.text}
                                 </a>
@@ -86,11 +88,11 @@ const navItems = [
                             >
                                 <a
                                     href={item.href}
-                                    class={`nav-link text-xl hover:text-gray-300 transition-colors duration-300 ${
+                                    class={`nav-link text-xl uppercase hover:text-gray-300 transition-colors duration-300 ${
                                         item.text === "Kontakt"
-                                            ? "lensflare-button"
+                                            ? "lensflare-button font-black"
                                             : ""
-                                    }`}
+                                    } ${currentPath === item.href ? "border-b-2" : ""}`}
                                 >
                                     {item.text}
                                 </a>

@@ -23,24 +23,34 @@ const { id, options, url } = Astro.props as ParticlesProps;
   import { loadFull } from "tsparticles";
 
   class AstroParticles extends HTMLElement {
+    private initialized = false;
+
     constructor() {
       super();
       this.init();
     }
 
     async init() {
-      await loadFull(tsParticles);
+      if (this.initialized) return;
+      
+      try {
+        await loadFull(tsParticles);
+        
+        const id = this.dataset.id;
+        const options = this.dataset.options;
+        const url = this.dataset.url;
 
-      const id = this.dataset.id;
-      const options = this.dataset.options;
-      const url = this.dataset.url;
-
-      if (id) {
-        if (url) {
-          await tsParticles.load({ id, url });
-        } else if (options) {
-          await tsParticles.load({ id, options: JSON.parse(options) });
+        if (id) {
+          if (url) {
+            await tsParticles.load({ id, url });
+          } else if (options) {
+            await tsParticles.load({ id, options: JSON.parse(options) });
+          }
         }
+        
+        this.initialized = true;
+      } catch (error) {
+        console.error('Failed to initialize particles:', error);
       }
     }
   }
