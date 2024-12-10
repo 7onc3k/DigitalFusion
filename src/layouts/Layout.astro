@@ -3,7 +3,7 @@ import Particles from "./Particles.astro";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
 import particlesOptions from "../config/particlesOptions";
-import CookieConsent from '../components/CookieConsent.astro';
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
     title: string;
@@ -20,12 +20,14 @@ const { title, noTopPadding = false } = Astro.props;
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+        <ViewTransitions />
     </head>
     <body class="flex flex-col min-h-screen bg-black text-white font-sans">
-        <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 z-0" transition:persist>
             <Particles id="tsparticles" options={particlesOptions} />
         </div>
         <div class="relative z-10 flex flex-col min-h-screen">
@@ -35,6 +37,5 @@ const { title, noTopPadding = false } = Astro.props;
             </main>
             <Footer />
         </div>
-        <CookieConsent />
     </body>
 </html>

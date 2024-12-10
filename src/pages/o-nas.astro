@@ -9,14 +9,19 @@ const teamMembers = [
         icon: 'fas fa-user-tie'
     },
     {
+        name: 'Sebastián Máslo',
+        position: 'Management',
+        icon: 'fas fa-user-check'
+    },
+    {
         name: 'Tony Nguyen',
         position: 'Software Engineer',
         icon: 'fas fa-user-gear'
     },
     {
-        name: 'Sebastián Máslo',
-        position: 'Management',
-        icon: 'fas fa-user-check'
+        name: 'Vít Kubát',
+        position: 'Software Engineer',
+        icon: 'fas fa-user-gear'
     }
 ];
 
@@ -43,7 +48,7 @@ const values = [
 
         <section class="mb-20">
             <h2 class="text-4xl font-bold text-center mb-12">Náš tým</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 {teamMembers.map(member => (
                     <div class="team-member text-center">
                         <div class="mb-4 bg-primary/10 w-48 h-48 rounded-full flex items-center justify-center mx-auto">
