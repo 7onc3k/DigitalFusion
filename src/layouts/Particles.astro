@@ -10,50 +10,35 @@ export interface ParticlesProps {
 const { id, options, url } = Astro.props as ParticlesProps;
 ---
 
-<astro-particles
-  data-id={id}
-  data-options={options ? JSON.stringify(options) : undefined}
-  data-url={url}
->
-  <canvas></canvas>
-</astro-particles>
-
 <script>
   import { tsParticles } from "@tsparticles/engine";
-  import { loadFull } from "tsparticles";
+  import { loadSlim } from "@tsparticles/slim";
 
-  class AstroParticles extends HTMLElement {
-    private initialized = false;
+  let initialized = false;
 
-    constructor() {
-      super();
-      this.init();
-    }
-
-    async init() {
-      if (this.initialized) return;
-      
-      try {
-        await loadFull(tsParticles);
-        
-        const id = this.dataset.id;
-        const options = this.dataset.options;
-        const url = this.dataset.url;
-
-        if (id) {
-          if (url) {
-            await tsParticles.load({ id, url });
-          } else if (options) {
-            await tsParticles.load({ id, options: JSON.parse(options) });
-          }
-        }
-        
-        this.initialized = true;
-      } catch (error) {
-        console.error('Failed to initialize particles:', error);
-      }
+  async function initParticles() {
+    if (initialized) return;
+    
+    await loadSlim(tsParticles);
+    
+    const options = document.querySelector('#tsparticles')?.getAttribute('data-options');
+    if (options) {
+      await tsParticles.load({
+        id: 'tsparticles',
+        options: JSON.parse(options)
+      });
+      initialized = true;
     }
   }
 
-  customElements.define("astro-particles", AstroParticles);
+  // Inicializace pouze při prvním načtení
+  document.addEventListener('DOMContentLoaded', initParticles, { once: true });
 </script>
+
+<div 
+  id={id}
+  data-options={options ? JSON.stringify(options) : undefined}
+  data-url={url}
+  class="absolute inset-0"
+>
+</div>
