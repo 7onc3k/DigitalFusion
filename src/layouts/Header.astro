@@ -19,6 +19,7 @@ const currentPath = Astro.url.pathname;
 <div
     id="header-container"
     class="fixed top-8 left-6 right-6 md:top-12 md:left-12 md:right-12 z-50 transition-all duration-300 ease-in-out"
+    transition:persist
 >
     <div
         class="header-background absolute inset-0 rounded-3xl transition-all duration-300 ease-in-out"
@@ -40,11 +41,12 @@ const currentPath = Astro.url.pathname;
                             <li class="mx-3">
                                 <a
                                     href={item.href}
-                                    class={`nav-link hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider ${
-                                        item.text === "Kontakt" 
+                                    class={`nav-link hover:text-gray-300 transition-colors duration-300 text-sm uppercase tracking-wider 
+                                        ${item.text === "Kontakt" 
                                             ? "lensflare-button font-black" 
-                                            : ""
-                                    } ${currentPath === item.href ? "border-b-2" : ""}`}
+                                            : ""} 
+                                        ${item.href === currentPath ? "border-b-2" : ""}`}
+                                    data-current-path={item.href}
                                 >
                                     {item.text}
                                 </a>
@@ -88,11 +90,12 @@ const currentPath = Astro.url.pathname;
                             >
                                 <a
                                     href={item.href}
-                                    class={`nav-link text-xl uppercase hover:text-gray-300 transition-colors duration-300 ${
-                                        item.text === "Kontakt"
+                                    class={`nav-link text-xl uppercase hover:text-gray-300 transition-colors duration-300 
+                                        ${item.text === "Kontakt"
                                             ? "lensflare-button font-black"
-                                            : ""
-                                    } ${currentPath === item.href ? "border-b-2" : ""}`}
+                                            : ""} 
+                                        ${item.href === currentPath ? "border-b-2" : ""}`}
+                                    data-current-path={item.href}
                                 >
                                     {item.text}
                                 </a>
@@ -115,7 +118,7 @@ const currentPath = Astro.url.pathname;
     }
 
     .header-background {
-        background-color: rgba(34, 34, 34, 0); /* Barva tlačítek a projektů */
+        background-color: rgba(34, 34, 34, 0); /* Původní tmavá barva */
 
         backdrop-filter: blur(5px);
 
@@ -124,7 +127,7 @@ const currentPath = Astro.url.pathname;
 
     #header-container.scrolled .header-background,
     #header-container.menu-open .header-background {
-        background-color: rgba(69, 69, 69, 0.8); /* Barva tlačítek a projektů */
+        background-color: rgba(69, 69, 69, 0.8); /* Původní tmavě šedá barva */
     }
 
     #header-container.scrolled .nav-link,
@@ -169,23 +172,25 @@ const currentPath = Astro.url.pathname;
 </style>
 
 <script>
-    const headerContainer = document.getElementById("header-container");
-
-    const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
-
-    const mobileMenuContainer = document.getElementById(
-        "mobile-menu-container",
-    );
-
-    const arrowIcon = mobileMenuToggle?.querySelector("svg");
-
-    let isMenuOpen = false;
-
-    // Funkce pro ovládání scrollování
-
-    const scrollThreshold = 50;
+    function updateActiveLink() {
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+            const linkPath = link.getAttribute('data-current-path');
+            
+            if (linkPath === currentPath) {
+                link.classList.add('border-b-2');
+            } else {
+                link.classList.remove('border-b-2');
+            }
+        });
+    }
 
     function handleScroll() {
+        const headerContainer = document.getElementById("header-container");
+        const scrollThreshold = 50;
+        
         if (window.scrollY > scrollThreshold) {
             headerContainer?.classList.add("scrolled");
         } else {
@@ -193,51 +198,65 @@ const currentPath = Astro.url.pathname;
         }
     }
 
-    window.addEventListener("scroll", handleScroll);
+    function initializeHeader() {
+        const headerContainer = document.getElementById("header-container");
+        const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+        const mobileMenuContainer = document.getElementById("mobile-menu-container");
+        const arrowIcon = mobileMenuToggle?.querySelector("svg");
+        let isMenuOpen = false;
 
-    // Funkce pro přepínání mobilního menu
+        // Inicializace stavu při načtení
+        handleScroll();
+        updateActiveLink();
 
-    function toggleMenu() {
-        isMenuOpen = !isMenuOpen;
+        // Přidání event listenerů
+        window.addEventListener("scroll", handleScroll);
 
-        if (mobileMenuContainer && arrowIcon && headerContainer) {
-            if (isMenuOpen) {
-                const contentHeight = mobileMenuContainer.scrollHeight;
-
-                mobileMenuContainer.style.height = `${contentHeight}px`;
-
-                arrowIcon.style.transform = "rotate(180deg)";
-
-                headerContainer.classList.add("menu-open");
-            } else {
-                mobileMenuContainer.style.height = "0";
-
-                arrowIcon.style.transform = "rotate(0deg)";
-
-                headerContainer.classList.remove("menu-open");
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (mobileMenuContainer && arrowIcon && headerContainer) {
+                if (isMenuOpen) {
+                    const contentHeight = mobileMenuContainer.scrollHeight;
+                    mobileMenuContainer.style.height = `${contentHeight}px`;
+                    arrowIcon.style.transform = "rotate(180deg)";
+                    headerContainer.classList.add("menu-open");
+                } else {
+                    mobileMenuContainer.style.height = "0";
+                    arrowIcon.style.transform = "rotate(0deg)";
+                    headerContainer.classList.remove("menu-open");
+                }
             }
         }
-    }
 
-    // Přidání event listeneru pro tlačítko mobilního menu
-
-    if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener("click", toggleMenu);
-    }
-
-    // Zavření menu při kliknutí mimo něj
-
-    document.addEventListener("click", (event) => {
-        const target = event.target as Node;
-
-        if (
-            isMenuOpen &&
-            mobileMenuContainer &&
-            !mobileMenuContainer.contains(target) &&
-            target !== mobileMenuToggle &&
-            !mobileMenuToggle?.contains(target)
-        ) {
-            toggleMenu();
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener("click", toggleMenu);
         }
+
+        document.addEventListener("click", (event) => {
+            const target = event.target as Node;
+            if (
+                isMenuOpen &&
+                mobileMenuContainer &&
+                !mobileMenuContainer.contains(target) &&
+                target !== mobileMenuToggle &&
+                !mobileMenuToggle?.contains(target)
+            ) {
+                toggleMenu();
+            }
+        });
+    }
+
+    // Inicializace při načtení stránky
+    document.addEventListener('DOMContentLoaded', initializeHeader);
+    
+    // Inicializace při přechodu mezi stránkami
+    document.addEventListener('astro:page-load', () => {
+        initializeHeader();
+        updateActiveLink(); // Aktualizace aktivního odkazu při přechodu
+    });
+    
+    // Cleanup při přechodu
+    document.addEventListener('astro:before-swap', () => {
+        window.removeEventListener('scroll', handleScroll);
     });
 </script>
